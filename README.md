@@ -1,4 +1,4 @@
-# cart253 -Creative Computation I
+# CART253 -Creative Computation I
 
 Falé's course work for CART 253
 
