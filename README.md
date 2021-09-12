@@ -4,4 +4,4 @@ Falé's course work for CART 253
 
 I'm so excited about programming
 
-[Check out my homepage!](https://www.crystals80.github.io/cart253/)
+[Check out my homepage!](https://crystals80.github.io/cart253/)
