@@ -2,15 +2,15 @@
 Drawing Shapes
 Lam Ky Anh Do
 
-Template description of project!
-*/
+Experimenting with p5's drawing and colour functions
+**/
 
 "use strict";
 
 
 /**
 Description of preload
-*/
+**/
 function preload() {
 
 }
@@ -18,17 +18,16 @@ function preload() {
 
 /**
 Description of setup
-*/
+**/
 function setup() {
+
+  // Create background
   createCanvas(500,500);
   /*color: red,green,blue,alpha aka transparency)*/
   background(190,84,224);
   /*rect(x, y, w, h,)*/
 
-  stroke(227,227,227);
-
-
-
+  // Draw yellow squares
   stroke(227,227,227);
   rectMode(CENTER);
   fill(255,255,0,100);
@@ -38,6 +37,7 @@ function setup() {
   fill(255,255,0,255);
   rect(450,450,50,50);
 
+  // Draw gradient purple ellipses
   ellipseMode(CORNER);
   fill('#EEBAFF');
   ellipse(-50,-50,500,500);
@@ -50,6 +50,7 @@ function setup() {
   fill('#950BC2');
   ellipse(-50,-50,100,100);
 
+  // Create a gradient yellow cone
   noStroke();
   ellipseMode(CORNER);
   fill('rgba(255,255,32,100)');
@@ -63,6 +64,7 @@ function setup() {
   fill('rgba(77,77,10,30)');
   ellipse(242,325,20,20);
 
+  // Create a gradient purple cone
   noStroke();
   ellipseMode(CORNER);
   fill(127,0,200);
@@ -76,15 +78,14 @@ function setup() {
   fill(167,0,240);
   ellipse(325,243,20,20);
 
+  // Draw nose
   stroke(227,227,227);
   line(375,375,400,400);
-
   stroke('yellow');
   strokeWeight(10);
   point(376,376);
 
   /*rect(10,10,240,240);*/
-
   /*line(500,0,0,500);
   ellipse(250,250,100,100);*/
 
