@@ -118,8 +118,9 @@ function setup() {
   strokeWeight(25);
   stroke('#93E9FA')
   point(388,409);
-  point(357,422);
   point(322,421);
+  stroke(255);
+  point(357,422);
   point(291,407);
 
   // Draw mini-alien
