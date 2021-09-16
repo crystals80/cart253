@@ -23,25 +23,22 @@ function setup() {
 
   // Create background
   createCanvas(640,480);
-  background('pink');
+  background('#FFD9FF');
   noStroke();
-
-
-
-  rectMode(CENTER);
-  rect(320,480,50,300);
 
   // Draw neck
   ellipseMode(CENTER);
+  fill('#CCB5FB');
   ellipse(330,400,50,200);
-  ellipse(335,320,30,35);
-  fill('pink');
+  fill('#5C38E4');
+  ellipse(335,315,30,35);
+  fill('#FFD9FF');
   ellipse(300,400,50,200);
-  fill(255);
+  fill('#5C38E4');
   ellipse(320,320,30,35);
 
   // Draw head
-  fill('white');
+  fill('#CCB5FB');
   ellipse(300,250,125,125);
   ellipseMode(CORNER);
   ellipse(235,185,115,115);
@@ -51,30 +48,48 @@ function setup() {
 
   // Draw antenna
   noFill();
-  stroke(255);
+  stroke('#CCB5FB');
   strokeWeight(5);
   curve(262, 187, 250, 135, 250, 172, 282, 266);
   noStroke();
-  fill('white');
+  fill('#5C38E4');
   ellipse(245,122,10,15)
+  fill('#CCB5FB');
   ellipse(240,170,40,40);
 
   // Draw eye
-  noFill();
-  stroke(127);
+  fill(255);
+  noStroke();
   strokeWeight(1);
   ellipse(250,180,70,70);
-  fill(127)
+  fill('#8D50DB')
   ellipse(250,190,50,50);
 
   // Draw mouth
   noFill();
+  stroke('#8D50DB');
   arc(250, 175, 105, 105, 120, HALF_PI, PI);
 
   // Draw body
   noFill();
-  stroke('white');
   strokeWeight(30);
+  stroke('#5C38E4');
+  beginShape();
+  curveVertex(550,148);
+  curveVertex(498,160);
+  curveVertex(463,198);
+  curveVertex(489,255);
+  curveVertex(400,299);
+  curveVertex(600,500);
+  curveVertex(290,480);
+  curveVertex(290,375);
+  curveVertex(180,320);
+  curveVertex(140,264);
+  curveVertex(120,250);
+  curveVertex(90,151);
+  endShape();
+
+  stroke('#CCB5FB');
   beginShape();
   curveVertex(600,362);
   curveVertex(528,282);
@@ -88,14 +103,9 @@ function setup() {
   curveVertex(132,391);
   endShape();
 
-  strokeWeight(25);
-  point(394,551);
-  point(388,409);
-  point(291,407);
-  point(302,561);
+  noStroke();
   strokeWeight(1);
-
-  fill('white');
+  fill('#AD44DF');
   beginShape();
   curveVertex(394,551);
   curveVertex(394,551);
@@ -105,23 +115,51 @@ function setup() {
   curveVertex(302,561);
   endShape();
 
+  strokeWeight(25);
+  stroke('#93E9FA')
+  point(388,409);
+  point(357,422);
+  point(322,421);
+  point(291,407);
+
   // Draw mini-alien
-  stroke(127);
+
+  // Draw body
+  noStroke();
   ellipseMode(CENTER);
+  rectMode(CENTER);
   fill('white');
   strokeWeight(1);
+  fill('#4482F3');
   rect(140,220,20,100);
+  fill('#FF60E4');
   ellipse(140,190,60,60);
+  fill('#4482F3');
   ellipse(121,190,16,32);
   ellipse(159,190,16,32);
+  stroke('#FF60E4');
   line(130,270,120,280);
+  stroke(255);
   line(150,270,160,280);
 
-  stroke('white');
+  // Draw other parts
+  stroke('#EE84FF');
   strokeWeight(3)
   line(520,310,540,320);
+  strokeWeight(3)
+  line(518,143,523,146);
+  strokeWeight(10);
+  ellipse(500,93,10,2);
+  stroke('#8772FD');
   strokeWeight(10)
   point(547,305);
+  strokeWeight(3)
+  line(530,160,560,140);
+  strokeWeight(3)
+  line(500,110,505,130);
+  stroke(255)
+  strokeWeight(10)
+  point(532,125);
 
 /*  // Create background
   createCanvas(640,480);
@@ -148,15 +186,10 @@ function setup() {
   // Draw the mouth
   ellipse(320,420,25,25);
 
-
-
   /*stroke("red");
   strokeWeight(5);
   rectMode(CENTER);
   rect(320,390,100,25);*/
-
-
-
 
 }
 
