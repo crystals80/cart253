@@ -1,17 +1,22 @@
 /**
-Playing with variables to move mouse and colours
+Learning how to use variables
 Lam Ky Anh Do
 
-Experimenting with p5's variables for mouse and colours
+Experimenting with p5's to use variables
 **/
 
 "use strict";
 
 // Declare variables
 let backgroundShade = 0;
-let circleX = 250;
+//let circleX = 250;
+let circleX = 500;
 let circleY = 250;
 let circleSize = 200;
+//let circleSpeed = 2;
+// If you want circleSpeed to run backwards, it needs a negative symbol OR you can leave it be here and change symbol in the draw function
+let circleSpeed = 2;
+let circleAcceleration = 0.25;
 
 // Undefined makes it a default but causes trouble
 //let circleSize = undefined;
@@ -58,37 +63,50 @@ rect(mouseX, mouseY, 100, 100);
 //rect(250, 250, mouseX, mouseY);*/
 
 /**
-Creating Variables
+Creating & Changing Variables
 **/
-//function draw() {
-
-// Creating variables
-
-// Static background colour
-/*background(0);
-// Background changes according to declaration
-background(backgroundShade);
-
-//ellipse(250, 250, 400, 400);
-//ellipse(250, 250, 300, 300);
-//ellipse(250, 250, 200, 200);
-//ellipse(250, 250, 100, 100);
-
-// Static shape
-ellipse(250, 250, 100);
-// Shape changes according to declaration
-ellipse(250, 250, circleSize);
-// Ellipse changes according to declaration
-ellipse(circleX, circleY, circleSize);*/
-
 function draw() {
 
-}
+  // Creating variables
 
+  // Static background colour
+  background(0);
+  // Background changes according to declaration
+  background(backgroundShade);
 
+  // Change backgroundShade
+  backgroundShade = backgroundShade + 1;
 
+  //ellipse(250, 250, 400, 400);
+  //ellipse(250, 250, 300, 300);
+  //ellipse(250, 250, 200, 200);
+  //ellipse(250, 250, 100, 100);
 
+  // Static shape
+  //ellipse(250, 250, 100);
+  // Shape changes according to declaration
+  //ellipse(250, 250, circleSize);
 
+  // Change circleSize from declaration
+  //circleSize = 50;
+  // Change circleSize by letting it grows infinitely
+  //circleSize = circleSize + 1;
+  // Change circleY values by making it going up
+  //circleY = circleY - 1;
 
+  // Change same as previous but faster
+  //circleSize = circleSize * 1.01;
+  //circleY = circleY - 1.01;
+
+  // Control the speed of the moving object
+  //circleX = circleX + circleSpeed;
+  //circleX = circleX - circleSpeed;
+  // Shortcut for previous
+  circleX -= circleSpeed;
+  // Accelerate circleSpeed
+  circleSpeed = circleSpeed + circleAcceleration;
+
+  // Ellipse changes according to declaration
+  ellipse(circleX, circleY, circleSize);
 
 }
