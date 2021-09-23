@@ -31,12 +31,13 @@ let backgroundShade = 0;
 // Instead of writing multiples "let," you can write it like this
 let circle = {
   //x: 0,
-  x: 250,
+  x: 0,
   y: 250,
   //size: 200,
   size: 100,
   speed: 2,
-  fill: 2
+  //fill: 2,
+  fill: 255
 }
 
 /**
@@ -92,7 +93,7 @@ function draw() {
   // Background changes according to declaration
   background(backgroundShade);
   // Change backgroundShade
-  backgroundShade = backgroundShade + 1;
+  //backgroundShade = backgroundShade + 1;
 
   //ellipse(250, 250, 400, 400);
   //ellipse(250, 250, 300, 300);
@@ -131,18 +132,30 @@ function draw() {
   // Never get #1 for random numbers, rather it will be 0 > 1
   //console.log(randomNumber);
 
+  // Smooth size change
+  //circle.size = map(mouseX, 0, height, 50, 500);
+  // To inverse previous
+  //circle.size = map(mouseX, height, 0, 50, 500);
+
+  // Smooth colour change
+  //circle.fill = map(mouseX, 0, width, 0, 255);
+  circle.fill = map(circle.x, 0, width, 0, 255);
   fill(circle.fill);
+  //fill(mouseX);
   // Not very efficient since fill will never be of value 0 but dark gray at max
   //circle.fill = random();
   // BUT random numbers can give flickering effect
-  circle.fill = random(0, 255);
+  //circle.fill = random(0, 255);
   // They can play the speed & position too
-  circle.speed = random(-5, 5);
-  circle.y = random(0, height);
-  circle.size = random(10, 100);
-
+  //circle.speed = random(-5, 5);
+  //circle.y = random(0, height);
+  //circle.size = random(10, 100);
   circle.x += circle.speed;
+  circle.x = constrain(circle.x, 0, width);
+  noStroke();
   ellipse(circle.x, circle.y, circle.size);
+
+
 
   // Terms should be the same as log or else it doesn't work
   //console.log("circle.x: " + circle.x);
