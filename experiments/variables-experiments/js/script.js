@@ -7,6 +7,11 @@ Experimenting with p5's to use variables to create interactivity of shapes, colo
 
 "use strict";
 
+/*****************
+DEBUGGING VARIABLES uses Javascript console!!!
+Javacript console > Javacript Sources > Watch (basically adding the variables there to see if it works for debugging)
+*****************/
+
 // Declare variables in Creating & Changing Variables
 let backgroundShade = 0;
 //let circleX = 250;
@@ -73,7 +78,7 @@ rect(mouseX, mouseY, 100, 100);
 //rect(250, 250, mouseX, mouseY);*/
 
 /**
-Creating & Changing Variables + Intro to Javascript Objects
+Creating & Changing Variables + Intro to Javascript Objects + Debugging variables
 **/
 function draw() {
 
@@ -121,4 +126,10 @@ function draw() {
   circle.x += circle.speed;
   ellipse(circle.x, circle.y, circle.size);
 
+  // Terms should be the same as log or else it doesn't work
+  //console.log("circle.x: " + circle.x);
+  // Javascript recently introduced function
+  //console.log(`circle.y: ${circle.y}`);
+  // And then jam everything in one line
+  console.log(`circle.x: ${circle.x}, circle.y: ${circle.y},circle.size: ${circle.size}, circle.speed: ${circle.speed}`);
 }
