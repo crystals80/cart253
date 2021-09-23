@@ -30,14 +30,17 @@ let backgroundShade = 0;
 // Declare variables in Intro to Javascript Objects
 // Instead of writing multiples "let," you can write it like this
 let circle = {
-  x: 0,
+  //x: 0,
+  x: 250,
   y: 250,
-  size: 200,
-  speed: 2
+  //size: 200,
+  size: 100,
+  speed: 2,
+  fill: 2
 }
 
 /**
-Exercises 1,2,3,4,5
+Exercises 1,2,3,4,5,6,7
 **/
 function setup() {
 
@@ -123,6 +126,21 @@ function draw() {
   // Ellipse changes according to declaration
   //ellipse(circleX, circleY, circleSize);
 
+  // You can use "let" in a function
+  //let randomNumber = random();
+  // Never get #1 for random numbers, rather it will be 0 > 1
+  //console.log(randomNumber);
+
+  fill(circle.fill);
+  // Not very efficient since fill will never be of value 0 but dark gray at max
+  //circle.fill = random();
+  // BUT random numbers can give flickering effect
+  circle.fill = random(0, 255);
+  // They can play the speed & position too
+  circle.speed = random(-5, 5);
+  circle.y = random(0, height);
+  circle.size = random(10, 100);
+
   circle.x += circle.speed;
   ellipse(circle.x, circle.y, circle.size);
 
@@ -131,5 +149,6 @@ function draw() {
   // Javascript recently introduced function
   //console.log(`circle.y: ${circle.y}`);
   // And then jam everything in one line
-  console.log(`circle.x: ${circle.x}, circle.y: ${circle.y},circle.size: ${circle.size}, circle.speed: ${circle.speed}`);
+  console.log(`circle.x: ${circle.x}, circle.y:${circle.y},circle.size: ${circle.size}, circle.speed:${circle.speed}`);
+
 }
