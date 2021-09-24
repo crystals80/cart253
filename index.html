@@ -1,31 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>DKLA</title>
 
-  <!-- CSS stylesheet(s) -->
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DKLA</title>
 
-  <!-- Library script(s) -->
-  <script src="js/libraries/p5.min.js"></script>
-  <script src="js/libraries/p5.sound.min.js"></script>
+    <!-- CSS stylesheet(s) -->
+    <link rel="stylesheet" href="css/main.css">
 
-  <!-- My script(s) -->
-  <script src="js/script.js"></script>
-</head>
+    <!-- Library script(s) -->
+    <script src="js/libraries/p5.min.js"></script>
+    <script src="js/libraries/p5.sound.min.js"></script>
 
-<body>
-  <!-- HTML would go here if needed. -->
-  <h1>DLKA</h1>
-  <h2></h2>
+    <!-- My script(s) -->
+    <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/show-on-scroll.js"></script>
+  </head>
 
-  <p></p>
+  <body>
+    <!-- HTML would go here if needed. -->
+    <div id="logo">
+      <img src="images\logo.svg" alt="dlka_logo">
+    </div>
 
 
+    <nav id="navbar" class="overlay">
+      <span class="closebtn" id="close">×</span>
+      <div class="overlay-content">
+        <a href="home.html" class="one"><span>Home</span></a>
+        <a href="projects.html" class="two"><span>Projects</span></a>
+        <a href="exercises.html" class="three"><span>Exercises</span></a>
+        <a href="experiments.html" class="four"><span>Experiments</span></a>
+      </div>
+    </nav>
 
-</body>
+    <span id="trigger">☰</span>
+
+    <section id="s1">
+      <header>
+        <h2 class="slide-up show-on-scroll">Learning How To Code</h2>
+        <h1 class="slide-up-slower show-on-scroll">with Falé Do</h1>
+      </header>
+    </section>
+
+    <footer>
+      <p class="slide-left-slower show-on-scroll">CART 253 Creative Computation I</p>
+      <p class="slide-left-slowest show-on-scroll">© Falé Do 2021-2022 | Design and Computional Arts Faculty of Concordia University</p>
+    </footer>
+
+  </body>
 
 </html>
