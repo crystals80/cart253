@@ -7,13 +7,30 @@ Lam Ky Anh Do
 "use strict";
 
 let backgroundShade = 0;
-let circle = {
+/*let circle = {
   x: 0,
   y: 250,
   size: 100,
   speed: 10,
+};*/
+
+let circle1 = {
+  x: undefined,
+  y: undefined,
+  size: 100,
 };
 
+let dangerZone = {
+  x: 250,
+  y: 250,
+  size: 150,
+};
+
+let circle = {
+  x: 250,
+  y: 250,
+  size: 150,
+}
 
 /**
 Description of setup
@@ -21,6 +38,16 @@ Description of setup
 function setup() {
   createCanvas(500, 500);
 
+  // Loops beyond counting
+  circle1.x = random(0, width);
+  circle1.y = random(0, height);
+
+  let d = dist(circle1.x, circle1.y, dangerZone.x, dangerZone.y);
+  while (d < circle1.size / 2 + dangerZone.size / 2) {
+    circle1.x = random(0, width);
+    circle1.y = random(0, height);
+    d = dist(circle1.x, circle1.y, dangerZone.x, dangerZone.y);
+  }
 }
 
 
@@ -30,11 +57,11 @@ Description of draw()
 function draw() {
   background(backgroundShade);
 
-  /*circle.x = circle.x + circle.speed;
-  ellipse(circle.x, circle.y, circle.size);
+  //circle.x = circle.x + circle.speed;
+  //ellipse(circle.x, circle.y, circle.size);
 
   //Conditionals
-  if (circle.x > width) {
+  /*if (circle.x > width) {
     circle.speed = -circle.speed;
   }
   if (circle.x < 0) {
@@ -93,7 +120,7 @@ function draw() {
 
   // Loops
 
-  let catepillar = {
+  /*let catepillar = {
     x: 100,
     y: 250,
     segmentSize: 50,
@@ -109,7 +136,7 @@ function draw() {
   // ellipse(catepillar.x + 160, catepillar.y, catepillar.segmentSize);
 
   //To avoid repeating same lengthy code (above)
-  let x = catepillar.x;
+  let x = catepillar.x;*/
 
   /*ellipse(x, catepillar.y, catepillar.segmentSize);
   x = x + 40
@@ -133,20 +160,26 @@ function draw() {
   }*/
 
   // For Loop
-  let numSegments = 10;
+  /*let numSegments = 10;
 
   //for (let segmentsDrawn = 0; segmentsDrawn < numSegments; segmentsDrawn++) {
-  for (let i = 0; i < numSegments; i++) { // i = icrement
+  for (let i = 0; i < numSegments; i++) { // i = increment
     ellipse(x, catepillar.y, catepillar.segmentSize);
     x = x + 40;
-  }
+  }*/
+
+  // Loops beyong counting
+  /*fill(255);
+  noStroke();
+  ellipse(circle1.x, circle1.y, circle1.size);
+
+  //Danger zone
+  noFill();
+  stroke(255, 0, 0);
+  ellipse(dangerZone.x, dangerZone.y, dangerZone.size);*/
 
 
-
-
-
-
-
-
+  //Mouse input
+  ellipse(circle.x, circle.y, circle.size);
 
 }
