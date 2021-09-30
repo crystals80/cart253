@@ -69,8 +69,27 @@ function draw() {
     fill(255)
   }*/
 
+  //Booleans
+  if (mouseIsPressed === true) {
+    background(255);
+  } else {
+    background(backgroundShade);
+  }
+  if (keyIsPressed) {
+    background(255);
+  } else {
+    background(backgroundShade);
+  }
 
+  let displayCircle = false;
 
+  if (mouseIsPressed) {
+    displayCircle = true;
+  }
+
+  if (displayCircle) {
+    ellipse(250, 250, 100, 100);
+  }
 
 
 
