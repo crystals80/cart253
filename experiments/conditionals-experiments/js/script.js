@@ -6,7 +6,7 @@ Lam Ky Anh Do
 
 "use strict";
 
-let backgroundShade = 0;
+//let backgroundShade = 0;
 /*let circle = {
   x: 0,
   y: 250,
@@ -32,6 +32,12 @@ let circle = {
   size: 150,
 }
 
+let bg = {
+  r: 0,
+  g: 0,
+  b: 0,
+};
+
 /**
 Description of setup
 */
@@ -55,7 +61,7 @@ function setup() {
 Description of draw()
 */
 function draw() {
-  background(backgroundShade);
+  //background(backgroundShade);
 
   //circle.x = circle.x + circle.speed;
   //ellipse(circle.x, circle.y, circle.size);
@@ -180,6 +186,34 @@ function draw() {
 
 
   //Mouse input
-  ellipse(circle.x, circle.y, circle.size);
 
+  background(bg.r, bg.g, bg.b);
+  ellipse(circle.x, circle.y, circle.size);
+}
+
+function mousePressed() {
+  // circle.x = mouseX;
+  // circle.y = mouseY;
+
+  bg.r = random(0, 255);
+  bg.g = random(0, 255);
+  bg.b = random(0, 255);
+}
+
+function mouseMoved() {
+  // circle.x = mouseX;
+  // circle.y = mouseY;
+
+  bg.r = random(0, 255);
+  bg.g = random(0, 255);
+  bg.b = random(0, 255);
+}
+
+function mouseDragged() {
+  // circle.x = mouseX;
+  // circle.y = mouseY;
+
+  bg.r = random(0, 255);
+  bg.g = random(0, 255);
+  bg.b = random(0, 255);
 }
