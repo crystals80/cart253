@@ -24,7 +24,7 @@ author, and this description to match your project!
 let covid19red = {
   x: 0,
   y: 200,
-  size: 100,
+  size: 150,
   vx: 20,
   vy: 0,
   speed: 0,
@@ -46,7 +46,38 @@ let covid19green = {
 let covid19yellow = {
   x: 0,
   y: 0,
-  size: 100,
+  size: 200,
+  vx: 10,
+  vy: 0,
+  speed: 5,
+  covidImage: ""
+};
+let cr = {
+  x: 0,
+  y: 200,
+  size: 50,
+  vx: 20,
+  vy: 0,
+  speed: 0,
+  acceleration: 0.25,
+  maxSpeed: 5,
+  covidImage: ""
+};
+let cg = {
+  x: 0,
+  y: 400,
+  size: 75,
+  vx: 15,
+  vy: 0,
+  ax: 0,
+  ay: 0,
+  speed: 5,
+  covidImage: ""
+};
+let cy = {
+  x: 0,
+  y: 0,
+  size: 25,
   vx: 10,
   vy: 0,
   speed: 5,
@@ -66,6 +97,9 @@ function preload() {
   covid19red.covidImage = loadImage('assets/images/covidred.png');
   covid19green.covidImage = loadImage('assets/images/covidgreen.png');
   covid19yellow.covidImage = loadImage('assets/images/covidyellow.png');
+  cr.covidImage = loadImage('assets/images/covidred.png');
+  cg.covidImage = loadImage('assets/images/covidgreen.png');
+  cy.covidImage = loadImage('assets/images/covidyellow.png');
 }
 
 function setup() {
@@ -90,13 +124,21 @@ function draw() {
     point(x, y);
   }
 
-  // COVID-19 movement
+  // COVID-19 movement of larger COVID-19 figures
   covid19red.x = covid19red.x + covid19red.vx;
   covid19red.y = covid19red.y + covid19red.vy;
   covid19green.x = covid19green.x + covid19green.vx;
   covid19green.y = covid19green.y + covid19green.vy;
   covid19yellow.x = covid19yellow.x + covid19yellow.vx;
   covid19yellow.y = covid19yellow.y + covid19yellow.vy;
+
+  // COVID-19 movement of smaller COVID-19 figures
+  cr.x = cr.x + cr.vx;
+  cr.y = cr.y + cr.vy;
+  cg.x = cg.x + cg.vx;
+  cg.y = cg.y + cg.vy;
+  cy.x = cy.x + cy.vx;
+  cy.y = cy.y + cy.vy;
 
   if (covid19red.x > width) {
     covid19red.x = 0;
@@ -152,6 +194,9 @@ function draw() {
   image(covid19red.covidImage, covid19red.x, covid19red.y, covid19red.size, covid19red.size);
   image(covid19green.covidImage, covid19green.x, covid19green.y, covid19green.size, covid19green.size);
   image(covid19yellow.covidImage, covid19yellow.x, covid19yellow.y, covid19yellow.size, covid19yellow.size);
+  image(cr.covidImage, cr.x, cr.y, cr.size, cr.size);
+  image(cg.covidImage, cg.x, cg.y, cg.size, cg.size);
+  image(cy.covidImage, cy.x, cy.y, cy.size, cy.size);
 
 
   // Display user
