@@ -1,5 +1,7 @@
 # Exercise 1: I like to move it!
 
+Link: https://crystals80.github.io/cart253/exercises/Exercise-1-I-like-to-move-it/
+
 This is an exercise to practice my understanding of variables and how to use/apply them in Javascript p5.js.
 
 There was a Javascript object with a cool effect (the very last one in the Vertex link of p5 Reference) that I wanted to add in but I couldn't since it would mess up the composition of what is going on in this Javascript file, and I couldn't find a way to fix it and eventually incorporate it into my composition. Therefore, after debugging for 3h, I gave up and save it for the upcoming exercises when I'll have more insights on Javascript.
