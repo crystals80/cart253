@@ -7,19 +7,9 @@ author, and this description to match your project!
 */
 
 "use strict";
-/*let covid19 = {
-  x: 0,
-  y: 250,
-  size: 100,
-  vx: 0,
-  vy: 0,
-  speed: 5,
-  fill: {
-    r: 255,
-    g: 0,
-    b: 255
-  },
-}*/
+let backgroundShade = {
+  fill: 0,
+}
 
 let covid19red = {
   x: 0,
@@ -116,7 +106,8 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  backgroundShade.fill = random(0, 25);
+  background(backgroundShade.fill);
 
   //Display static
   for (let i = 0; i < numStatic; i++) {
@@ -225,41 +216,6 @@ function draw() {
   user.x = mouseX;
   user.y = mouseY;
 
-  // Check for catching COVID 19
-  let d = dist(user.x, user.y, covid19red.x + covid19red.size / 2, covid19red.y + covid19red.size / 2);
-  if (d < covid19red.size / 2 + user.size / 2) {
-    noLoop();
-  }
-  let d1 = dist(user.x, user.y, covid19green.x + covid19green.size / 2, covid19green.y + covid19green.size / 2);
-  if (d1 < covid19green.size / 2 + user.size / 2) {
-    noLoop();
-  }
-  let d2 = dist(user.x, user.y, covid19yellow.x + covid19yellow.size / 2, covid19yellow.y + covid19yellow.size / 2);
-  if (d2 < covid19yellow.size / 2 + user.size / 2) {
-    noLoop();
-  }
-  let d3 = dist(user.x, user.y, cr.x + cr.size / 2, cr.y + cr.size / 2);
-  if (d3 < cr.size / 2 + user.size / 2) {
-    noLoop();
-  }
-  let d4 = dist(user.x, user.y, cg.x + cg.size / 2, cg.y + cg.size / 2);
-  if (d4 < cg.size / 2 + user.size / 2) {
-    noLoop();
-  }
-  let d5 = dist(user.x, user.y, cy.x + cy.size / 2, cy.y + cy.size / 2);
-  if (d5 < cy.size / 2 + user.size / 2) {
-    noLoop();
-  }
-
-  // Display COVID 19
-  image(covid19red.covidImage, covid19red.x, covid19red.y, covid19red.size, covid19red.size);
-  image(covid19green.covidImage, covid19green.x, covid19green.y, covid19green.size, covid19green.size);
-  image(covid19yellow.covidImage, covid19yellow.x, covid19yellow.y, covid19yellow.size, covid19yellow.size);
-  image(cr.covidImage, cr.x, cr.y, cr.size, cr.size);
-  image(cg.covidImage, cg.x, cg.y, cg.size, cg.size);
-  image(cy.covidImage, cy.x, cy.y, cy.size, cy.size);
-
-
   // Display user
   fill(100);
   rect(user.x, user.y - 15, 2, 20, 100);
@@ -276,9 +232,116 @@ function draw() {
   rect(user.x + 12, user.y, 5, 5, 100);
   rect(user.x + 24, user.y, 5, 5, 100);
 
+  // Display COVID 19
+  image(covid19red.covidImage, covid19red.x, covid19red.y, covid19red.size, covid19red.size);
+  image(covid19green.covidImage, covid19green.x, covid19green.y, covid19green.size, covid19green.size);
+  image(covid19yellow.covidImage, covid19yellow.x, covid19yellow.y, covid19yellow.size, covid19yellow.size);
+  image(cr.covidImage, cr.x, cr.y, cr.size, cr.size);
+  image(cg.covidImage, cg.x, cg.y, cg.size, cg.size);
+  image(cy.covidImage, cy.x, cy.y, cy.size, cy.size);
 
-
-
-
+  // Check for catching COVID 19
+  let d = dist(user.x, user.y, covid19red.x + covid19red.size / 2, covid19red.y + covid19red.size / 2);
+  if (d < covid19red.size / 2 + user.size / 2) {
+    noLoop();
+    background(0);
+    nofill();
+    tint(0);
+  }
+  let d1 = dist(user.x, user.y, covid19green.x + covid19green.size / 2, covid19green.y + covid19green.size / 2);
+  if (d1 < covid19green.size / 2 + user.size / 2) {
+    noLoop();
+    background(0);
+    tint(0);
+    // Game Over Screen
+    push();
+    strokeWeight(5);
+    fill(255);
+    textSize(200);
+    textAlign(CENTER, CENTER);
+    text('GAME OVER', windowWidth / 2, windowHeight / 2.5);
+    pop();
+    fill(255);
+    noStroke();
+    textSize(30);
+    textAlign(CENTER, BASELINE);
+    text('Refresh Page to Restart Game ¯\_(ツ)_/¯', windowWidth / 2, windowHeight / 4 * 2.5)
+  }
+  let d2 = dist(user.x, user.y, covid19yellow.x + covid19yellow.size / 2, covid19yellow.y + covid19yellow.size / 2);
+  if (d2 < covid19yellow.size / 2 + user.size / 2) {
+    noLoop();
+    background(0);
+    tint(0);
+    // Game Over Screen
+    push();
+    strokeWeight(5);
+    fill(255);
+    textSize(200);
+    textAlign(CENTER, CENTER);
+    text('GAME OVER', windowWidth / 2, windowHeight / 2.5);
+    pop();
+    fill(255);
+    noStroke();
+    textSize(30);
+    textAlign(CENTER, BASELINE);
+    text('Refresh Page to Restart Game ¯\_(ツ)_/¯', windowWidth / 2, windowHeight / 4 * 2.5)
+  }
+  let d3 = dist(user.x, user.y, cr.x + cr.size / 2, cr.y + cr.size / 2);
+  if (d3 < cr.size / 2 + user.size / 2) {
+    noLoop();
+    background(0);
+    tint(0);
+    // Game Over Screen
+    push();
+    strokeWeight(5);
+    fill(255);
+    textSize(200);
+    textAlign(CENTER, CENTER);
+    text('GAME OVER', windowWidth / 2, windowHeight / 2.5);
+    pop();
+    fill(255);
+    noStroke();
+    textSize(30);
+    textAlign(CENTER, BASELINE);
+    text('Refresh Page to Restart Game ¯\_(ツ)_/¯', windowWidth / 2, windowHeight / 4 * 2.5)
+  }
+  let d4 = dist(user.x, user.y, cg.x + cg.size / 2, cg.y + cg.size / 2);
+  if (d4 < cg.size / 2 + user.size / 2) {
+    noLoop();
+    background(0);
+    tint(0);
+    // Game Over Screen
+    push();
+    strokeWeight(5);
+    fill(255);
+    textSize(200);
+    textAlign(CENTER, CENTER);
+    text('GAME OVER', windowWidth / 2, windowHeight / 2.5);
+    pop();
+    fill(255);
+    noStroke();
+    textSize(30);
+    textAlign(CENTER, BASELINE);
+    text('Refresh Page to Restart Game ¯\_(ツ)_/¯', windowWidth / 2, windowHeight / 4 * 2.5)
+  }
+  let d5 = dist(user.x, user.y, cy.x + cy.size / 2, cy.y + cy.size / 2);
+  if (d5 < cy.size / 2 + user.size / 2) {
+    noLoop();
+    background(0);
+    tint(0);
+    // Game Over Screen
+    push();
+    strokeWeight(5);
+    fill(255);
+    textSize(200);
+    textAlign(CENTER, CENTER);
+    text('GAME OVER', windowWidth / 2, windowHeight / 2.5);
+    pop();
+    fill(255);
+    noStroke();
+    textSize(30);
+    textAlign(CENTER, BASELINE);
+    text('Refresh Page to Restart Game ¯\_(ツ)_/¯', windowWidth / 2, windowHeight / 4 * 2.5)
+  }
 
 }
