@@ -1,5 +1,5 @@
 /**
-Exercise 2 Dodge'em
+Exercise 2 Dodge'em - Microscopic Edition
 Lam Ky Anh Do
 
 This is a template. You must fill in the title,
@@ -23,7 +23,7 @@ author, and this description to match your project!
 
 let covid19red = {
   x: 0,
-  y: 200,
+  y: 500,
   size: 150,
   vx: 20,
   vy: 0,
@@ -53,34 +53,38 @@ let covid19yellow = {
   covidImage: ""
 };
 let cr = {
-  x: 0,
-  y: 200,
+  x: -150,
+  y: 300,
   size: 50,
   vx: 20,
   vy: 0,
   speed: 0,
-  acceleration: 0.25,
+  acceleration: 0.75,
   maxSpeed: 5,
   covidImage: ""
 };
 let cg = {
-  x: 0,
-  y: 400,
+  x: -200,
+  y: -200,
   size: 75,
-  vx: 15,
+  vx: 10,
   vy: 0,
   ax: 0,
   ay: 0,
   speed: 5,
+  acceleration: 0.5,
+  maxSpeed: 5,
   covidImage: ""
 };
 let cy = {
-  x: 0,
-  y: 0,
+  x: 400,
+  y: 300,
   size: 25,
   vx: 10,
   vy: 0,
   speed: 5,
+  acceleration: 0.9,
+  maxSpeed: 5,
   covidImage: ""
 };
 
@@ -106,9 +110,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   covid19yellow.y = random(0, height);
-  covid19yellow.x = random(0, width);
   covid19yellow.vx = covid19yellow.speed;
-  // covid19yellow.vy = covid19yellow.speed;
 
   noCursor();
 }
@@ -132,14 +134,6 @@ function draw() {
   covid19yellow.x = covid19yellow.x + covid19yellow.vx;
   covid19yellow.y = covid19yellow.y + covid19yellow.vy;
 
-  // COVID-19 movement of smaller COVID-19 figures
-  cr.x = cr.x + cr.vx;
-  cr.y = cr.y + cr.vy;
-  cg.x = cg.x + cg.vx;
-  cg.y = cg.y + cg.vy;
-  cy.x = cy.x + cy.vx;
-  cy.y = cy.y + cy.vy;
-
   if (covid19red.x > width) {
     covid19red.x = 0;
     covid19red.y = random(0, height);
@@ -153,9 +147,30 @@ function draw() {
     covid19yellow.y = random(0, height);
   }
 
+  // COVID-19 movement of smaller COVID-19 figures
+  cr.x = cr.x + cr.vx;
+  cr.y = cr.y + cr.vy;
+  cg.x = cg.x + cg.vx;
+  cg.y = cg.y + cg.vy;
+  cy.x = cy.x + cy.vx;
+  cy.y = cy.y + cy.vy;
+
+  if (cr.x > width) {
+    cr.x = 0;
+    cr.y = random(0, height);
+  }
+  if (cg.x > width) {
+    cg.x = 0;
+    cg.y = random(0, height);
+  }
+  if (cy.x > width) {
+    cy.x = 0;
+    cy.y = random(0, height);
+  }
+
   // COVID-19 chasing mouse
 
-  // Acceleration
+  // Acceleration covid19red
   if (mouseX < covid19red.x) {
     covid19red.ax = -covid19red.acceleration;
   } else {
@@ -172,6 +187,40 @@ function draw() {
   covid19red.vy = covid19red.vy + covid19red.ay;
   covid19red.vy = constrain(covid19red.vy, -covid19red.maxSpeed, covid19red.maxSpeed);
 
+  // Acceleration cg
+  if (mouseX < cg.x) {
+    cg.ax = -cg.acceleration;
+  } else {
+    cg.ax = cg.acceleration;
+  }
+  if (mouseY < cg.y) {
+    cg.ay = -cg.acceleration;
+  } else {
+    cg.ay = cg.acceleration;
+  }
+
+  cg.vx = cg.vx + cg.ax;
+  cg.vx = constrain(cg.vx, -cg.maxSpeed, cg.maxSpeed);
+  cg.vy = cg.vy + cg.ay;
+  cg.vy = constrain(cg.vy, -cg.maxSpeed, cg.maxSpeed);
+
+  // Acceleration cy
+  if (mouseX < cy.x) {
+    cy.ax = -cy.acceleration;
+  } else {
+    cy.ax = cy.acceleration;
+  }
+  if (mouseY < cy.y) {
+    cy.ay = -cy.acceleration;
+  } else {
+    cy.ay = cy.acceleration;
+  }
+
+  cy.vx = cy.vx + cy.ax;
+  cy.vx = constrain(cy.vx, -cy.maxSpeed, cy.maxSpeed);
+  cy.vy = cy.vy + cy.ay;
+  cy.vy = constrain(cy.vy, -cy.maxSpeed, cy.maxSpeed);
+
   // User movement
   user.x = mouseX;
   user.y = mouseY;
@@ -181,12 +230,24 @@ function draw() {
   if (d < covid19red.size / 2 + user.size / 2) {
     noLoop();
   }
-  let dd = dist(user.x, user.y, covid19green.x + covid19green.size / 2, covid19green.y + covid19green.size / 2);
-  if (dd < covid19green.size / 2 + user.size / 2) {
+  let d1 = dist(user.x, user.y, covid19green.x + covid19green.size / 2, covid19green.y + covid19green.size / 2);
+  if (d1 < covid19green.size / 2 + user.size / 2) {
     noLoop();
   }
-  let ddd = dist(user.x, user.y, covid19yellow.x + covid19yellow.size / 2, covid19yellow.y + covid19yellow.size / 2);
-  if (ddd < covid19yellow.size / 2 + user.size / 2) {
+  let d2 = dist(user.x, user.y, covid19yellow.x + covid19yellow.size / 2, covid19yellow.y + covid19yellow.size / 2);
+  if (d2 < covid19yellow.size / 2 + user.size / 2) {
+    noLoop();
+  }
+  let d3 = dist(user.x, user.y, cr.x + cr.size / 2, cr.y + cr.size / 2);
+  if (d3 < cr.size / 2 + user.size / 2) {
+    noLoop();
+  }
+  let d4 = dist(user.x, user.y, cg.x + cg.size / 2, cg.y + cg.size / 2);
+  if (d4 < cg.size / 2 + user.size / 2) {
+    noLoop();
+  }
+  let d5 = dist(user.x, user.y, cy.x + cy.size / 2, cy.y + cy.size / 2);
+  if (d5 < cy.size / 2 + user.size / 2) {
     noLoop();
   }
 
@@ -200,9 +261,20 @@ function draw() {
 
 
   // Display user
-  fill(user.fill)
-  ellipse(user.x, user.y, user.size);
-
+  fill(100);
+  rect(user.x, user.y - 15, 2, 20, 100);
+  rectMode(CENTER);
+  fill(user.fill);
+  ellipse(user.x, user.y, user.size + 5, user.size - 25);
+  rect(user.x, user.y - 25, 5, 5, 100);
+  fill(100);
+  rect(user.x, user.y, 70, 10, 100);
+  noFill();
+  rect(user.x - 24, user.y, 5, 5, 100);
+  rect(user.x - 12, user.y, 5, 5, 100);
+  rect(user.x, user.y, 5, 5, 100);
+  rect(user.x + 12, user.y, 5, 5, 100);
+  rect(user.x + 24, user.y, 5, 5, 100);
 
 
 
