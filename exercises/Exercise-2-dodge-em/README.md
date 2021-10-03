@@ -1,4 +1,4 @@
-# Exercise 2: Dodge'em
+# Exercise 2: Dodge'em - Microscopic Edition
 
 Link: https://crystals80.github.io/cart253/exercises/Exercise-2-dodge-em/
 
@@ -10,5 +10,5 @@ The overall experience in terms of coding this art piece, testing it out and wit
 
 Thank you for playing the "game" and for (trying to avoid and) staying safe and away from the COVID figures! \ (•◡•) /
 
-Lam Ky Anh Do 
+Lam Ky Anh Do
 (40132803)
