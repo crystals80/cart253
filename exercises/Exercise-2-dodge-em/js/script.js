@@ -2,8 +2,7 @@
 Exercise 2 Dodge'em - Microscopic Edition
 Lam Ky Anh Do
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+Exercise for class 4: Understanding and playing with conditionals
 */
 
 "use strict";
