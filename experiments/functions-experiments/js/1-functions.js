@@ -12,7 +12,6 @@ let circle = {
   size: 100,
   vx: 1,
   vy: 0,
-
 };
 
 // So far we have been learning how to call a function: function
