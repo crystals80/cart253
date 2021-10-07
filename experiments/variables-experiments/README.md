@@ -1,3 +1,3 @@
-# Drawing Experiments
+# Variables Experiments
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+Switch script to script by turning on one or another to see what the code does!
