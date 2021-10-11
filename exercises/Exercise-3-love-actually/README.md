@@ -1,4 +1,4 @@
-# Exercise 3: Love, Actually - Steal Or Be Alone Edition Edition
+# Exercise 3: Love, Actually - Find your True Love Edition
 
 Link: https://crystals80.github.io/cart253/exercises/Exercise-3-love-actually/
 

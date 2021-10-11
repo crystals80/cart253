@@ -1,5 +1,5 @@
 /**
-Exercise 3 Love, Actually - Steal Or Be Alone Edition
+Exercise 3 Love, Actually - Find your True Love Edition
 Lam Ky Anh Do
 
 Exercise for class 5: Understanding and playing with functions
