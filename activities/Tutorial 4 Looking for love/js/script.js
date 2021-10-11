@@ -147,12 +147,10 @@ function checkOverlap() {
 
 function display() {
 
-  // Circles colour
-  fill(circle1.fill.r, circle1.fill.g, circle1.fill.b);
-  fill(circle2.fill.r, circle2.fill.g, circle2.fill.b);
-
   // Display circles
+  fill(circle1.fill.r, circle1.fill.g, circle1.fill.b);
   ellipse(circle1.x, circle1.y, circle1.size);
+  fill(circle2.fill.r, circle2.fill.g, circle2.fill.b);
   ellipse(circle2.x, circle2.y, circle2.size);
 }
 
