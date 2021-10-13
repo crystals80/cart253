@@ -342,6 +342,17 @@ function bouncingBalls() {
 function message() {
   floatingBalls();
 
+
+  let numStatic = 500;
+
+  for (let i = 0; i < numStatic; i++) {
+    let x = random(0, width);
+    let y = random(0, height);
+    stroke(255);
+    point(x, y);
+  }
+
+  noStroke();
   fill(255);
   textAlign(CENTER, CENTER);
   textSize(64);
