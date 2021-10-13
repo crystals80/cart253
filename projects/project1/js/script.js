@@ -96,6 +96,51 @@ let b12 = {
   vx: 3,
   vy: 4,
 }
+
+// Spawning subtitle screen balls
+let b13 = {
+  x: 500,
+  y: 500,
+  size: 22,
+  vx: 1,
+  vy: 2.5,
+}
+let b14 = {
+  x: 700,
+  y: 500,
+  size: 12,
+  vx: 2,
+  vy: 1,
+}
+let b15 = {
+  x: 300,
+  y: 500,
+  size: 5,
+  vx: 1,
+  vy: 2,
+}
+let b16 = {
+  x: 400,
+  y: 500,
+  size: 15,
+  vx: 1,
+  vy: 1.5,
+}
+let b17 = {
+  x: 100,
+  y: 500,
+  size: 25,
+  vx: 1.5,
+  vy: 1,
+}
+let b18 = {
+  x: 900,
+  y: 500,
+  size: 10,
+  vx: 2,
+  vy: 2,
+}
+
 // Symmetry is the number of reflecting surface of kaleidoscope.
 let symmetry = 8;
 
@@ -145,10 +190,6 @@ function bouncingBalls() {
   // Setup of balls
   ellipseMode(RADIUS);
   noStroke();
-  // let r = random(0, 255);
-  // let g = random(0, 255);
-  // let b = random(0, 255);
-  // fill(r, g, b);
 
   // Ball movement
   b1.x += b1.vx;
@@ -299,6 +340,8 @@ function bouncingBalls() {
 }
 
 function message() {
+  floatingBalls();
+
   fill(255);
   textAlign(CENTER, CENTER);
   textSize(64);
@@ -313,6 +356,75 @@ function message() {
   text(`Well, move on, will you Mate?!`, width / 2, height / 1.55);
   textSize(10);
   text(`Press SPACE to open the sketchbook!`, width / 2, height / 1.1);
+}
+
+function floatingBalls() {
+  // Setup balls
+  let r = random(0, 255);
+  let g = random(0, 255);
+  let b = random(0, 255);
+  fill(r, g, b);
+
+
+  // Balls move up by jiggling randomly on the horizontal axis
+  b13.y -= b13.vy;
+  b13.x += random(-1, 1);
+  b13.y -= 1;
+
+  b14.y -= b14.vy;
+  b14.x += random(-2, 2);
+  b14.y -= 1.5;
+
+  b15.y -= b15.vy;
+  b15.x += random(-2, 1);
+  b15.y -= 2;
+
+  b16.y -= b16.vy;
+  b16.x += random(-1, 2);
+  b16.y -= 1.5;
+
+  b17.y -= b17.vy;
+  b17.x += random(-1.5, 1);
+  b17.y -= 1;
+
+  b18.y -= b18.vy;
+  b18.x += random(-1, 1.5);
+  b18.y -= 2;
+
+  // Reset balls to the bottom of canvas
+  if (b13.y < 0) {
+    b13.y = height;
+    b13.x = random(0, width);
+  }
+
+  if (b14.y < 0) {
+    b14.y = height;
+    b14.x = random(0, width);
+  }
+  if (b15.y < 0) {
+    b15.y = height;
+    b15.x = random(0, width);
+  }
+  if (b16.y < 0) {
+    b16.y = height;
+    b16.x = random(0, width);
+  }
+  if (b17.y < 0) {
+    b17.y = height;
+    b17.x = random(0, width);
+  }
+  if (b18.y < 0) {
+    b18.y = height;
+    b18.x = random(0, width);
+  }
+
+  // Display balls
+  ellipse(b13.x, b13.y, b13.size);
+  ellipse(b14.x, b14.y, b14.size);
+  ellipse(b15.x, b15.y, b15.size);
+  ellipse(b16.x, b16.y, b16.size);
+  ellipse(b17.x, b17.y, b17.size);
+  ellipse(b18.x, b18.y, b18.size);
 }
 
 function simulation() {
