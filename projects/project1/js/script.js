@@ -6,10 +6,12 @@ This is a template. You must fill in the title,
 author, and this description to match your project!
 */
 
-let leftScreen;
-let rightScreen;
+let pointsList = []; // Array variable (empty list)
 
-let state = `title`; // Possible states are title, animation and ending
+let leftScreen, rightScreen;
+let brushSize = 0;
+
+let state = `title`; // Possible states are title, message, simulation and ending
 
 // Spawning title screen balls
 let b1 = {
@@ -141,21 +143,32 @@ let b18 = {
   vy: 2,
 }
 
-// Symmetry is the number of reflecting surface of kaleidoscope.
-let symmetry = 8;
-
-let angle = 360 / symmetry;
-let saveButton, clearButton, mouseButton, keyboardButton;
-let slider;
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  // Divide canvas in 2 to create different simulation
-  leftScreen = createGraphics(windowWidth / 2, windowHeight);
-  rightScreen = createGraphics(windowWidth / 2, windowHeight);
+  // Setup for simulation
 
+  // Divide canvas in 2 to create different simulations
+  //leftScreen = createGraphics(windowWidth / 2, windowHeight);
+  //rightScreen = createGraphics(windowWidth / 2, windowHeight);
+
+  // Set angleMode to degrees for my understanding of angle
   angleMode(DEGREES);
+
+  // Creating the save button for the file
+  saveButton = createButton('save');
+  saveButton.mousePressed(saveFile);
+  saveButton.position(-100, 20);
+
+  // Creating the clear screen button
+  clearButton = createButton('clear');
+  clearButton.mousePressed(clearScreen);
+  clearButton.position(-100, 20);
+
+  // Set up the slider for the thickness of the brush
+  brushSizeSlider = createSlider(1, 32, 1, 1);
+  brushSizeSlider.position(-200, 20);
+  brushSizeSlider.style('width', '100px');
 }
 
 function draw() {
@@ -166,6 +179,9 @@ function draw() {
   } else if (state === `message`) {
     message();
   } else if (state === `simulation`) {
+    saveButton.position(20, 20);
+    clearButton.position(65, 20);
+    brushSizeSlider.position(450, 20);
     simulation();
   } else if (state === `ending`) {
     ending();
@@ -440,6 +456,7 @@ function floatingBalls() {
 
 function simulation() {
   display();
+  drawKaleidoscope()
 }
 
 function ending() {
@@ -447,30 +464,84 @@ function ending() {
 }
 
 function display() {
-  stroke(255);
-  line(width / 2, 0, width / 2, height);
   // Display different screens to draw differently
-  drawLeftScreen();
-  drawRightScreen();
-  // Display screens onto the main canvas
-  image(leftScreen, 0, 0);
-  image(rightScreen, windowWidth / 2, 0);
+
+  // Set up left screen
+  noStroke();
+  fill(255);
+  textAlign(CENTER, TOP);
+  textSize(20);
+  text("Draw your kaleidoscope!", windowWidth / 4, 50);
+  // Set up right canvas
+  fill(255);
+  rect(windowWidth / 2, 0, windowWidth, windowHeight);
+  fill(0);
+  textAlign(CENTER, TOP);
+  textSize(20);
+  text("Generate an artwork!", windowWidth / 2 + windowWidth / 4, 50);
 }
 
-function drawLeftScreen() {
-  leftScreen.background(0);
-  leftScreen.fill(255);
-  leftScreen.textAlign(CENTER, TOP);
-  leftScreen.textSize(20);
-  leftScreen.text("Draw your kaleidoscope!", windowWidth / 4, 50);
+function drawKaleidoscope() {
+
+  /*******
+  NOTE coding this kaleidoscope function was successful with the help of the Computation Lab Tech (Sabine)
+  *******/
+
+  // Give value to the size of the brush
+  brushSize = brushSizeSlider.value();
+
+  // Create continuous lines
+  if (mouseX > 20 && mouseX < width / 2 && mouseY > 50 && mouseY < height - 10) {
+    if (mouseIsPressed === true) {
+      stroke(255);
+      // Add to list : if mouseX/Y and previous mouseX/Y  are not the same
+      if (mouseX !== pmouseX || mouseY !== pmouseY) {
+        pointsList.push({
+          mx: mouseX,
+          my: mouseY,
+          px: pmouseX,
+          py: pmouseY,
+          // Add a customizable stroke weight
+          lineStrokeSize: brushSize,
+          // Add colour to brushstrokes
+          lineStrokeColor: color(random(255), random(255), random(255)),
+        });
+      }
+    }
+  }
+
+  // length = number of items in the list
+  if (pointsList.length !== 0) {
+    let degrees = 0;
+    // Go through every line object and draw
+    for (let i = 0; i < pointsList.length; i++) {
+      noStroke();
+      strokeWeight(pointsList[i].lineStrokeSize);
+      // Draw the original line object
+      line(pointsList[i].mx, pointsList[i].my, pointsList[i].px, pointsList[i].py);
+      // Draw line object 8 times each time rotate by 45 degrees and mirror
+      for (let j = 0; j < 8; j++) {
+        degrees += 45;
+        push();
+        translate(width / 4, height / 2);
+        scale(1, -1);
+        rotate(degrees)
+        stroke(pointsList[i].lineStrokeColor);
+        line(pointsList[i].mx - width / 4, pointsList[i].my - height / 2, pointsList[i].px - width / 4, pointsList[i].py - height / 2);
+        pop();
+      }
+    }
+  }
 }
 
-function drawRightScreen() {
-  rightScreen.background(255);
-  rightScreen.fill(0);
-  rightScreen.textAlign(CENTER, TOP);
-  rightScreen.textSize(20);
-  rightScreen.text("Generate an artwork!", windowWidth / 4, 50);
+// Save kaleidoscope and automated drawing
+function saveFile() {
+  save('design.jpg');
+}
+
+// Clear kaleidoscope and automated drawing
+function clearScreen() {
+  pointsList = [];
 }
 
 // To switch to subtitle screen
