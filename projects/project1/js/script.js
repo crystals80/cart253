@@ -149,8 +149,8 @@ function setup() {
   // Setup for simulation
 
   // Divide canvas in 2 to create different simulations
-  //leftScreen = createGraphics(windowWidth / 2, windowHeight);
-  //rightScreen = createGraphics(windowWidth / 2, windowHeight);
+  leftScreen = createGraphics(windowWidth / 2, windowHeight);
+  rightScreen = createGraphics(windowWidth / 2, windowHeight);
 
   // Set angleMode to degrees for my understanding of angle
   angleMode(DEGREES);
@@ -455,30 +455,39 @@ function floatingBalls() {
 }
 
 function simulation() {
-  display();
+  // Display different screens to draw differently
+  leftSubcanvas();
+  image(leftScreen, 0, 0);
   drawKaleidoscope()
+  rightSubcanvas();
+  image(rightScreen, width / 2, 0);
+
 }
 
 function ending() {
 
 }
 
-function display() {
-  // Display different screens to draw differently
-
+function leftSubcanvas() {
   // Set up left screen
-  noStroke();
-  fill(255);
-  textAlign(CENTER, TOP);
-  textSize(20);
-  text("Draw your kaleidoscope!", windowWidth / 4, 50);
+  leftScreen.background(0);
+  //noStroke();
+  leftScreen.fill(255);
+  leftScreen.textAlign(CENTER, TOP);
+  leftScreen.textSize(20);
+  leftScreen.text("Draw your kaleidoscope!", windowWidth / 4, 50);
+
+}
+
+function rightSubcanvas() {
   // Set up right canvas
-  fill(255);
-  rect(windowWidth / 2, 0, windowWidth, windowHeight);
-  fill(0);
-  textAlign(CENTER, TOP);
-  textSize(20);
-  text("Generate an artwork!", windowWidth / 2 + windowWidth / 4, 50);
+  rightScreen.background(255);
+  //rect(windowWidth / 2, 0, windowWidth, windowHeight);
+  rightScreen.fill(0);
+  rightScreen.textAlign(CENTER, TOP);
+  rightScreen.textSize(20);
+  rightScreen.text("Generate an artwork!", windowWidth / 4, 50);
+  //text("Generate an artwork!", windowWidth / 2 + windowWidth / 4, 50);
 }
 
 function drawKaleidoscope() {
@@ -491,9 +500,8 @@ function drawKaleidoscope() {
   brushSize = brushSizeSlider.value();
 
   // Create continuous lines
-  if (mouseX > 20 && mouseX < width / 2 && mouseY > 50 && mouseY < height - 10) {
+  if (mouseX > 30 && mouseX < width / 3 + width / 7 && mouseY > 100 && mouseY < height - 30) {
     if (mouseIsPressed === true) {
-      stroke(255);
       // Add to list : if mouseX/Y and previous mouseX/Y  are not the same
       if (mouseX !== pmouseX || mouseY !== pmouseY) {
         pointsList.push({
