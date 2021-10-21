@@ -1,9 +1,8 @@
 /**
-Title of Project
+Draw till You Are Satisfied!!!
 Lam Ky Anh Do
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+This is project is about simulation and I want users to enjoy and have fun drawing their own kaleidoscope and generating their own art piece!
 */
 
 // Array variable (empty list)
@@ -594,41 +593,40 @@ function generateLines() {
     });
   }
   if (choice === 1) {
-    choice !== 3;
     linesList.push({
       x1: previousLine.x2,
       y1: previousLine.y2,
       x2: previousLine.x2 + 3,
       y2: previousLine.y2,
     });
+    choice !== 3;
   }
   if (choice === 2) {
-    choice !== 4;
     linesList.push({
       x1: previousLine.x2,
       y1: previousLine.y2,
       x2: previousLine.x2,
       y2: previousLine.y2 + 3,
     });
+    choice !== 4;
   }
   if (choice === 3) {
-    choice !== 1;
     linesList.push({
       x1: previousLine.x2,
       y1: previousLine.y2,
       x2: previousLine.x2 - 3,
       y2: previousLine.y2,
     });
-
+    choice !== 1;
   }
   if (choice === 4) {
-    choice !== 2;
     linesList.push({
       x1: previousLine.x2,
       y1: previousLine.y2,
       x2: previousLine.x2,
       y2: previousLine.y2 - 3,
     });
+    choice !== 2;
   }
 
   //constrain(linesList.push(), width / 2, width - 50);
