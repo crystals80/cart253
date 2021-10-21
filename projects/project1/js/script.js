@@ -9,13 +9,14 @@ This is project is about simulation and I want users to enjoy and have fun drawi
 let pointsList = [];
 let linesList = [];
 
-let leftScreen, rightScreen;
-let brushSize = 0;
 
+let leftScreen, rightScreen; // Variables for dividing canvas into 2  subcanvas
+let brushSize = 0; // Variable for kaleidoscope
+
+// Variables for automated drawing
 let timePassed = 0;
 let startTime = 0;
 let interval = 200;
-
 let choice = 0;
 
 let state = `title`; // Possible states are title, message, simulation and ending
@@ -150,6 +151,10 @@ let b18 = {
   vy: 2,
 }
 
+function preload() {
+  img = loadImage('assets/images/well-done.jpg');
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
@@ -162,12 +167,12 @@ function setup() {
   // Set angleMode to degrees for my understanding of angle
   angleMode(DEGREES);
 
-  // Creating the save button to save sketching to .jpg file
+  // Set up the save button to save sketching to .jpg file
   saveButton = createButton('save');
   saveButton.mousePressed(saveFile);
   saveButton.position(-100, 20);
 
-  // Creating the clear screen buttons
+  // Set up the clear screen buttons
   clearButton1 = createButton('clear');
   clearButton1.mousePressed(clearLeftScreen);
   clearButton1.position(-100, 20);
@@ -181,6 +186,12 @@ function setup() {
   brushSizeSlider.position(-200, 20);
   brushSizeSlider.style('width', '100px');
 
+  // Set up un-clickable instruction to switch to ending state
+  endButton = createButton("Satisfied? Press ENTER");
+  endButton.mousePressed(ending);
+  endButton.position(-200, 20);
+
+  // Set up initial position of automated line drawing
   linesList.push({
     x1: 3 * width / 4,
     y1: height / 2,
@@ -197,11 +208,11 @@ function draw() {
   } else if (state === `message`) {
     message();
   } else if (state === `simulation`) {
-    saveButton.position(-65 + width / 2, 20);
-    clearButton1.position(-110 + width / 2, 20);
-    clearButton2.position(-110 + width, 20);
+    saveButton.position(-110 + width / 2, 20);
+    clearButton1.position(-65 + width / 2, 20);
+    clearButton2.position(-65 + width, 20);
     brushSizeSlider.position(20, 20);
-    //startButton.position(520, 20);
+    endButton.position(17 + width / 2, 20);
     simulation();
   } else if (state === `ending`) {
     ending();
@@ -485,13 +496,6 @@ function simulation() {
   generateLines();
 }
 
-function ending() {
-  // Once you are satisfied with your artwork, an end screen appears
-  if (mouseIsPressed === saveFile()) {
-    background(0);
-  }
-}
-
 function leftSubcanvas() {
   // Set up left screen
   background(0);
@@ -510,7 +514,6 @@ function rightSubcanvas() {
   textAlign(CENTER, TOP);
   textSize(20);
   text("Generate an artwork!", windowWidth / 4 + windowWidth / 2, 50);
-  //text("Generate an artwork!", windowWidth / 2 + windowWidth / 4, 50);
 }
 
 /*******
@@ -565,7 +568,6 @@ function drawKaleidoscope() {
   }
   pop();
 }
-
 
 function generateLines() {
   // Draw lines
@@ -658,6 +660,28 @@ function generateLines() {
   }
 }
 
+function ending() {
+  // Once you are satisfied with your artwork, an end screen appears
+  title();
+  saveButton.position(-100, 20);
+  clearButton1.position(-100, 20);
+  clearButton2.position(-100, 20);
+  brushSizeSlider.position(-200, 20);
+  endButton.position(-200, 20);
+  image(img, width / 2, height / 2, 3 * width / 4, 9 * height / 10);
+}
+
+// function endingSwitch() {
+//   // Instruction to switch to ending state
+//   push();
+//   noStroke();
+//   textSize(10);
+//   text("your artworks, Press ENTER", 65 + windowWidth / 2, windowHeight - 40);
+//   fill(255)
+//   text("Once you're satisfied with", -59 + windowWidth / 2, windowHeight - 40);
+//   pop();
+// }
+
 // Save kaleidoscope and automated drawing
 function saveFile() {
   save('design.jpg');
@@ -694,9 +718,9 @@ function keyPressed() {
   if (state === `message` && keyIsDown(32)) {
     state = `simulation`;
   }
-  // if (state === `simulation`) {
-  //   generateLines();
-  // }
+  if (state === `simulation` && keyIsDown(13)) {
+    state = `ending`;
+  }
 }
 
 // Set window dimension to resize to any screen size
