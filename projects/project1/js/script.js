@@ -619,6 +619,20 @@ function generateLines() {
     })
   }
 
+  constrain(previousLine.x1, width / 2, width - previousLine.x2);
+  constrain(previousLine.x2, width / 2 + previousLine.x1, width);
+  constrain(previousLine.y1, 0, height - previousLine.y2);
+  constrain(previousLine.y2, 0 + previousLine.y1, height);
+
+  // if (previousLine.x1 < width / 2 || previousLine.x1 > width - previousLine.x2) {
+  //   previousLine.x1 *= -1;
+  //   previousLine.x2 *= -1;
+  // }
+  // if (previousLine.y1 < 0 || previousLine.y1 > height - previousLine.y2) {
+  //   previousLine.y1 *= -1;
+  //   previousLine.y2 *= -1;
+  // }
+
 }
 
 // Save kaleidoscope and automated drawing
