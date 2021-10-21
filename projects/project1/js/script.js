@@ -197,9 +197,9 @@ function draw() {
   } else if (state === `message`) {
     message();
   } else if (state === `simulation`) {
-    saveButton.position(-110 + width / 2, 20);
-    clearButton1.position(-65 + width / 2, 20);
-    clearButton2.position(-65 + width, 20);
+    saveButton.position(-65 + width / 2, 20);
+    clearButton1.position(-110 + width / 2, 20);
+    clearButton2.position(-110 + width, 20);
     brushSizeSlider.position(20, 20);
     //startButton.position(520, 20);
     simulation();
@@ -376,11 +376,11 @@ function bouncingBalls() {
 }
 
 function message() {
+  // Display floating balls
   floatingBalls();
 
-
+  // For a dynamic background
   let numStatic = 500;
-
   for (let i = 0; i < numStatic; i++) {
     let x = random(0, width);
     let y = random(0, height);
@@ -388,6 +388,7 @@ function message() {
     point(x, y);
   }
 
+  // Display message for the next state
   noStroke();
   fill(255);
   textAlign(CENTER, CENTER);
@@ -485,7 +486,10 @@ function simulation() {
 }
 
 function ending() {
-
+  // Once you are satisfied with your artwork, an end screen appears
+  if (mouseIsPressed === saveFile()) {
+    background(0);
+  }
 }
 
 function leftSubcanvas() {
@@ -600,7 +604,7 @@ function generateLines() {
       y2: previousLine.y2,
     });
   }
-  // Right
+  // Line go right
   if (choice === 1) {
     if (previousLine.x2 + 3 >= width - 25) {
       choice = 2;
@@ -613,7 +617,7 @@ function generateLines() {
       });
     }
   }
-  // Bottom
+  // Line go down
   if (choice === 2) {
     if (previousLine.y2 + 3 >= height - 25) {
       choice = 1;
@@ -626,7 +630,7 @@ function generateLines() {
       });
     }
   }
-  // Left
+  // Line go left
   if (choice === 3) {
     if (previousLine.x2 - 3 <= 25 + width / 2) {
       choice = 4;
@@ -639,7 +643,7 @@ function generateLines() {
       });
     }
   }
-  // Top
+  // Line go up
   if (choice === 4) {
     if (previousLine.y2 - 3 <= 100) {
       choice = 3;
@@ -652,24 +656,6 @@ function generateLines() {
       });
     }
   }
-
-  //constrain(linesList.push(), width / 2, width - 50);
-  //constrain(linesList.push(), 0, height - 50);
-
-  /*  constrain(previousLine.x1, width / 2, width - previousLine.x2 - 50);
-    constrain(previousLine.x2, width / 2 + previousLine.x1, width - 50);
-    constrain(previousLine.y1, 0, height - previousLine.y2 - 50);
-    constrain(previousLine.y2, 0 + previousLine.y1, height - 50);*/
-
-  // if (previousLine.x1 < width / 2 || previousLine.x1 > width - previousLine.x2) {
-  //   previousLine.x1 *= -1;
-  //   previousLine.x2 *= -1;
-  // }
-  // if (previousLine.y1 < 0 || previousLine.y1 > height - previousLine.y2) {
-  //   previousLine.y1 *= -1;
-  //   previousLine.y2 *= -1;
-  // }
-
 }
 
 // Save kaleidoscope and automated drawing
@@ -696,14 +682,14 @@ function clearRightScreen() {
   startTime = millis();
 }
 
-// To switch to subtitle screen
+// Switch to subtitle screen
 function mouseClicked() {
   if (state === `title`) {
     state = `message`;
   }
 }
 
-// To start the simulation
+// Start the simulation
 function keyPressed() {
   if (state === `message` && keyIsDown(32)) {
     state = `simulation`;
@@ -713,6 +699,7 @@ function keyPressed() {
   // }
 }
 
+// Set window dimension to resize to any screen size
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
