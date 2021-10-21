@@ -167,15 +167,14 @@ function setup() {
   saveButton.mousePressed(saveFile);
   saveButton.position(-100, 20);
 
-  // Creating the clear screen button
-  clearButton = createButton('clear');
-  clearButton.mousePressed(clearScreen);
-  clearButton.position(-100, 20);
+  // Creating the clear screen buttons
+  clearButton1 = createButton('clear');
+  clearButton1.mousePressed(clearLeftScreen);
+  clearButton1.position(-100, 20);
 
-  // Creating the start button to generate lines
-  // startButton = createButton('start');
-  // startButton.mousePressed(startGenerate);
-  // startButton.position(-100, 20);
+  clearButton2 = createButton('clear');
+  clearButton2.mousePressed(clearRightScreen);
+  clearButton2.position(-100, 20);
 
   // Set up the slider for the thickness of the brush
   brushSizeSlider = createSlider(1, 32, 1, 1);
@@ -198,9 +197,10 @@ function draw() {
   } else if (state === `message`) {
     message();
   } else if (state === `simulation`) {
-    saveButton.position(20, 20);
-    clearButton.position(65, 20);
-    brushSizeSlider.position(450, 20);
+    saveButton.position(-110 + width / 2, 20);
+    clearButton1.position(-65 + width / 2, 20);
+    clearButton2.position(-65 + width, 20);
+    brushSizeSlider.position(20, 20);
     //startButton.position(520, 20);
     simulation();
   } else if (state === `ending`) {
@@ -477,12 +477,10 @@ function floatingBalls() {
 function simulation() {
   //Display different screens to draw differently
   leftSubcanvas();
-  //image(leftScreen, 0, 0);
+  image(leftScreen, 0, 0);
   drawKaleidoscope()
-  //rightSubcanvas();
-  //image(rightScreen, width / 2, 0);
-
-  drawLines();
+  rightSubcanvas();
+  image(rightScreen, width / 2, 0);
   generateLines();
 }
 
@@ -499,12 +497,11 @@ function leftSubcanvas() {
   textSize(20);
   text("Draw your kaleidoscope!", windowWidth / 4, 50);
 
-  // }
-  //
-  // function rightSubcanvas() {
-  // Set up right canvas
-  //background(255);
-  rect(windowWidth / 2, 0, windowWidth, windowHeight);
+}
+
+function rightSubcanvas() {
+  //Set up right canvas
+  rect(width / 2, 0, width / 2, windowHeight);
   fill(0);
   textAlign(CENTER, TOP);
   textSize(20);
@@ -517,7 +514,7 @@ NOTE coding this drawKaleidoscope, drawLines and generateLines functions were su
 *******/
 
 function drawKaleidoscope() {
-
+  push();
   // Give value to the size of the brush
   brushSize = brushSizeSlider.value();
 
@@ -562,21 +559,32 @@ function drawKaleidoscope() {
       }
     }
   }
+  pop();
 }
 
-function drawLines() {
+
+function generateLines() {
   // Draw lines
   for (let i = 0; i < linesList.length; i++) {
     stroke(255, 0, 0);
     line(linesList[i].x1, linesList[i].y1, linesList[i].x2, linesList[i].y2);
   }
-}
 
-function generateLines() {
   // Set up intervals for lines to generate
   timePassed = millis() - startTime;
   if (timePassed > interval) {
-    choice = Math.floor(random(0, 4));
+    let tempchoice = Math.floor(random(0, 5));
+    if (choice === 1 && tempchoice === 3) {
+      choice = 4;
+    } else if (choice === 3 && tempchoice === 1) {
+      choice = 2;
+    } else if (choice === 2 && tempchoice === 4) {
+      choice = 1;
+    } else if (choice === 4 && tempchoice === 2) {
+      choice = 3;
+    } else {
+      choice = tempchoice;
+    }
     console.log(choice);
     console.log("reset");
     timePassed = 0;
@@ -592,50 +600,66 @@ function generateLines() {
       y2: previousLine.y2,
     });
   }
+  // Right
   if (choice === 1) {
-    linesList.push({
-      x1: previousLine.x2,
-      y1: previousLine.y2,
-      x2: previousLine.x2 + 3,
-      y2: previousLine.y2,
-    });
-    choice !== 3;
+    if (previousLine.x2 + 3 >= width - 25) {
+      choice = 2;
+    } else {
+      linesList.push({
+        x1: previousLine.x2,
+        y1: previousLine.y2,
+        x2: previousLine.x2 + 3,
+        y2: previousLine.y2,
+      });
+    }
   }
+  // Bottom
   if (choice === 2) {
-    linesList.push({
-      x1: previousLine.x2,
-      y1: previousLine.y2,
-      x2: previousLine.x2,
-      y2: previousLine.y2 + 3,
-    });
-    choice !== 4;
+    if (previousLine.y2 + 3 >= height - 25) {
+      choice = 1;
+    } else {
+      linesList.push({
+        x1: previousLine.x2,
+        y1: previousLine.y2,
+        x2: previousLine.x2,
+        y2: previousLine.y2 + 3,
+      });
+    }
   }
+  // Left
   if (choice === 3) {
-    linesList.push({
-      x1: previousLine.x2,
-      y1: previousLine.y2,
-      x2: previousLine.x2 - 3,
-      y2: previousLine.y2,
-    });
-    choice !== 1;
+    if (previousLine.x2 - 3 <= 25 + width / 2) {
+      choice = 4;
+    } else {
+      linesList.push({
+        x1: previousLine.x2,
+        y1: previousLine.y2,
+        x2: previousLine.x2 - 3,
+        y2: previousLine.y2,
+      });
+    }
   }
+  // Top
   if (choice === 4) {
-    linesList.push({
-      x1: previousLine.x2,
-      y1: previousLine.y2,
-      x2: previousLine.x2,
-      y2: previousLine.y2 - 3,
-    });
-    choice !== 2;
+    if (previousLine.y2 - 3 <= 100) {
+      choice = 3;
+    } else {
+      linesList.push({
+        x1: previousLine.x2,
+        y1: previousLine.y2,
+        x2: previousLine.x2,
+        y2: previousLine.y2 - 3,
+      });
+    }
   }
 
   //constrain(linesList.push(), width / 2, width - 50);
   //constrain(linesList.push(), 0, height - 50);
 
-  constrain(previousLine.x1, width / 2, width - previousLine.x2 - 50);
-  constrain(previousLine.x2, width / 2 + previousLine.x1, width - 50);
-  constrain(previousLine.y1, 0, height - previousLine.y2 - 50);
-  constrain(previousLine.y2, 0 + previousLine.y1, height - 50);
+  /*  constrain(previousLine.x1, width / 2, width - previousLine.x2 - 50);
+    constrain(previousLine.x2, width / 2 + previousLine.x1, width - 50);
+    constrain(previousLine.y1, 0, height - previousLine.y2 - 50);
+    constrain(previousLine.y2, 0 + previousLine.y1, height - 50);*/
 
   // if (previousLine.x1 < width / 2 || previousLine.x1 > width - previousLine.x2) {
   //   previousLine.x1 *= -1;
@@ -653,16 +677,24 @@ function saveFile() {
   save('design.jpg');
 }
 
-// Clear kaleidoscope and automated drawing
-function clearScreen() {
+// Clear kaleidoscope
+function clearLeftScreen() {
   pointsList = [];
-  //linesList = [];
 }
 
-// Start automated drawing (generative lines)
-// function startButton() {
-//   generateLines();
-// }
+// Clear automated drawing
+function clearRightScreen() {
+  linesList = [];
+  linesList.push({
+    x1: 3 * width / 4,
+    y1: height / 2,
+    x2: (3 * width / 4) + 5,
+    y2: height / 2
+  });
+  choice = 0;
+  timePassed = 0;
+  startTime = millis();
+}
 
 // To switch to subtitle screen
 function mouseClicked() {
