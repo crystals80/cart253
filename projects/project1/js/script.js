@@ -16,7 +16,7 @@ let timePassed = 0;
 let startTime = 0;
 let interval = 200;
 
-let = choice = 0;
+let choice = 0;
 
 let state = `title`; // Possible states are title, message, simulation and ending
 
