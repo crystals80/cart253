@@ -566,6 +566,7 @@ function drawKaleidoscope() {
 }
 
 function drawLines() {
+  // Draw lines
   for (let i = 0; i < linesList.length; i++) {
     stroke(255, 0, 0);
     line(linesList[i].x1, linesList[i].y1, linesList[i].x2, linesList[i].y2);
@@ -573,56 +574,70 @@ function drawLines() {
 }
 
 function generateLines() {
+  // Set up intervals for lines to generate
   timePassed = millis() - startTime;
   if (timePassed > interval) {
-    choice = Math.floor(random(1, 4));
+    choice = Math.floor(random(0, 4));
     console.log(choice);
     console.log("reset");
     timePassed = 0;
     startTime = millis();
   }
-  //
+  // Set up how lines should move
   let previousLine = linesList[linesList.length - 1];
+  if (choice === 0) {
+    linesList.push({
+      x1: previousLine.x2,
+      y1: previousLine.y2,
+      x2: previousLine.x2,
+      y2: previousLine.y2,
+    });
+  }
   if (choice === 1) {
+    choice !== 3;
     linesList.push({
       x1: previousLine.x2,
       y1: previousLine.y2,
       x2: previousLine.x2 + 3,
       y2: previousLine.y2,
-    })
+    });
   }
-
   if (choice === 2) {
+    choice !== 4;
     linesList.push({
       x1: previousLine.x2,
       y1: previousLine.y2,
       x2: previousLine.x2,
       y2: previousLine.y2 + 3,
-    })
+    });
   }
-
   if (choice === 3) {
+    choice !== 1;
     linesList.push({
       x1: previousLine.x2,
       y1: previousLine.y2,
       x2: previousLine.x2 - 3,
       y2: previousLine.y2,
-    })
-  }
+    });
 
+  }
   if (choice === 4) {
+    choice !== 2;
     linesList.push({
       x1: previousLine.x2,
       y1: previousLine.y2,
       x2: previousLine.x2,
       y2: previousLine.y2 - 3,
-    })
+    });
   }
 
-  constrain(previousLine.x1, width / 2, width - previousLine.x2);
-  constrain(previousLine.x2, width / 2 + previousLine.x1, width);
-  constrain(previousLine.y1, 0, height - previousLine.y2);
-  constrain(previousLine.y2, 0 + previousLine.y1, height);
+  //constrain(linesList.push(), width / 2, width - 50);
+  //constrain(linesList.push(), 0, height - 50);
+
+  constrain(previousLine.x1, width / 2, width - previousLine.x2 - 50);
+  constrain(previousLine.x2, width / 2 + previousLine.x1, width - 50);
+  constrain(previousLine.y1, 0, height - previousLine.y2 - 50);
+  constrain(previousLine.y2, 0 + previousLine.y1, height - 50);
 
   // if (previousLine.x1 < width / 2 || previousLine.x1 > width - previousLine.x2) {
   //   previousLine.x1 *= -1;
