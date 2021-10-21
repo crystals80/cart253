@@ -21,6 +21,9 @@ let choice = 0;
 
 let state = `title`; // Possible states are title, message, simulation and ending
 
+// Ending state image
+let img;
+
 // Spawning title screen balls
 let b1 = {
   x: 100,
@@ -668,19 +671,11 @@ function ending() {
   clearButton2.position(-100, 20);
   brushSizeSlider.position(-200, 20);
   endButton.position(-200, 20);
+
+  // Set up ending state's image
+  imageMode(CENTER);
   image(img, width / 2, height / 2, 3 * width / 4, 9 * height / 10);
 }
-
-// function endingSwitch() {
-//   // Instruction to switch to ending state
-//   push();
-//   noStroke();
-//   textSize(10);
-//   text("your artworks, Press ENTER", 65 + windowWidth / 2, windowHeight - 40);
-//   fill(255)
-//   text("Once you're satisfied with", -59 + windowWidth / 2, windowHeight - 40);
-//   pop();
-// }
 
 // Save kaleidoscope and automated drawing
 function saveFile() {
