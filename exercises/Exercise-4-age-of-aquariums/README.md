@@ -1,4 +1,4 @@
-# Exercise 4: Age of Aquarium
+# Exercise 4: Age of Aquarium - A Shark on Diet
 
 Link: https://crystals80.github.io/cart253/exercises/Exercise-4-age-of-aquarium/
 
