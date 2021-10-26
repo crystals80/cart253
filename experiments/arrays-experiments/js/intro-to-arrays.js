@@ -34,7 +34,7 @@ function setup() {
 
   // What we use for counting: for loops
   // The above become the following when you want it to grow
-  for (let i = 0; i < school.length; i++) {
+  for (let i = 0; i < schoolSize; i++) {
     // This code can replace the function mousePressed below
     //let = fish createFish(random(0,width), random(0,height));
     //school.push(fish);
@@ -85,6 +85,7 @@ function draw() {
   // Again, the above becomes the following for a more neat code
   // What we use for counting: for loops
   for (let i = 0; i < school.length; i++) {
+    let fish = school[i];
     moveFish(school[i]);
     displayFish(school[i]);
   }
