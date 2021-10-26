@@ -12,14 +12,24 @@ let groupFish2 = [];
 let group = 10;
 let displayFishes1, displayFishes2;
 
+let shark = {
+  x: 250,
+  y: 250,
+  size: 125,
+  img: ""
+}
+
 // Give fish an appearance
 function preload() {
   groupFish1[0] = loadImage('assets/images/clown-fish1.png');
   groupFish2[0] = loadImage('assets/images/yellow-fish2.png');
+  shark.img = loadImage('assets/images/shark1.png')
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  noCursor();
 
   // Attribute appearance to fish *see README for more info on this part)
   displayFishes1 = random(groupFish1);
@@ -40,7 +50,7 @@ function createFish(x, y) {
   let fish = {
     x: x,
     y: y,
-    size: 50,
+    size: 40,
     vx: 0,
     vy: 0,
     speed: 2,
@@ -50,6 +60,13 @@ function createFish(x, y) {
 
 function draw() {
   background(0);
+
+  // User movement
+  shark.x = mouseX;
+  shark.y = mouseY;
+
+  // Display user
+  image(shark.img, shark.x, shark.y, shark.size, shark.size);
 
   for (let i = 0; i < groupFish1.length; i++) {
     moveFish(groupFish1[i]);
@@ -93,4 +110,26 @@ function displayFish1(fish) {
 function displayFish2(fish) {
   image(displayFishes2, fish.x, fish.y, fish.size, fish.size);
   imageMode(CENTER);
+}
+
+// Check if shark(user) can eat fishes
+function mousePressed(fish) {
+  for (let i = 0; i < groupFish1.length; i++) {
+    // Store the current fishes in the fish variable
+    let f1 = groupFish1[i];
+    let f2 = groupFish2[i];
+    // Calculate the distance between the mouse position and the fish
+    let d1 = dist(shark.x, shark.y, f1.x, f1.y);
+    let d2 = dist(shark.x, shark.y, f2.x, f2.y);
+    // If a fish is clicked within the shark, it will be removed/eaten
+    if (d1 < f1.size / 2 + shark.size / 2) {
+      groupFish1.splice(i, 1);
+      // This forces the for-loop to stop immediately
+      break;
+    }
+    if (d2 < f2.size / 2 + shark.size / 2) {
+      groupFish2.splice(i, 1);
+      break;
+    }
+  }
 }
