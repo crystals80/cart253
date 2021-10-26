@@ -10,8 +10,7 @@ Exercise for class 6: Understanding and playing with arrays
 let groupFish1 = [];
 let groupFish2 = [];
 let group = 10;
-let displayFishes1, displayFishes2;
-
+let displayFishes1, displayFishes2, bg;
 let shark = {
   x: 250,
   y: 250,
@@ -24,6 +23,7 @@ function preload() {
   groupFish1[0] = loadImage('assets/images/clown-fish1.png');
   groupFish2[0] = loadImage('assets/images/yellow-fish2.png');
   shark.img = loadImage('assets/images/shark1.png')
+  bg = loadImage('assets/images/seabed2.png')
 }
 
 function setup() {
@@ -60,6 +60,11 @@ function createFish(x, y) {
 
 function draw() {
   background(0);
+
+  image(bg, width / 2, height / 2, windowWidth, windowHeight + 55);
+  push();
+  imageMode(CORNER);
+  pop();
 
   // User movement
   shark.x = mouseX;
