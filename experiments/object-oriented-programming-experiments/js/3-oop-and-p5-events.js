@@ -1,8 +1,8 @@
 /**
-OOP: Constructors with Parameters
+OOP and p5 Events
 Lam Ky Anh Do
 
-Experimenting with p5 on how to use objects-oriented programming with constructors and its parameters
+Experimenting with p5 on how to use objects-oriented programming and p5 events
 */
 
 "use strict";
@@ -52,5 +52,12 @@ function draw() {
   for (let i = 0; i < garden.flowers.length; i++) {
     let flower = garden.flowers[i];
     flower.display();
+  }
+}
+
+function mousePressed() {
+  for (let i = 0; i < garden.flowers.length; i++) {
+    let flower = garden.flowers[i];
+    flower.mousePressed();
   }
 }
