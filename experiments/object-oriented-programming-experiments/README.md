@@ -1,3 +1,3 @@
 # Object-Oriented Programming Experiments
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+Switch scripts to scripts by turning on designated numbered ones or designated numbered others to see what the code does!
