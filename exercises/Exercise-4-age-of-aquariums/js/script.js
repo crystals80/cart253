@@ -1,5 +1,5 @@
 /**
-Exercise 3 Age of Aquarium
+Exercise 4 Age of Aquarium
 Lam Ky Anh Do
 
 Exercise for class 6: Understanding and playing with arrays
