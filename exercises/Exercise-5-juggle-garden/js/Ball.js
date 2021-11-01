@@ -50,17 +50,20 @@ class Ball {
     if (this.y < height) {
       this.score++;
     }
-    if (this.score >= 800) {
+    if (this.score >= 750) {
       fill(random(0, 255), random(0, 255), random(0, 255));
       textAlign(CENTER, CENTER);
       textSize(50);
-      text(`CONGRATULATION! You passed the trial!`, width / 2, height / 2);
+      text(`CONGRATULATION! You passed the trial!`, width / 2, -75 + height / 2);
       fill(255)
+      textSize(20);
+      text(`Press SPACE to see prizes!`, width / 2, 50 + height / 2);
       textSize(14);
-      text(`Press SPACE to see prize!`, width / 2, 3 * height / 4);
-      textSize(12);
-      text(`...Or stay to make a new high score!`, width / 2, 25 + 3 * height / 4);
+      text(`...Or stay to make a new high score!`, width / 2, 100 + height / 2);
+      textSize(10);
+      text(`DO NOT press BACKSPACE at all cost!!!`, width / 2, 125 + height / 2)
     }
+
     noStroke();
     fill(255);
     textAlign(LEFT, TOP);
@@ -68,6 +71,7 @@ class Ball {
     text(`Score: ` + this.score, width - 150, 25);
     pop();
 
+    // Display balls
     push();
     fill(255, 0, 0);
     stroke(0);
