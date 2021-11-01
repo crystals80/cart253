@@ -9,7 +9,7 @@ Exercise for class 7: Understanding and playing with OOP
 
 // Variables for juggling balls
 let force = 0.0025; // Gravity force controlling balls speed
-let paddle; // Trampoline varriable
+let paddle, wall; // Trampoline and side paddles variables
 let balls = []; // Array variables for balls
 let numBalls = 10; // Number of balls
 let music; // Sound effect for bouncing balls
@@ -37,6 +37,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   paddle = new Paddle(300, 50);
+  wall = new Wall(30, 200);
 
   for (let i = 0; i < numBalls; i++) {
     let x = random(0, width);
@@ -62,12 +63,15 @@ function juggle() {
   paddle.move();
   paddle.display();
 
+  wall.move();
+  wall.display();
+
   for (let i = 0; i < balls.length; i++) {
     let ball = balls[i];
     if (ball.active) {
       ball.gravity(force);
       ball.move();
-      ball.bounce(paddle);
+      ball.bounce(paddle, wall);
       ball.display();
     }
   }
