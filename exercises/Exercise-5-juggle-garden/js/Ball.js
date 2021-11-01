@@ -42,8 +42,8 @@ class Ball {
       this.ay = 0;
 
       if (!music.isPlaying()) {
-        // Play music once
-        music.play();
+        // Play music over and over
+        music.loop();
       }
     }
   }
