@@ -12,12 +12,15 @@ let force = 0.0025; // Gravity force controlling balls speed
 let paddle; // Trampoline varriable
 let balls = []; // Array variables for balls
 let numBalls = 10; // Number of balls
-// Add sound effect to bouncing balls (see comment in preload)
-let music
+let music; // Sound effect for bouncing balls
+let reward1, reward2, reward3, punishment; // Prizes and Punishment for winning or losing the game (basically states/endings)
+
+let state = `juggle` // state: juggle, win and lose
 
 function preload() {
-  // Chrome doesn't allow the sound effect to play...
+  // Sound effect plays some times and other times don't work...
   music = loadSound(`assets/sounds/sfx-boing8.mp3`);
+
 }
 
 function setup() {
@@ -32,18 +35,17 @@ function setup() {
     balls.push(ball);
   }
 
-  /*angleMode(DEGREES);
+  angleMode(DEGREES);
   //gradient background
   let c1 = color(78, 234, 242);
   let c2 = color(18, 110, 25);
   setGradient(c1, c2);
   let x = 0
-  let y = 0*/
+  let y = 0
 }
 
 function draw() {
   background(0);
-
   paddle.move();
   paddle.display();
 
@@ -65,12 +67,21 @@ function sfx() {
   }
 }
 
-/*function setGradient(c1, c2) {
+function mousePressed() {
+  if (keyIsDown(32)) {
+    setGradient1();
+  } else if (keyIsDown(8)) {
+    setGradient2();
+  }
+}
+
+function setGradient(c1, c2) {
   noFill();
   for (var y = 0; y < height; y++) {
     var inter = map(y, 0, height, 0, 1);
     var c = lerpColor(c1, c2, inter);
     stroke(c);
     line(0, y, width, y);
+
+
   }
-}*/

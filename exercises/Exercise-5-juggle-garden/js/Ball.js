@@ -43,13 +43,23 @@ class Ball {
       sfx();
     }
   }
-
   display() {
 
     // Show a growing score
     push();
     if (this.y < height) {
       this.score++;
+    }
+    if (this.score >= 800) {
+      fill(random(0, 255), random(0, 255), random(0, 255));
+      textAlign(CENTER, CENTER);
+      textSize(50);
+      text(`CONGRATULATION! You passed the trial!`, width / 2, height / 2);
+      fill(255)
+      textSize(14);
+      text(`Press SPACE to see prize!`, width / 2, 3 * height / 4);
+      textSize(12);
+      text(`...Or stay to make a new high score!`, width / 2, 25 + 3 * height / 4);
     }
     noStroke();
     fill(255);
