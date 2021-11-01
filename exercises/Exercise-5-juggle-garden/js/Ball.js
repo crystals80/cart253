@@ -9,6 +9,7 @@ class Ball {
     this.ay = 0;
     this.maxSpeed = 10;
     this.active = true;
+    this.score = 0;
   }
 
   gravity(force) {
@@ -39,10 +40,28 @@ class Ball {
 
       this.vy = -this.vy;
       this.ay = 0;
+
+      if (!music.isPlaying()) {
+        // Play music once
+        music.play();
+      }
     }
   }
 
   display() {
+
+    // Show a growing score
+    push();
+    if (this.y < height) {
+      this.score++;
+    }
+    noStroke();
+    fill(255);
+    textAlign(LEFT, TOP);
+    textSize(16);
+    text(`Score: ` + this.score, width - 150, 25);
+    pop();
+
     push();
     fill(255, 0, 0);
     stroke(0);
