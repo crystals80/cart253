@@ -40,11 +40,7 @@ class Ball {
 
       this.vy = -this.vy;
       this.ay = 0;
-
-      if (!music.isPlaying()) {
-        // Play music over and over
-        music.loop();
-      }
+      sfx();
     }
   }
 

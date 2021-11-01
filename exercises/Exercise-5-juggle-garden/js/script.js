@@ -7,10 +7,18 @@ Exercise for class 7: Understanding and playing with OOP
 
 "use strict";
 
-let force = 0.0025;
-let paddle;
-let balls = [];
-let numBalls = 10;
+// Variables for juggling balls
+let force = 0.0025; // Gravity force controlling balls speed
+let paddle; // Trampoline varriable
+let balls = []; // Array variables for balls
+let numBalls = 10; // Number of balls
+// Add sound effect to bouncing balls (see comment in preload)
+let music
+
+function preload() {
+  // Chrome doesn't allow the sound effect to play...
+  music = loadSound(`assets/sounds/sfx-boing8.mp3`);
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -48,7 +56,13 @@ function draw() {
       ball.display();
     }
   }
+}
 
+function sfx() {
+  if (!music.isPlaying()) {
+    // Play music once
+    music.play();
+  }
 }
 
 /*function setGradient(c1, c2) {
