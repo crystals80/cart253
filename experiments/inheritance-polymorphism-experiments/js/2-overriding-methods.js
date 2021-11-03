@@ -1,8 +1,8 @@
 /**
-Inheritance
+Overriding Methods
 Lam Ky Anh Do
 
-Experimenting with p5 on how to use inheritance (of classes)
+Experimenting with p5 on how to use overriding methods
 */
 
 let cars = [];
