@@ -1,11 +1,11 @@
-class Fishes {
+class Fish {
   constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.size: 40,
-      this.vx: 0,
-      this.vy: 0,
-      this.speed: 2,
+    this.size = 4;
+    this.vx = 0;
+    this.vy = 0;
+    this.speed = 2;
   }
 
   // Allow fishs to move around

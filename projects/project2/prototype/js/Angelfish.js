@@ -1,4 +1,4 @@
-class Angelfish extends SeaCreatures {
+class Angelfish extends Fish {
   constructor(x, y, image) {
     super(x, y);
     this.image = image;

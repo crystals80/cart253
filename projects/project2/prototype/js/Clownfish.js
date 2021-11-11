@@ -1,4 +1,4 @@
-class Clownfish extends SeaCreatures {
+class Clownfish extends Fish {
   constructor(x, y, image) {
     super(x, y);
     this.image = image;

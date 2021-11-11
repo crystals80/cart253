@@ -6,6 +6,7 @@ class Shark {
     this.image = image;
   }
 
+  // Display user
   display() {
     push();
     // Display the fishes on the canvas
