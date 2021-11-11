@@ -21,7 +21,7 @@ let numClownfish = 10; // Number of clownfish
 let numAngelfish = 10; // Number of angelfish
 
 // Variables for images
-let bubbleImg, clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg, bg;
+let bubbleImg, clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg1, sharkImg2, bg;
 
 // Give sea creatures an appearance
 function preload() {
@@ -34,7 +34,8 @@ function preload() {
   clownfishImg2 = loadImage('assets/images/clown-fish2.png');
   angelfishImg1 = loadImage('assets/images/yellow-fish1.png');
   angelfishImg2 = loadImage('assets/images/yellow-fish2.png');
-  sharkImg = loadImage('assets/images/shark1.png')
+  sharkImg1 = loadImage('assets/images/shark1.png')
+  sharkImg2 = loadImage('assets/images/shark2.png')
   bg = loadImage('assets/images/seabed2.png')
 }
 
@@ -50,12 +51,13 @@ function setup() {
   }
 
   let x, y;
+  // User/Cursor appearance
+  shark = new Shark(x, y, sharkImg1);
 
+  // Create new fishes and store them in an array
   clownfish = new Clownfish(x, y, clownfishImg1);
   angelfish = new Angelfish(x, y, angelfishImg1);
-  shark = new Shark(x, y, sharkImg);
 
-  // Spawn moving fishes into sea aquarium
   for (let i = 0; i < numClownfish; i++) {
     let x = random(0, width);
     let y = random(0, height);
@@ -158,15 +160,17 @@ function minigame1() {
   imageMode(CORNER);
   pop();
 
-  // User movement
-  shark.x = mouseX;
-  shark.y = mouseY;
+  shark.move();
+  shark.display();
+
+  clownfish.display();
+  angelfish.display();
 
   for (let i = 0; i < fishes.length; i++) {
     let fish = fishes[i];
-    fishes.move();
-    fishes.wrap();
-    fishes.display();
+    fish.move();
+    fish.wrap();
+    fish.display();
   }
 }
 

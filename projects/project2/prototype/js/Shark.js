@@ -6,6 +6,12 @@ class Shark {
     this.image = image;
   }
 
+  move() {
+    // User movement
+    this.x = mouseX;
+    this.y = mouseY;
+  }
+
   // Display user
   display() {
     push();
