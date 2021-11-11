@@ -6,16 +6,17 @@ class Fish {
     this.vx = 0;
     this.vy = 0;
     this.speed = 2;
+    this.image = undefined;
   }
 
   // Allow fishs to move around
   move() {
-    // // Set up directions
-    // let change = random(0, 1);
-    // if (change < 0.05) {
-    //   this.vx = random(-this.speed, this.speed);
-    //   this.vy = random(-this.speed, this.speed);
-    // }
+    // Set up directions
+    let direction = random(0, 1);
+    if (direction < 0.05) {
+      this.vx = random(-this.speed, this.speed);
+      this.vy = random(-this.speed, this.speed);
+    }
 
     // Move fish
     this.x += this.vx;

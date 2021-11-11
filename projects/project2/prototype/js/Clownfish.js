@@ -8,7 +8,7 @@ class Clownfish extends Fish {
     push();
     // Display the clownfishes on the canvas
     imageMode(CENTER);
-    image(this.currentImage, this.x, this.y, this.size, this.size);
+    image(this.image, this.x, this.y, this.size, this.size);
     pop();
   }
 }

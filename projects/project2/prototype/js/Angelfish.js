@@ -8,7 +8,7 @@ class Angelfish extends Fish {
     push();
     // Display the angelfishes on the canvas
     imageMode(CENTER);
-    image(this.currentImage, this.x, this.y, this.size, this.size);
+    image(this.image, this.x, this.y, this.size, this.size);
     pop();
   }
 }
