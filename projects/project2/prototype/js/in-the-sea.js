@@ -82,16 +82,6 @@ function setup() {
     let moorishIdol = new MoorishIdol(x, y, moorishIdolImg1);
     fishes.push(moorishIdol);
   }
-
-  // for (let i = 0; i < fishes.length; i++) {
-  //   let fish = fishes[i];
-  //   // Set up directions
-  //   let direction = random(0, 1);
-  //   if (direction < 0.5) {
-  //     this.vx = random(-this.speed, this.speed);
-  //     this.vy = random(-this.speed, this.speed);
-  //   }
-  // }
 }
 
 function draw() {
@@ -185,28 +175,20 @@ function minigame1() {
   }
 }
 
-
-/*  // Check if shark(user) can eat fishes
-  function mousePressed(fish) {
-    for (let i = 0; i < groupFish1.length; i++) {
-      // Store the current fishes in the fish variable
-      let f1 = groupFish1[i];
-      let f2 = groupFish2[i];
-      // Calculate the distance between the mouse position and the fish
-      let d1 = dist(shark.x, shark.y, f1.x, f1.y);
-      let d2 = dist(shark.x, shark.y, f2.x, f2.y);
-      // If a fish is clicked within the shark, it will be removed/eaten
-      if (d1 < f1.size / 2 + shark.size / 2) {
-        groupFish1.splice(i, 1);
-        // This forces the for-loop to stop immediately
-        break;
-      }
-      if (d2 < f2.size / 2 + shark.size / 2) {
-        groupFish2.splice(i, 1);
-        break;
-      }
+function mousePressed(fish) {
+  for (let i = 0; i < fishes.length; i++) {
+    // Store the current fishes in the fish variable
+    let fish = fishes[i];
+    // Calculate the distance between the mouse position and the fish
+    let d1 = dist(shark.x, shark.y, fish.x, fish.y);
+    // If a fish is clicked within the shark, it will be removed/eaten
+    if (d1 < fish.size / 2 + shark.size / 2) {
+      fishes.splice(i, 1);
+      // This forces the for-loop to stop immediately
+      break;
     }
-  } */
+  }
+}
 
 function success() {
   displayText(`You ate a special fish and now became a Turtle!`);
