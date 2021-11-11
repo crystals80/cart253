@@ -2,9 +2,9 @@
 
 Link: https://crystals80.github.io/cart253/exercises/Exercise-4-age-of-aquarium/
 
-This is an exercise to practice my understanding of arrays and how to use/apply them in Javascript p5.js.
+This is an exercise to practice my understanding of arrays and how to use/apply them in JavaScript p5.js.
 
-The inspiration for this piece is fishes in a gigantic aquarium. I basically made an upgrade from Pippin's <i>introducion to arrays</i> tutorial using the concept of fishes moving in a limted space and added more interesting interactions to make it more dynamic.
+The inspiration for this piece is fishes in a gigantic aquarium. I basically made an upgrade from Pippin's <i>introduction to arrays</i> tutorial using the concept of fishes moving in a limited space and added more interesting interactions to make it more dynamic.
 
 The overall experience in terms of coding the movements, testing it out and witnessing the interactive result is very satisfying, despite the fact that I ran into so many issues about why my fish images didn't show on the canvas.
 
