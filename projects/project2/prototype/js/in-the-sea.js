@@ -5,6 +5,10 @@ Lam Ky Anh Do
 
 "use strict";
 
+let bubble;
+let bubbles = []; // Bubble array variables
+let numBubble = 20; // Number of bubble
+
 let state = `title`; // state: title, minigame, complete and gameover
 
 // Font variables;
@@ -15,46 +19,57 @@ let clownfish, angelfish, shark; // Fish variables
 let fishes = []; // Fish array variable
 let numClownfish = 10; // Number of clownfish
 let numAngelfish = 10; // Number of angelfish
-let clownfishImage1, clownfishImage2, angelfishImage1, angelfishImage2, sharkImage, bg; // Varriable for images
+
+// Variables for images
+let bubbleImg, clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg, bg;
 
 // Give sea creatures an appearance
 function preload() {
-  // see README for more info on typeface
+  // See README for more info on typeface
   fontRegular = loadFont('assets/fonts/PlayfairDisplay-VariableFont_wght.ttf')
   fontItalic = loadFont('assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf')
-  // See README for more info on sea creatures' images
-  clownfishImage1 = loadImage('assets/images/clown-fish1.png');
-  clownfishImage2 = loadImage('assets/images/clown-fish2.png');
-  angelfishImage1 = loadImage('assets/images/yellow-fish1.png');
-  angelfishImage2 = loadImage('assets/images/yellow-fish2.png');
-  sharkImage = loadImage('assets/images/shark1.png')
+  // See README for more info on images
+  bubbleImg = loadImage('assets/images/bubble.png')
+  clownfishImg1 = loadImage('assets/images/clown-fish1.png');
+  clownfishImg2 = loadImage('assets/images/clown-fish2.png');
+  angelfishImg1 = loadImage('assets/images/yellow-fish1.png');
+  angelfishImg2 = loadImage('assets/images/yellow-fish2.png');
+  sharkImg = loadImage('assets/images/shark1.png')
   bg = loadImage('assets/images/seabed2.png')
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  // let x, y;
-  //
-  // clownfish = new Clownfish(x, y, clownfishImage1);
-  // angelfish = new Angelfish(x, y, angelfishImage1);
-  // shark = new Shark(x, y, sharkImage);
-  //
-  // // Spawn moving fishes into sea aquarium
-  // for (let i = 0; i < numClownfish; i++) {
-  //   let x = random(0, width);
-  //   let y = random(0, height);
-  //   let clownfish = new Clownfish(x, y);
-  //   //fishes.push(clownfish);
-  // }
-  //
-  // for (let i = 0; i < numAngelfish; i++) {
-  //   let x = random(0, width);
-  //   let y = random(0, height);
-  //   let angelfish = new Angelfish(x, y);
-  //   //fishes.push(angelfish);
-  // }
-  //
+  // Create new bubbles and store them in an array
+  // Bubble floating up
+  bubble = new Bubble(bubbleImg);
+  for (let b = 0; b < numBubble; b++) {
+    let bubble = new Bubble(bubbleImg)
+    bubbles.push(bubble);
+  }
+
+  let x, y;
+
+  clownfish = new Clownfish(x, y, clownfishImg1);
+  angelfish = new Angelfish(x, y, angelfishImg1);
+  shark = new Shark(x, y, sharkImg);
+
+  // Spawn moving fishes into sea aquarium
+  for (let i = 0; i < numClownfish; i++) {
+    let x = random(0, width);
+    let y = random(0, height);
+    let clownfish = new Clownfish(x, y, clownfishImg1);
+    //fishes.push(clownfish);
+  }
+
+  for (let i = 0; i < numAngelfish; i++) {
+    let x = random(0, width);
+    let y = random(0, height);
+    let angelfish = new Angelfish(x, y, angelfishImg1);
+    //fishes.push(angelfish);
+  }
+
   // for (let i = 0; i < fishes.length; i++) {
   //   let fish = fishes[i];
   //   // Set up directions
@@ -63,6 +78,7 @@ function setup() {
   //     this.vx = random(-this.speed, this.speed);
   //     this.vy = random(-this.speed, this.speed);
   //   }
+  // }
 }
 
 function draw() {
@@ -94,6 +110,27 @@ function draw() {
 }
 
 function title() {
+
+  // Set up gradient background
+  let c1, c2, n;
+  c1 = color(63, 191, 191); // Light teal
+  //c2 = color(63,76,191); // light indigo
+  c2 = color(63, 108, 191); // light blue
+
+  for (let g = 0; g < height; g++) {
+    n = map(g, 0, height, 0, 1);
+    let newc = lerpColor(c1, c2, n);
+    stroke(newc);
+    line(0, g, width, g);
+  }
+
+  // For every bubble object in the bubbles array, call the display and move functions
+  for (let b = 0; b < bubbles.length; b++) {
+    let bubble = bubbles[b];
+    bubble.move();
+    bubble.display();
+  }
+
   // Introduction message + Instruction to minigame1
   push();
   textAlign(CENTER, CENTER);
@@ -107,7 +144,7 @@ function title() {
   textSize(16);
   text(`You must first live like a hungry shark, eating its daily meal within 30 seconds!`, width / 2, -5 + 3 * height / 4);
   textSize(10);
-  text(`~ CLICK to enter Underwater Trial 1 ~`, width / 2, height - 50);
+  text(`~ PRESS to ENTER Underwater Trial 1 ~`, width / 2, height - 50);
   textFont(fontItalic);
   textSize(32);
   text(`Would you like to be part of their life?`, width / 2, 30 + height / 2);
@@ -117,7 +154,7 @@ function title() {
 function minigame1() {
 
   push();
-  image(bg, width / 2, height / 2, windowWidth, windowHeight + 55);
+  image(bg, 0, 0, windowWidth, windowHeight + 20);
   imageMode(CORNER);
   pop();
 
@@ -165,7 +202,7 @@ function dead() {
 }
 
 function keyPressed() {
-  if (state === `title`) {
+  if (state === `title` && keyIsDown(13)) {
     state = `minigame1`;
   }
 }
