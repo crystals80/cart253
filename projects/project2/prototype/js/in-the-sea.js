@@ -15,13 +15,14 @@ let state = `title`; // state: title, minigame, complete and gameover
 let fontRegular, fontItalic;
 
 // Variables for mini game 1
-let clownfish, angelfish, shark; // Fish variables
+let clownfish, angelfish, moorishIdol, shark; // Fish variables
 let fishes = []; // Fish array variable
 let numClownfish = 10; // Number of clownfish
 let numAngelfish = 10; // Number of angelfish
+let numMoorishIdol = 10; // Number of moorish idol fish
 
 // Variables for images
-let bubbleImg, clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg1, sharkImg2, bg;
+let bubbleImg, clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg1, sharkImg2, moorishIdolImg1, moorishIdolImg2, bg;
 
 // Give sea creatures an appearance
 function preload() {
@@ -34,6 +35,8 @@ function preload() {
   clownfishImg2 = loadImage('assets/images/clown-fish2.png');
   angelfishImg1 = loadImage('assets/images/yellow-fish1.png');
   angelfishImg2 = loadImage('assets/images/yellow-fish2.png');
+  moorishIdolImg1 = loadImage('assets/images/moorish-idol-fish1.png');
+  moorishIdolImg2 = loadImage('assets/images/moorish-idol-fish2.png');
   sharkImg1 = loadImage('assets/images/shark1.png')
   sharkImg2 = loadImage('assets/images/shark2.png')
   bg = loadImage('assets/images/seabed2.png')
@@ -50,26 +53,34 @@ function setup() {
     bubbles.push(bubble);
   }
 
-  let x, y;
+  let x, y; // Position variables for array classes
   // User/Cursor appearance
   shark = new Shark(x, y, sharkImg1);
 
   // Create new fishes and store them in an array
   clownfish = new Clownfish(x, y, clownfishImg1);
   angelfish = new Angelfish(x, y, angelfishImg1);
-
+  moorishIdol = new MoorishIdol(x, y, moorishIdolImg1);
+  // Create new clownfishes
   for (let i = 0; i < numClownfish; i++) {
     let x = random(0, width);
     let y = random(0, height);
     let clownfish = new Clownfish(x, y, clownfishImg1);
-    //fishes.push(clownfish);
+    fishes.push(clownfish);
   }
-
+  // Create new angelfishes
   for (let i = 0; i < numAngelfish; i++) {
     let x = random(0, width);
     let y = random(0, height);
     let angelfish = new Angelfish(x, y, angelfishImg1);
-    //fishes.push(angelfish);
+    fishes.push(angelfish);
+  }
+  // Create new moorish idol fishes
+  for (let i = 0; i < numMoorishIdol; i++) {
+    let x = random(0, width);
+    let y = random(0, height);
+    let moorishIdol = new MoorishIdol(x, y, moorishIdolImg1);
+    fishes.push(moorishIdol);
   }
 
   // for (let i = 0; i < fishes.length; i++) {
