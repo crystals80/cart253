@@ -10,12 +10,12 @@ class Fishes {
 
   // Allow fishs to move around
   move() {
-    // Set up directions
-    let change = random(0, 1);
-    if (change < 0.05) {
-      this.vx = random(-this.speed, this.speed);
-      this.vy = random(-this.speed, this.speed);
-    }
+    // // Set up directions
+    // let change = random(0, 1);
+    // if (change < 0.05) {
+    //   this.vx = random(-this.speed, this.speed);
+    //   this.vy = random(-this.speed, this.speed);
+    // }
 
     // Move fish
     this.x += this.vx;

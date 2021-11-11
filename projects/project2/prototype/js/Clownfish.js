@@ -6,9 +6,9 @@ class Clownfish extends SeaCreatures {
 
   display() {
     push();
-    // Display the fishes on the canvas
+    // Display the clownfishes on the canvas
     imageMode(CENTER);
-    image(this.currentImage, this.x, this.y, this.width, this.height);
+    image(this.currentImage, this.x, this.y, this.size, this.size);
     pop();
   }
 }
