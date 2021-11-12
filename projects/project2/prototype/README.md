@@ -11,15 +11,19 @@ See link for more info: https://fonts.google.com/specimen/Playfair+Display#stand
 <b>Attributing Images</b>
 
 <i>Bubble Image for Title Screen</i>
+
 I had this bubble.png in my laptop for as long as I can remember, so I don't know where I got it, probably on Google...But I apologize for not knowing where it came from.
 
 <i>Fish Images of Mini Game 1</i>
+
 Icon vectors were taken from Flaticon/Freepik.
 
 <i>Background Image of Mini Game 1</i>
+
 Image was taken from VectorStock.
 
 <i>Shark GIF of Mini Game 1's Game Over screen</i>
+
 GIF was taken from Emily So's blog and was modified to appear in a red tint.
 
 See link https://emilyso.com/2011/02/19/sheep-run-and-shark-blagablagablagararrrr/
