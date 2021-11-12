@@ -114,7 +114,8 @@ function draw() {
   //   complete3();
   // } else if (state === `gameover3`) {
   //   gameover3();
-  // }
+  // } else if (state === `ending`) {
+  // ending();}
 }
 
 function title() {
