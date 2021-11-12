@@ -124,11 +124,11 @@ function title() {
   //c2 = color(63,76,191); // light indigo
   c2 = color(63, 108, 191); // light blue
 
-  for (let g = 0; g < height; g++) {
-    n = map(g, 0, height, 0, 1);
-    let newc = lerpColor(c1, c2, n);
-    stroke(newc);
-    line(0, g, width, g);
+  for (let c = 0; c < height; c++) {
+    n = map(c, 0, height, 0, 1);
+    let newColor = lerpColor(c1, c2, n);
+    stroke(newColor);
+    line(0, c, width, c);
   }
 
   // For every bubble object in the bubbles array, call the display and move functions
@@ -194,7 +194,6 @@ function minigame1() {
   //if (frameCount % 60 == 0 && timer < 10) {timer--;  }
   if (timer == 0 && state === `minigame1`) {
     state = `gameover1`;
-    break;
   }
   pop();
 }
@@ -222,15 +221,16 @@ function complete1() {
 function gameover1() {
 
   // Set up gradient background
+  push();
   let c1, c2, n;
   c1 = color(232, 0, 0); // red
   c2 = color(0);
 
-  for (let g = 0; g < height; g++) {
-    n = map(g, 0, height, 0, 1);
-    let newc = lerpColor(c1, c2, n);
-    stroke(newc);
-    line(0, g, width, g);
+  for (let c = 0; c < height; c++) {
+    n = map(c, 0, height, 0, 1);
+    let newColor = lerpColor(c1, c2, n);
+    stroke(newColor);
+    line(0, c, width, c);
   }
 
   for (let b = 0; b < bubbles.length; b++) {
@@ -239,12 +239,11 @@ function gameover1() {
     bubble.move();
     bubble.display();
   }
+  pop();
 
-  push()
   let sadShark = createImg('assets/images/sad-shark-tinted.gif');
   sadShark.size(333, 200);
   sadShark.position(10 + width / 3, -260 + height);
-  pop();
 
   push();
   textAlign(CENTER, CENTER);
@@ -270,5 +269,6 @@ function keyPressed() {
   if (state === `gameover1` && keyIsDown(32)) {
     state = `minigame1`;
     timer = 30;
+    removeElements();
   }
 }
