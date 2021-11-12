@@ -199,6 +199,27 @@ function minigame1() {
 }
 
 function complete1() {
+
+  // Set up gradient background
+  let c1, c2, n;
+  c1 = color(63, 191, 191); // Light teal
+  //c2 = color(63,76,191); // light indigo
+  c2 = color(63, 108, 191); // light blue
+
+  for (let c = 0; c < height; c++) {
+    n = map(c, 0, height, 0, 1);
+    let newColor = lerpColor(c1, c2, n);
+    stroke(newColor);
+    line(0, c, width, c);
+  }
+
+  // For every bubble object in the bubbles array, call the display and move functions
+  for (let b = 0; b < bubbles.length; b++) {
+    let bubble = bubbles[b];
+    bubble.move();
+    bubble.display();
+  }
+
   push();
   textAlign(CENTER, CENTER);
   textFont(fontRegular);
@@ -268,6 +289,10 @@ function mousePressed(fish) {
       break;
     }
   }
+  console.log(numClownfish + numAngelfish + numMoorishIdol);
+  if (state === `minigame1` && fishes.length == 0) {
+    state = `complete1`;
+  }
 }
 
 function keyPressed() {
@@ -278,10 +303,5 @@ function keyPressed() {
     state = `minigame1`;
     timer = 30;
     removeElements();
-  }
-  if (state === `minigame1`) {
-    for (let i = 0; i > fishes.length; i < 0) {
-      state = `complete1`;
-    }
   }
 }
