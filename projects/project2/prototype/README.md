@@ -18,3 +18,8 @@ Icon vectors were taken from Flaticon/Freepik.
 
 <i>Background Image of Mini Game 1</i>
 Image was taken from VectorStock.
+
+<i>Shark GIF of Mini Game 1's Game Over screen</i>
+GIF was taken from Emily So's blog and was modified to appear in a red tint.
+
+See link https://emilyso.com/2011/02/19/sheep-run-and-shark-blagablagablagararrrr/
