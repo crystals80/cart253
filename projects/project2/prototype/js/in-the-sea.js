@@ -21,7 +21,7 @@ let numClownfish = 10; // Number of clownfish
 let numAngelfish = 10; // Number of angelfish
 let numMoorishIdol = 10; // Number of moorish idol fish
 // Countdown timer variables
-let timer = 5;
+let timer = 30;
 
 
 // Variables for images
@@ -198,28 +198,20 @@ function minigame1() {
   pop();
 }
 
-// Check if shark(user) can eat fishes
-function mousePressed(fish) {
-  for (let i = 0; i < fishes.length; i++) {
-    // Store the current fishes in the fish variable
-    let fish = fishes[i];
-    // Calculate the distance between the mouse position and the fish
-    let d1 = dist(shark.x, shark.y, fish.x, fish.y);
-    // If a fish is clicked within the shark, it will be removed/eaten
-    if (d1 < fish.size / 2 + shark.size / 2) {
-      fishes.splice(i, 1);
-      // This forces the for-loop to stop immediately
-      break;
-    }
-  }
-}
-
 function complete1() {
-  text(`You ate a special fish and now became a Turtle!`);
+  push();
+  textAlign(CENTER, CENTER);
+  textFont(fontRegular);
+  noStroke();
+  fill(0);
+  textSize(60);
+  text(`Congratulation!`, width / 2, height / 4);
+  textSize(40);
+  text(`You ate a special fish and became a Turtle!`, width / 2, -25 + height / 2);
+  pop();
 }
 
 function gameover1() {
-
   // Set up gradient background
   push();
   let c1, c2, n;
@@ -262,6 +254,22 @@ function gameover1() {
   pop();
 }
 
+// Check if shark(user) can eat fishes
+function mousePressed(fish) {
+  for (let i = 0; i < fishes.length; i++) {
+    // Store the current fishes in the fish variable
+    let fish = fishes[i];
+    // Calculate the distance between the mouse position and the fish
+    let d1 = dist(shark.x, shark.y, fish.x, fish.y);
+    // If a fish is clicked within the shark, it will be removed/eaten
+    if (d1 < fish.size / 2 + shark.size / 2) {
+      fishes.splice(i, 1);
+      // This forces the for-loop to stop immediately
+      break;
+    }
+  }
+}
+
 function keyPressed() {
   if (state === `title` && keyIsDown(13)) {
     state = `minigame1`;
@@ -270,5 +278,10 @@ function keyPressed() {
     state = `minigame1`;
     timer = 30;
     removeElements();
+  }
+  if (state === `minigame1`) {
+    for (let i = 0; i > fishes.length; i < 0) {
+      state = `complete1`;
+    }
   }
 }
