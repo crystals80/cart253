@@ -14,13 +14,16 @@ See link for more info: https://fonts.google.com/specimen/Playfair+Display#stand
 
 I had this bubble.png in my laptop for as long as I can remember, so I don't know where I got it, probably on Google...But I apologize for not knowing where it came from.
 
+
 <i>Fish Images of Mini Game 1</i>
 
 Icon vectors were taken from Flaticon/Freepik.
 
+
 <i>Background Image of Mini Game 1</i>
 
 Image was taken from VectorStock.
+
 
 <i>Shark GIF of Mini Game 1's Game Over screen</i>
 
