@@ -20,6 +20,9 @@ let fishes = []; // Fish array variable
 let numClownfish = 10; // Number of clownfish
 let numAngelfish = 10; // Number of angelfish
 let numMoorishIdol = 10; // Number of moorish idol fish
+// Countdown timer variables
+let timer = 5;
+
 
 // Variables for images
 let bubbleImg, clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg1, sharkImg2, moorishIdolImg1, moorishIdolImg2, bg;
@@ -82,6 +85,7 @@ function setup() {
     let moorishIdol = new MoorishIdol(x, y, moorishIdolImg1);
     fishes.push(moorishIdol);
   }
+
 }
 
 function draw() {
@@ -155,15 +159,17 @@ function title() {
 }
 
 function minigame1() {
-
+  // Display background
   push();
   image(bg, 0, 0, windowWidth, windowHeight + 20);
   imageMode(CORNER);
   pop();
 
+  // Display user
   shark.move();
   shark.display();
 
+  // Display fishes and their movements
   clownfish.display();
   angelfish.display();
 
@@ -173,8 +179,27 @@ function minigame1() {
     fish.wrap();
     fish.display();
   }
+
+  // Display countdown timer
+  push();
+  image(bubbleImg, width - 100, 25, 55, 55);
+  noStroke();
+  textFont(fontRegular);
+  textSize(24);
+  text(timer, width - 84, 58);
+  if (frameCount % 60 == 0 && timer > 0) {
+    timer--;
+  }
+  //text('0:0' + timer, width - 88, 56);
+  //if (frameCount % 60 == 0 && timer < 10) {timer--;  }
+  if (timer == 0 && state === `minigame1`) {
+    state = `gameover1`;
+    break;
+  }
+  pop();
 }
 
+// Check if shark(user) can eat fishes
 function mousePressed(fish) {
   for (let i = 0; i < fishes.length; i++) {
     // Store the current fishes in the fish variable
@@ -190,16 +215,60 @@ function mousePressed(fish) {
   }
 }
 
-function success() {
-  displayText(`You ate a special fish and now became a Turtle!`);
+function complete1() {
+  text(`You ate a special fish and now became a Turtle!`);
 }
 
-function dead() {
-  displayText(`You waited too long for lunch time and died...Don't starve!`);
+function gameover1() {
+
+  // Set up gradient background
+  let c1, c2, n;
+  c1 = color(232, 0, 0); // red
+  c2 = color(0);
+
+  for (let g = 0; g < height; g++) {
+    n = map(g, 0, height, 0, 1);
+    let newc = lerpColor(c1, c2, n);
+    stroke(newc);
+    line(0, g, width, g);
+  }
+
+  for (let b = 0; b < bubbles.length; b++) {
+    let bubble = bubbles[b];
+    tint(215, 0, 0);
+    bubble.move();
+    bubble.display();
+  }
+
+  push()
+  let sadShark = createImg('assets/images/sad-shark-tinted.gif');
+  sadShark.size(333, 200);
+  sadShark.position(10 + width / 3, -260 + height);
+  pop();
+
+  push();
+  textAlign(CENTER, CENTER);
+  textFont(fontRegular);
+  noStroke();
+  fill(0);
+  textSize(50);
+  text(`You waited too long for lunch time and died!`, width / 2, height / 3);
+  fill(50);
+  textSize(10);
+  text(`~ PRESS to SPACE to restart Trial 1 ~`, width / 2, height - 50);
+  textFont(fontItalic);
+  fill(0);
+  textSize(40);
+  text(`...Don't starve yourself!`, width / 2, height / 2);
+  pop();
 }
 
 function keyPressed() {
   if (state === `title` && keyIsDown(13)) {
     state = `minigame1`;
+  }
+  if (state === `gameover1` && keyIsDown(32)) {
+    state = `minigame1`;
+    timer = 30;
   }
 }
