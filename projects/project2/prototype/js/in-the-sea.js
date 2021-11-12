@@ -91,6 +91,7 @@ function setup() {
 function draw() {
   background(0);
 
+  // Set game states for title screen, mini games and end screen
   if (state === `title`) {
     title();
   } else if (state === `minigame1`) {
@@ -138,7 +139,7 @@ function title() {
     bubble.display();
   }
 
-  // Introduction message + Instruction to minigame1
+  // Introduction message + Instruction for minigame1
   push();
   textAlign(CENTER, CENTER);
   textFont(fontRegular);
@@ -159,6 +160,7 @@ function title() {
 }
 
 function minigame1() {
+
   // Display background
   push();
   image(bg, 0, 0, windowWidth, windowHeight + 20);
@@ -203,8 +205,7 @@ function complete1() {
   // Set up gradient background
   let c1, c2, n;
   c1 = color(63, 191, 191); // Light teal
-  //c2 = color(63,76,191); // light indigo
-  c2 = color(63, 108, 191); // light blue
+  c2 = color(63, 76, 191); // light indigo
 
   for (let c = 0; c < height; c++) {
     n = map(c, 0, height, 0, 1);
@@ -220,6 +221,7 @@ function complete1() {
     bubble.display();
   }
 
+  // Congratulating message + Instruction for minigame2
   push();
   textAlign(CENTER, CENTER);
   textFont(fontRegular);
@@ -227,6 +229,14 @@ function complete1() {
   fill(0);
   textSize(60);
   text(`Congratulation!`, width / 2, height / 4);
+  textSize(32);
+  text(`A step closer to your goal! Are you ready for the next trial?`, width / 2, 50 + height / 2);
+  textSize(16);
+  text(`Now you must swim across the different sea levels and`, width / 2, -5 + 3 * height / 4);
+  text(`reach the surface without encountering another sea creature!`, width / 2, 25 + 3 * height / 4);
+  textSize(10);
+  text(`~ PRESS to ENTER Underwater Trial 2 ~`, width / 2, height - 50);
+  textFont(fontItalic);
   textSize(40);
   text(`You ate a special fish and became a Turtle!`, width / 2, -25 + height / 2);
   pop();
@@ -245,7 +255,7 @@ function gameover1() {
     stroke(newColor);
     line(0, c, width, c);
   }
-
+  // Set up "dramatic" bubbly background
   for (let b = 0; b < bubbles.length; b++) {
     let bubble = bubbles[b];
     tint(215, 0, 0);
@@ -254,10 +264,12 @@ function gameover1() {
   }
   pop();
 
+  //
   let sadShark = createImg('assets/images/sad-shark-tinted.gif');
   sadShark.size(333, 200);
   sadShark.position(10 + width / 3, -260 + height);
 
+  // Game over message for minigame1
   push();
   textAlign(CENTER, CENTER);
   textFont(fontRegular);
@@ -289,19 +301,26 @@ function mousePressed(fish) {
       break;
     }
   }
-  console.log(numClownfish + numAngelfish + numMoorishIdol);
+  // When shark(user) eats all fishes, user wins and transition to a congratulating screen and therefore to minigame2
   if (state === `minigame1` && fishes.length == 0) {
     state = `complete1`;
   }
 }
 
+// function regulating state transitions
 function keyPressed() {
+  // Moving from title screen to minigame1
   if (state === `title` && keyIsDown(13)) {
     state = `minigame1`;
   }
+  // If timer reaches 0, user will move from minigame1 to game over screen for minigame1
   if (state === `gameover1` && keyIsDown(32)) {
     state = `minigame1`;
     timer = 30;
     removeElements();
+  }
+  // Moving from minigame1's congratulating screen to minigame2
+  if (state === `complete1` && keyIsDown(13)) {
+    state === `minigame2`;
   }
 }
