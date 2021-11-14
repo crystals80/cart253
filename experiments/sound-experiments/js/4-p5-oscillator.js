@@ -2,7 +2,7 @@
 Learn how to use p5 oscillator
 Lam Ky Anh Do
 
-Experimenting with sound and p5 oscillator
+Experimenting with sound and p5 oscillator (frequency and amps )
 No need for audio
 */
 
