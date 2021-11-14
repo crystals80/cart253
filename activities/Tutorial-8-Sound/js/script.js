@@ -29,15 +29,15 @@ function draw() {
   }
 }
 
-function mousePressed() {
-  // Add new ball per click
-  createBall(mouseX, mouseY);
-}
-
 function createBall(x, y) {
   // Play notes randomly
   let note = random(notes);
   // Each new ball play a note
   let ball = new Ball(x, y, note);
   balls.push(ball);
+}
+
+function mousePressed() {
+  // Add new ball per click
+  createBall(mouseX, mouseY);
 }

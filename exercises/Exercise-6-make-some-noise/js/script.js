@@ -9,11 +9,18 @@ author, and this description to match your project!
 "use strict";
 
 let balls = []; // Array of balls
+let chime; // Variable for chimeSFX
 
 let notes = [`F3`, `G3`, `Ab4`, `Bb4`, `C4`, `Db4`, `Eb4`, `F4`]; // F-minor
 
+function preload() {
+  chime = loadSound(`assets/sounds/chime1.mp3`);
+  chime = loadSound(`assets/sounds/chime2.mp3`);
+  chime = loadSound(`assets/sounds/chime3.mp3`);
+}
+
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(windowWidth, windowHeight);
   userStartAudio();
 }
 
@@ -27,11 +34,13 @@ function draw() {
     ball.bounce();
     ball.display();
   }
-}
 
-function mousePressed() {
-  // Add new ball per click
-  createBall(mouseX, mouseY);
+  // Change the background color based on SFX is currently playing
+  // if (barkSFX.isPlaying()) {
+  //   background(127);
+  // } else {
+  //   background(0);
+  // }
 }
 
 function createBall(x, y) {
@@ -40,4 +49,15 @@ function createBall(x, y) {
   // Each new ball play a note
   let ball = new Ball(x, y, note);
   balls.push(ball);
+}
+
+function mousePressed() {
+  // Add new ball per click
+  createBall(mouseX, mouseY);
+}
+
+function keyPressed() {
+  if (key == 'a') {
+    random(chime).play();
+  }
 }
