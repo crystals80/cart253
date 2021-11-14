@@ -37,6 +37,7 @@ class Ball {
   }
 
   bounce() {
+    // Bounce within canvas + Every time bounced from edge, ball produces sound
     if (this.x - this.size / 2 < 0 || this.x + this.size / 2 > width) {
       this.vx = -this.vx;
       this.playNote();
@@ -53,6 +54,7 @@ class Ball {
   }
 
   display() {
+    // Display balls of different colours
     push();
     noStroke();
     fill(this.fill.r, this.fill.g, this.fill.b);
