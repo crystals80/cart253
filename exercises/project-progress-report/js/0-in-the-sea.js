@@ -50,6 +50,8 @@ function preload() {
   moorishIdolImg2 = loadImage('assets/images/moorish-idol-fish2.png');
   sharkImg1 = loadImage('assets/images/shark1.png');
   sharkImg2 = loadImage('assets/images/shark2.png');
+  //Minigame 2's sea creatures directions
+  turtleImg = loadImage('assets/images/turtle.png');
   // Background for minigames
   bg1 = loadImage('assets/images/seabed2.png');
   bg2 = loadImage('assets/images/seabed1.png')
