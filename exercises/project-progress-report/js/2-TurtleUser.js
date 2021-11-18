@@ -1,4 +1,4 @@
-class Turtle {
+class TurtleUser {
   constructor(x2, y2, image) {
     this.x = x2;
     this.y = y2;

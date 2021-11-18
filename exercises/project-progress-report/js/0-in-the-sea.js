@@ -77,7 +77,7 @@ function setup() {
   // User appearance for minigame2
   let x2 = width / 2;
   let y2 = height - 50;
-  turtle = new Turtle(x2, y2, turtleImg);
+  turtle = new TurtleUser(x2, y2, turtleImg);
 
   // Create new fishes and store them in an array
   let x, y;
