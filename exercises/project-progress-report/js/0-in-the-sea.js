@@ -33,7 +33,9 @@ function preload() {
   fontRegular = loadFont('assets/fonts/PlayfairDisplay-VariableFont_wght.ttf')
   fontItalic = loadFont('assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf')
   // See README for more info on images
+  // Title special effect
   bubbleImg = loadImage('assets/images/bubble.png')
+  // Minigame 1's fish icons
   clownfishImg1 = loadImage('assets/images/clown-fish1.png');
   clownfishImg2 = loadImage('assets/images/clown-fish2.png');
   angelfishImg1 = loadImage('assets/images/yellow-fish1.png');
@@ -42,7 +44,8 @@ function preload() {
   moorishIdolImg2 = loadImage('assets/images/moorish-idol-fish2.png');
   sharkImg1 = loadImage('assets/images/shark1.png')
   sharkImg2 = loadImage('assets/images/shark2.png')
-  bg = loadImage('assets/images/seabed2.png')
+  // Background for minigames
+  bg1 = loadImage('assets/images/seabed2.png')
 }
 
 function setup() {
