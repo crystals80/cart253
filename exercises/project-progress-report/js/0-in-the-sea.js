@@ -42,10 +42,11 @@ function preload() {
   angelfishImg2 = loadImage('assets/images/yellow-fish2.png');
   moorishIdolImg1 = loadImage('assets/images/moorish-idol-fish1.png');
   moorishIdolImg2 = loadImage('assets/images/moorish-idol-fish2.png');
-  sharkImg1 = loadImage('assets/images/shark1.png')
-  sharkImg2 = loadImage('assets/images/shark2.png')
+  sharkImg1 = loadImage('assets/images/shark1.png');
+  sharkImg2 = loadImage('assets/images/shark2.png');
   // Background for minigames
-  bg1 = loadImage('assets/images/seabed2.png')
+  bg1 = loadImage('assets/images/seabed2.png');
+  bg2 = loadImage('assets/images/seabed1.png')
 }
 
 function setup() {
@@ -105,14 +106,16 @@ function draw() {
     complete1();
   } else if (state === `gameover1`) {
     gameover1();
+  } else if (state === `minigame2`) {
+    noCursor();
+    minigame2();
+  } else if (state === `complete2`) {
+    cursor();
+    complete2();
+  } else if (state === `gameover2`) {
+    gameover2();
   }
-  // else if (state === `minigame2`) {
-  //   minigame2();
-  // } else if (state === `complete2`) {
-  //   complete2();
-  // } else if (state === `gameover2`) {
-  //   gameover2();
-  // } else if (state === `minigame3`) {
+  //else if (state === `minigame3`) {
   //   minigame3();
   // } else if (state === `complete3`) {
   //   complete3();
@@ -170,6 +173,11 @@ function keyPressed() {
   if (state === `title` && keyIsDown(13)) {
     state = `minigame1`;
   }
+  // Testing minigame2 so adding "skipping minigame1" option to go to minigame 2
+  // Will delete after done testing
+  else if (state === `title` && keyIsDown(32)) {
+    state = `minigame2`;
+  }
   // If timer reaches 0, user will move from minigame1 to game over screen for minigame1
   if (state === `gameover1` && keyIsDown(32)) {
     state = `minigame1`;
@@ -180,4 +188,5 @@ function keyPressed() {
   if (state === `complete1` && keyIsDown(13)) {
     state === `minigame2`;
   }
+
 }
