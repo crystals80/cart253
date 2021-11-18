@@ -5,26 +5,29 @@ Lam Ky Anh Do
 
 "use strict";
 
+// STATE VARIABLE: title, minigame, complete and gameover
+let state = `title`;
+
+// VARIABLE FOR TITLE SCREEN, including complete and gameover screens
 let bubble;
 let bubbles = []; // Bubble array variables
 let numBubble = 20; // Number of bubble
 
-let state = `title`; // state: title, minigame, complete and gameover
-
-// Font variables;
+// FONT VARIABLES
 let fontRegular, fontItalic;
 
-// Variables for mini game 1
+// VARIABLES FOR MINIGAME1
 let clownfish, angelfish, moorishIdol, shark; // Fish variables
 let fishes = []; // Fish array variable
 let numClownfish = 10; // Number of clownfish
 let numAngelfish = 10; // Number of angelfish
 let numMoorishIdol = 10; // Number of moorish idol fish
-// Countdown timer variables
-let timer = 30;
+let timer = 30; // Countdown timer variable
 
+// VARIABLES FOR MINIGAME2
+let turtle; // Sea creature variables
 
-// Variables for images not for minigames
+// VARIABLES FOR IMAGES
 let bubbleImg;
 // Variables for images of minigame1
 let clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg1, sharkImg2, moorishIdolImg1, moorishIdolImg2, bg1;
@@ -33,7 +36,6 @@ let turtleImg, bg2;
 // Variables for images of minigame3
 //let bg3;
 
-// Give sea creatures an appearance
 function preload() {
   // See README for more info on typeface
   fontRegular = loadFont('assets/fonts/PlayfairDisplay-VariableFont_wght.ttf')
@@ -69,8 +71,12 @@ function setup() {
   }
 
   let x, y; // Position variables for array classes
-  // User/Cursor appearance
+  // User/Cursor appearance for minigame1
   shark = new SharkUser(x, y, sharkImg1);
+  // User appearance for minigame2
+  let x2 = width / 2;
+  let y2 = height;
+  turtle = new Turtle(x2, y2, turtleImg);
 
   // Create new fishes and store them in an array
   clownfish = new Clownfish(x, y, clownfishImg1);
