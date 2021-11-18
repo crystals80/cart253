@@ -58,7 +58,7 @@ function setup() {
 
   let x, y; // Position variables for array classes
   // User/Cursor appearance
-  shark = new Shark(x, y, sharkImg1);
+  shark = new SharkUser(x, y, sharkImg1);
 
   // Create new fishes and store them in an array
   clownfish = new Clownfish(x, y, clownfishImg1);
@@ -98,6 +98,7 @@ function draw() {
     noCursor();
     minigame1();
   } else if (state === `complete1`) {
+    cursor();
     complete1();
   } else if (state === `gameover1`) {
     gameover1();

@@ -69,9 +69,9 @@ function complete1() {
   textSize(60);
   text(`Congratulation!`, width / 2, height / 4);
   textSize(32);
-  text(`A step closer to your goal! Are you ready for the next trial?`, width / 2, 50 + height / 2);
+  text(`A step closer to your goal! Are you ready for the next trial?`, width / 2, 30 + height / 2);
   textSize(16);
-  text(`Now you must swim across the different sea levels and`, width / 2, -5 + 3 * height / 4);
+  text(`In that case, you must swim across the different sea levels and`, width / 2, -5 + 3 * height / 4);
   text(`reach the surface without encountering another sea creature!`, width / 2, 25 + 3 * height / 4);
   textSize(10);
   text(`~ PRESS to ENTER Underwater Trial 2 ~`, width / 2, height - 50);
