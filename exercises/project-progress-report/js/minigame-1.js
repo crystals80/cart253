@@ -2,7 +2,7 @@ function minigame1() {
 
   // Display background
   push();
-  image(bg, 0, 0, windowWidth, windowHeight + 20);
+  image(bg1, 0, 0, windowWidth, windowHeight + 20);
   imageMode(CORNER);
   pop();
 
