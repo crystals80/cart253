@@ -26,6 +26,10 @@ let timer = 30; // Countdown timer variable
 
 // VARIABLES FOR MINIGAME2
 let turtle; // Sea creature variables
+let fishesCirculation = []; // Fish circulation array variable
+let numCfish = 10; // Number of clownfish circulating
+let numAfish = 10; // Number of angelfish circulating
+let numMIFish = 10; // Number of moorish idol fish circulating
 
 // VARIABLES FOR IMAGES
 let bubbleImg;
