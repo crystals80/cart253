@@ -18,7 +18,7 @@ I had this bubble.png in my laptop for as long as I can remember, so I don't kno
 Icon vectors were taken from Flaticon/Freepik.
 
 
-<i>Background Image of Mini Game 1</i>
+<i>Background Image of Mini Game 1 & 2</i>
 
 Image was taken from VectorStock.
 
