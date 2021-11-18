@@ -70,15 +70,17 @@ function setup() {
     bubbles.push(bubble);
   }
 
-  let x, y; // Position variables for array classes
+
   // User/Cursor appearance for minigame1
-  shark = new SharkUser(x, y, sharkImg1);
+  let x1, y1; // Position variables for array classes
+  shark = new SharkUser(x1, y1, sharkImg1);
   // User appearance for minigame2
   let x2 = width / 2;
   let y2 = height - 50;
   turtle = new Turtle(x2, y2, turtleImg);
 
   // Create new fishes and store them in an array
+  let x, y;
   clownfish = new Clownfish(x, y, clownfishImg1);
   angelfish = new Angelfish(x, y, angelfishImg1);
   moorishIdol = new MoorishIdol(x, y, moorishIdolImg1);

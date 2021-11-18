@@ -1,12 +1,12 @@
 class Turtle {
-  constructor(x2, y2, turtleImg) {
+  constructor(x2, y2, image) {
     this.x = x2;
     this.y = y2;
     this.size = 75;
     this.vx = 0;
     this.vy = 0;
     this.speed = 5;
-    this.image = turtleImg;
+    this.image = image;
     this.alive = true;
   }
 

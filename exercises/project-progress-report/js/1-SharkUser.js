@@ -1,7 +1,7 @@
 class SharkUser {
-  constructor(x, y, image) {
-    this.x = x;
-    this.y = y;
+  constructor(x1, y1, image) {
+    this.x = x1;
+    this.y = y1;
     this.size = 125;
     this.image = image;
   }
