@@ -24,8 +24,14 @@ let numMoorishIdol = 10; // Number of moorish idol fish
 let timer = 30;
 
 
-// Variables for images
-let bubbleImg, clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg1, sharkImg2, moorishIdolImg1, moorishIdolImg2, bg;
+// Variables for images not for minigames
+let bubbleImg;
+// Variables for images of minigame1
+let clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg1, sharkImg2, moorishIdolImg1, moorishIdolImg2, bg1;
+// Variables for images of minigame2
+let turtleImg, bg2;
+// Variables for images of minigame3
+//let bg3;
 
 // Give sea creatures an appearance
 function preload() {
