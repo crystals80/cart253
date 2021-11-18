@@ -1,8 +1,8 @@
 class FishCirculation {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.size = 40;
+  constructor(xpos, ypos) {
+    this.x = xpos;
+    this.y = ypos;
+    this.size = undefined;
     this.vx = 0;
     this.vy = 0;
     this.image = undefined;
