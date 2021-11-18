@@ -2,7 +2,7 @@ class Turtle {
   constructor(x2, y2, turtleImg) {
     this.x = x2;
     this.y = y2;
-    this.size = 20;
+    this.size = 75;
     this.vx = 0;
     this.vy = 0;
     this.speed = 5;
