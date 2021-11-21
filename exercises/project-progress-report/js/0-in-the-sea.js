@@ -19,17 +19,12 @@ let fontRegular, fontItalic;
 // VARIABLES FOR MINIGAME1
 let clownfish, angelfish, moorishIdol, shark; // Fish variables
 let fishes = []; // Fish array variable
-let numClownfish = 10; // Number of clownfish
-let numAngelfish = 10; // Number of angelfish
-let numMoorishIdol = 10; // Number of moorish idol fish
+let numFish = 10; // Number of clownfish, Number of angelfish, moorish idol fish
 let timer = 30; // Countdown timer variable
 
 // VARIABLES FOR MINIGAME2
 let turtle; // Sea creature variables
 let fishesCirculation = []; // Fish circulation array variable
-let numCfish = 10; // Number of clownfish circulating
-let numAfish = 10; // Number of angelfish circulating
-let numMIFish = 10; // Number of moorish idol fish circulating
 
 // VARIABLES FOR IMAGES
 let bubbleImg;
@@ -85,30 +80,22 @@ function setup() {
   // MINIGAME 1'S SETUP
   let x, y; // Declare x and y position
   // Create clownfishes
-  for (let i = 0; i < numClownfish; i++) {
+  for (let i = 0; i < numFish; i++) {
     let x = random(0, width);
     let y = random(0, height);
     let clownfish = new Clownfish(x, y, clownfishImg1);
     fishes.push(clownfish);
-  }
-  // Create angelfishes
-  for (let i = 0; i < numAngelfish; i++) {
-    let x = random(0, width);
-    let y = random(0, height);
+    // Create angelfishes
     let angelfish = new Angelfish(x, y, angelfishImg1);
     fishes.push(angelfish);
-  }
-  // Create moorish idol fishes
-  for (let i = 0; i < numMoorishIdol; i++) {
-    let x = random(0, width);
-    let y = random(0, height);
+    // Create moorish idol fishes
     let moorishIdol = new MoorishIdol(x, y, moorishIdolImg1);
     fishes.push(moorishIdol);
   }
 
   // MINIGAME 2'S SETUP
   // Create a circulation with clownfishes
-  for (let i = 0; i < numCfish; i++) {
+  for (let i = 0; i < numFish; i++) {
     let x = random(0, width);
     let y = random(0, height);
     let fishC = new CfishCirculation(x, y, clownfishImg1);
