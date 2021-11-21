@@ -230,5 +230,9 @@ function keyPressed() {
   // To leave game over screen and restart minigame2, user will press SPACE
   if (state === `gameover2` && keyIsDown(32)) {
     state = `minigame2`;
+    removeElements();
+    noLoop();
+    return;
+    reset();
   }
 }
