@@ -1,8 +1,7 @@
 class CfishCirculation extends FishCirculation {
-  constructor(x3, y3, image) {
-    super(xpos, ypos);
-    this.size = 30;
-    this.speed = 2;
+  constructor(x, y, image) {
+    super(x, y);
+    this.speed = 4;
     this.image = image;
   }
 
