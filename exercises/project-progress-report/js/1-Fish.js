@@ -25,16 +25,21 @@ class Fish {
     this.y += this.vy;
 
     // Constrain fish to the canvas
-    this.x = constrain(this.x, 50, width - 50);
-    this.y = constrain(this.y, 50, height - 50);
+    this.x = constrain(this.x, 25, width - 25);
+    this.y = constrain(this.y, 25, height - 25);
   }
 
   // Keep fishes within the canvas
   wrap() {
     if (this.x > width) {
-      this.x -= width - 30;
+      this.x -= width;
     } else if (this.x < 0) {
-      this.x += width - 25;
+      this.x += width;
+    }
+    if (this.y > height) {
+      this.y -= height - 10;
+    } else if (this.y < 0) {
+      this.y += height - 10;
     }
   }
 

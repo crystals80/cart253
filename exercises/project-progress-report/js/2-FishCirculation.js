@@ -20,9 +20,14 @@ class FishCirculation {
   // Keep the fishes in the canvas
   wrap() {
     if (this.x > width) {
-      this.x -= width - 30;
+      this.x -= width;
     } else if (this.x < 0) {
-      this.x += width - 25;
+      this.x += width;
+    }
+    if (this.y > height) {
+      this.y -= height - 25;
+    } else if (this.y < 0) {
+      this.y += height - 25;
     }
   }
 
