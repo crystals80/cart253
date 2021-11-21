@@ -32,7 +32,7 @@ let bubbleImg;
 // Variables for images of minigame1
 let clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg1, sharkImg2, moorishIdolImg1, moorishIdolImg2, bg1;
 // Variables for images of minigame2
-let turtleImg, sharkImg3, sharkImg4, bg2;
+let turtleImg, sharkImg3, sharkImg4, deadTurtle, bg2;
 // Variables for images of minigame3
 //let bg3;
 
@@ -52,10 +52,11 @@ function preload() {
   moorishIdolImg2 = loadImage('assets/images/moorish-idol-fish2.png');
   sharkImg1 = loadImage('assets/images/shark1.png');
   sharkImg2 = loadImage('assets/images/shark2.png');
-  sharkImg3 = loadImage('assets/images/shark3.png');
-  sharkImg4 = loadImage('assets/images/shark4.png');
   //Minigame 2's sea creatures directions
   turtleImg = loadImage('assets/images/turtle.png');
+  sharkImg3 = loadImage('assets/images/shark3.png');
+  sharkImg4 = loadImage('assets/images/shark4.png');
+  deadTurtle = loadImage('assets/images/turtle-died-tinted.png');
   // Background for minigames
   bg1 = loadImage('assets/images/seabed2.png');
   bg2 = loadImage('assets/images/seabed1.png')
