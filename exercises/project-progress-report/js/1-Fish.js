@@ -1,3 +1,4 @@
+// Set up parent fish class for minigame1
 class Fish {
   // Set up fishes by giving it a position, size, speed and appearance
   constructor(x, y) {
@@ -39,5 +40,56 @@ class Fish {
 
   display() {
     // Fishes appearance will be determined in sub-classes
+  }
+}
+
+// Set up 1st subclass
+class Clownfish extends Fish {
+  // Set up clownfish by giving it an appearance as its other properties were already defined in the parent class
+  constructor(x, y, image) {
+    super(x, y);
+    this.image = image;
+  }
+
+  display() {
+    push();
+    // Display the clownfish on the canvas
+    imageMode(CENTER);
+    image(this.image, this.x, this.y, this.size, this.size);
+    pop();
+  }
+}
+
+// Set up 2nd subclass
+class Angelfish extends Fish {
+  // Set up angelfish by giving it an appearance as its other properties were already defined in the parent class
+  constructor(x, y, image) {
+    super(x, y);
+    this.image = image;
+  }
+
+  display() {
+    push();
+    // Display the angelfish on the canvas
+    imageMode(CENTER);
+    image(this.image, this.x, this.y, this.size, this.size);
+    pop();
+  }
+}
+
+// Set up 3rd subclass
+class MoorishIdol extends Fish {
+  // Set up moorish idol fish by giving it an appearance as its other properties were already defined in the parent class
+  constructor(x, y, image) {
+    super(x, y);
+    this.image = image;
+  }
+
+  display() {
+    push();
+    // Display the moorish idol fish on the canvas
+    imageMode(CENTER);
+    image(this.image, this.x, this.y, this.size, this.size);
+    pop();
   }
 }
