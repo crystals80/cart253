@@ -19,19 +19,20 @@ let fontRegular, fontItalic;
 // VARIABLES FOR MINIGAME1
 let clownfish, angelfish, moorishIdol, shark; // Fish variables
 let fishes = []; // Fish array variable
-let numFish = 10; // Number of clownfish, Number of angelfish, moorish idol fish
+let numFish = 10; // Number of clownfish, angelfish, moorish idol fish
 let timer = 30; // Countdown timer variable
 
 // VARIABLES FOR MINIGAME2
 let turtle; // Sea creature variables
 let fishesCirculation = []; // Fish circulation array variable
+let numShark = 5; // Number of shark
 
 // VARIABLES FOR IMAGES
 let bubbleImg;
 // Variables for images of minigame1
 let clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg1, sharkImg2, moorishIdolImg1, moorishIdolImg2, bg1;
 // Variables for images of minigame2
-let turtleImg, bg2;
+let turtleImg, sharkImg3, sharkImg4, bg2;
 // Variables for images of minigame3
 //let bg3;
 
@@ -51,6 +52,8 @@ function preload() {
   moorishIdolImg2 = loadImage('assets/images/moorish-idol-fish2.png');
   sharkImg1 = loadImage('assets/images/shark1.png');
   sharkImg2 = loadImage('assets/images/shark2.png');
+  sharkImg3 = loadImage('assets/images/shark3.png');
+  sharkImg4 = loadImage('assets/images/shark4.png');
   //Minigame 2's sea creatures directions
   turtleImg = loadImage('assets/images/turtle.png');
   // Background for minigames
@@ -100,12 +103,20 @@ function setup() {
     let y = random(0, height);
     let fishC = new CfishCirculation(x, y, clownfishImg1);
     fishesCirculation.push(fishC);
-    // Create a circulation with clownfishes
+    // Create a circulation with angelfishes
     let fishA = new AfishCirculation(x, y, angelfishImg1);
     fishesCirculation.push(fishA);
-    // Create a circulation with clownfishes
+    // Create a circulation with mooorish idol fishes
     let fishMI = new MIFishCirculation(x, y, moorishIdolImg1);
     fishesCirculation.push(fishMI);
+  }
+
+  // Create a circulation with sharks
+  for (let i = 0; i < numShark; i++) {
+    let x = random(0, width);
+    let y = random(0, height);
+    let shark = new SharkCirculation(x, y, sharkImg3);
+    fishesCirculation.push(shark);
   }
   // Make fishes circulate in random directions
   for (let i = 0; i < fishesCirculation.length; i++) {
