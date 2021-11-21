@@ -153,14 +153,14 @@ function draw() {
     complete2();
   } else if (state === `gameover2`) {
     gameover2();
+  } else if (state === `minigame3`) {
+    minigame3();
+  } else if (state === `complete3`) {
+    complete3();
+  } else if (state === `gameover3`) {
+    gameover3();
   }
-  //else if (state === `minigame3`) {
-  //   minigame3();
-  // } else if (state === `complete3`) {
-  //   complete3();
-  // } else if (state === `gameover3`) {
-  //   gameover3();
-  // } else if (state === `ending`) {
+  //else if (state === `ending`) {
   // ending();}
 }
 
@@ -217,6 +217,11 @@ function keyPressed() {
   else if (state === `title` && keyIsDown(32)) {
     state = `minigame2`;
   }
+  // Testing minigame3 so adding "skipping minigame1 and minigame2" option to go to minigame 3
+  // Will delete after done testing
+  else if (state === `title` && keyIsDown(16)) {
+    state = `minigame3`;
+  }
   // To leave game over screen and restart minigame1, user will press SPACE
   if (state === `gameover1` && keyIsDown(32)) {
     state = `minigame1`;
@@ -234,5 +239,14 @@ function keyPressed() {
     noLoop();
     return;
     reset();
+  }
+  // Moving from minigame2's congratulating screen to minigame3 by pressing ENTER
+  if (state === `complete2` && keyIsDown(13)) {
+    state === `minigame3`;
+  }
+  // To leave game over screen and restart minigame3, user will press SPACE
+  if (state === `gameover3` && keyIsDown(32)) {
+    state = `minigame3`;
+    removeElements();
   }
 }
