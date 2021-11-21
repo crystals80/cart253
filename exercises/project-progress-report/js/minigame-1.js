@@ -101,7 +101,7 @@ function gameover1() {
   }
   pop();
 
-  // Add special effect where shark is struggling because it is starving
+  // Add special effect showing that shark is struggling because it is starving
   let sadShark = createImg('assets/images/sad-shark-tinted.gif');
   sadShark.size(333, 200);
   sadShark.position(10 + width / 3, -260 + height);
