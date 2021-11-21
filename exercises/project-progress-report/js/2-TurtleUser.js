@@ -13,7 +13,7 @@ class TurtleUser {
   }
   // Check if turtle/User is hit by a fish
   checkHit(fishC) {
-    if (this.x > fishC.x - fishC.size / 4 && this.x < fishC.x + fishC.size / 4 && this.y > fishC.y - fishC.size / 4 && this.y < fishC.y + fishC.size / 4) {
+    if (this.x > fishC.x - fishC.size / 3 && this.x < fishC.x + fishC.size / 3 && this.y > fishC.y - fishC.size / 3 && this.y < fishC.y + fishC.size / 3) {
       this.alive = false;
     }
   }
