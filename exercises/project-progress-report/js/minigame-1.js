@@ -11,9 +11,6 @@ function minigame1() {
   shark.display();
 
   // Display fishes and their movements
-  clownfish.display();
-  angelfish.display();
-
   for (let i = 0; i < fishes.length; i++) {
     let fish = fishes[i];
     fish.move();
