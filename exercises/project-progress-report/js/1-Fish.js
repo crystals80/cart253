@@ -1,4 +1,5 @@
 class Fish {
+  // Set up fishes by giving it a position, size, speed and appearance
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -27,6 +28,7 @@ class Fish {
     this.y = constrain(this.y, 50, height - 50);
   }
 
+  // Keep fishes within the canvas
   wrap() {
     if (this.x > width) {
       this.x -= width;
@@ -36,6 +38,6 @@ class Fish {
   }
 
   display() {
-
+    // Fishes appearance will be determined in sub-classes
   }
 }

@@ -8,6 +8,7 @@ class Bubble {
     this.image = image;
   }
 
+  // Display bubble effect on title screen 
   display() {
     image(this.image, this.x, this.y, this.d, this.d);
   }

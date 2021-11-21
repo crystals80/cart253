@@ -1,4 +1,5 @@
 class FishCirculation {
+  // Set up fishes by giving it a position, speed and undefined speed and appearance
   constructor(xpos, ypos) {
     this.x = xpos;
     this.y = ypos;
@@ -9,11 +10,13 @@ class FishCirculation {
     this.image = undefined;
   }
 
+  // Set fishes movement for circulation
   move() {
     this.x += this.vx;
     this.y += this.vy;
   }
 
+  // Keep the fishes in the canvas
   wrap() {
     if (this.x > width) {
       this.x -= width;
@@ -23,6 +26,6 @@ class FishCirculation {
   }
 
   display() {
-
+    // Fishes appearance will be determined in sub-classes
   }
 }
