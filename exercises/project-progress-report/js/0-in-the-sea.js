@@ -101,8 +101,8 @@ function setup() {
   for (let i = 0; i < numFish; i++) {
     let x = random(0, width);
     let y = random(0, height);
-    let fishC = new CfishCirculation(x, y, clownfishImg1);
-    fishesCirculation.push(fishC);
+    let fishCl = new CfishCirculation(x, y, clownfishImg1);
+    fishesCirculation.push(fishCl);
     // Create a circulation with angelfishes
     let fishA = new AfishCirculation(x, y, angelfishImg1);
     fishesCirculation.push(fishA);
