@@ -2,7 +2,7 @@ class AfishCirculation extends FishCirculation {
   // Set up angelfish by giving it a speed and appearance as its other properties were already defined in the parent class
   constructor(x, y, image) {
     super(x, y);
-    this.speed = 2.5;
+    this.speed = 2;
     this.image = image;
   }
 
@@ -10,7 +10,7 @@ class AfishCirculation extends FishCirculation {
   display() {
     push();
     imageMode(CENTER);
-    image(this.image, this.x, this.y, this.width, this.height);
+    image(this.image, this.x, this.y, this.size, this.size);
     pop();
   }
 }

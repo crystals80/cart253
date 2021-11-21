@@ -111,22 +111,14 @@ function setup() {
   for (let i = 0; i < numCfish; i++) {
     let x = random(0, width);
     let y = random(0, height);
-    let fishC = new AfishCirculation(x, y, clownfishImg1);
+    let fishC = new CfishCirculation(x, y, clownfishImg1);
     fishesCirculation.push(fishC);
-  }
-  // Create a circulation with clownfishes
-  for (let i = 0; i < numAfish; i++) {
-    let x = random(0, width);
-    let y = random(0, height);
-    let fishC = new CfishCirculation(x, y, angelfishImg1);
-    fishesCirculation.push(fishC);
-  }
-  // Create a circulation with clownfishes
-  for (let i = 0; i < numMIFish; i++) {
-    let x = random(0, width);
-    let y = random(0, height);
-    let fishC = new CfishCirculation(x, y, moorishIdolImg1);
-    fishesCirculation.push(fishC);
+    // Create a circulation with clownfishes
+    let fishA = new AfishCirculation(x, y, angelfishImg1);
+    fishesCirculation.push(fishA);
+    // Create a circulation with clownfishes
+    let fishMI = new MIFishCirculation(x, y, moorishIdolImg1);
+    fishesCirculation.push(fishMI);
   }
   // Make fishes circulate in random directions
   for (let i = 0; i < fishesCirculation.length; i++) {
