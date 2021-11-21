@@ -31,9 +31,9 @@ class Fish {
   // Keep fishes within the canvas
   wrap() {
     if (this.x > width) {
-      this.x -= width;
+      this.x -= width - 30;
     } else if (this.x < 0) {
-      this.x += width;
+      this.x += width - 25;
     }
   }
 
