@@ -207,7 +207,7 @@ function title() {
 
 // function regulating state transitions
 function keyPressed() {
-  // Moving from title screen to minigame1
+  // Moving from title screen to minigame1 by pressing ENTER
   if (state === `title` && keyIsDown(13)) {
     state = `minigame1`;
   }
@@ -216,15 +216,18 @@ function keyPressed() {
   else if (state === `title` && keyIsDown(32)) {
     state = `minigame2`;
   }
-  // If timer reaches 0, user will move from minigame1 to game over screen for minigame1
+  // To leave game over screen and restart minigame1, user will press SPACE
   if (state === `gameover1` && keyIsDown(32)) {
     state = `minigame1`;
     timer = 30;
     removeElements();
   }
-  // Moving from minigame1's congratulating screen to minigame2
+  // Moving from minigame1's congratulating screen to minigame2 by pressing ENTER
   if (state === `complete1` && keyIsDown(13)) {
     state === `minigame2`;
   }
-
+  // To leave game over screen and restart minigame2, user will press SPACE
+  if (state === `gameover2` && keyIsDown(32)) {
+    state = `minigame2`;
+  }
 }

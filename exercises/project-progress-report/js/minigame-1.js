@@ -28,8 +28,7 @@ function minigame1() {
   if (frameCount % 60 == 0 && timer > 0) {
     timer--;
   }
-  //text('0:0' + timer, width - 88, 56);
-  //if (frameCount % 60 == 0 && timer < 10) {timer--;  }
+  // If timer reaches 0, user will move from minigame1 to game over screen for minigame1
   if (timer == 0 && state === `minigame1`) {
     state = `gameover1`;
   }
