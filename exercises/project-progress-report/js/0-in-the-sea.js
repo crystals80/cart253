@@ -74,7 +74,6 @@ function setup() {
     bubbles.push(bubble);
   }
 
-
   // User/Cursor appearance for minigame1
   let x1, y1; // Position variables for array classes
   shark = new SharkUser(x1, y1, sharkImg1);
@@ -83,26 +82,23 @@ function setup() {
   let y2 = height - 50;
   turtle = new TurtleUser(x2, y2, turtleImg);
 
-  // Create new fishes and store them in an array
-  let x, y;
-  clownfish = new Clownfish(x, y, clownfishImg1);
-  angelfish = new Angelfish(x, y, angelfishImg1);
-  moorishIdol = new MoorishIdol(x, y, moorishIdolImg1);
-  // Create new clownfishes
+  // MINIGAME 1'S SETUP
+  let x, y; // Declare x and y position
+  // Create clownfishes
   for (let i = 0; i < numClownfish; i++) {
     let x = random(0, width);
     let y = random(0, height);
     let clownfish = new Clownfish(x, y, clownfishImg1);
     fishes.push(clownfish);
   }
-  // Create new angelfishes
+  // Create angelfishes
   for (let i = 0; i < numAngelfish; i++) {
     let x = random(0, width);
     let y = random(0, height);
     let angelfish = new Angelfish(x, y, angelfishImg1);
     fishes.push(angelfish);
   }
-  // Create new moorish idol fishes
+  // Create moorish idol fishes
   for (let i = 0; i < numMoorishIdol; i++) {
     let x = random(0, width);
     let y = random(0, height);
@@ -110,6 +106,38 @@ function setup() {
     fishes.push(moorishIdol);
   }
 
+  // MINIGAME 2'S SETUP
+  // Create a circulation with clownfishes
+  for (let i = 0; i < numCfish; i++) {
+    let x = random(0, width);
+    let y = random(0, height);
+    let fishC = new AfishCirculation(x, y, clownfishImg1);
+    fishesCirculation.push(fishC);
+  }
+  // Create a circulation with clownfishes
+  for (let i = 0; i < numAfish; i++) {
+    let x = random(0, width);
+    let y = random(0, height);
+    let fishC = new CfishCirculation(x, y, angelfishImg1);
+    fishesCirculation.push(fishC);
+  }
+  // Create a circulation with clownfishes
+  for (let i = 0; i < numMIFish; i++) {
+    let x = random(0, width);
+    let y = random(0, height);
+    let fishC = new CfishCirculation(x, y, moorishIdolImg1);
+    fishesCirculation.push(fishC);
+  }
+  // Make fishes circulate in random directions
+  for (let i = 0; i < fishesCirculation.length; i++) {
+    let fishC = fishesCirculation[i];
+    let r = random(0, 1);
+    if (r < 0.5) {
+      fishC.vx = -fishC.speed;
+    } else {
+      fishC.vx = fishC.speed;
+    }
+  }
 }
 
 function draw() {
