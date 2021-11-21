@@ -1,3 +1,4 @@
+// Set up user class for minigame1
 class SharkUser {
   // Set up shark by giving it a position, size and appearance
   constructor(x1, y1, image) {

@@ -1,3 +1,4 @@
+// Set up user class for minigame2
 class TurtleUser {
   // Set up turtle by giving it a position, size, speed, appearance and life
   constructor(x2, y2, image) {
