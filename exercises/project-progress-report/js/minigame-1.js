@@ -36,6 +36,7 @@ function minigame1() {
   pop();
 }
 
+// Set up winning title screen of minigame1
 function complete1() {
 
   // Set up gradient background
@@ -78,6 +79,7 @@ function complete1() {
   pop();
 }
 
+// Set up game over title screen
 function gameover1() {
   // Set up gradient background
   push();
