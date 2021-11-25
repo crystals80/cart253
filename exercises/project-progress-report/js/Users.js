@@ -1,3 +1,29 @@
+// Set up user class for minigame1
+class SharkUser {
+  // Set up shark by giving it a position, size and appearance
+  constructor(x1, y1, image) {
+    this.x = x1;
+    this.y = y1;
+    this.size = 125;
+    this.image = image;
+  }
+
+  move() {
+    // User movement
+    this.x = mouseX;
+    this.y = mouseY;
+  }
+
+  // Display user
+  display() {
+    push();
+    // Display the fishes on the canvas
+    imageMode(CENTER);
+    image(this.image, this.x, this.y, this.size, this.size);
+    pop();
+  }
+}
+
 // Set up user class for minigame2
 class TurtleUser {
   // Set up turtle by giving it a position, size, speed, appearance and life
@@ -48,6 +74,32 @@ class TurtleUser {
     push();
     imageMode(CENTER);
     image(turtleImg, this.x, this.y, this.size, this.size);
+    pop();
+  }
+}
+
+// Set up user class for minigame3
+class PenguinUser {
+  // Set up shark by giving it a position, size and appearance
+  constructor(x3, y3, image) {
+    this.x = x3;
+    this.y = y3;
+    this.size = 50;
+    this.image = image;
+  }
+
+  move() {
+    // User movement
+    this.x = mouseX;
+    this.y = mouseY;
+  }
+
+  // Display user
+  display() {
+    push();
+    // Display the fishes on the canvas
+    imageMode(CENTER);
+    image(this.image, this.x, this.y, this.size, this.size);
     pop();
   }
 }
