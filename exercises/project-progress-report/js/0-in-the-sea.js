@@ -10,22 +10,27 @@ let state = `title`;
 
 // VARIABLE FOR TITLE SCREEN, including complete and gameover screens
 let bubble;
-let bubbles = []; // Bubble array variables
+let bubbles = []; // Bubble array variable
 let numBubble = 20; // Number of bubble
 
 // FONT VARIABLES
 let fontRegular, fontItalic;
 
 // VARIABLES FOR MINIGAME1
-let clownfish, angelfish, moorishIdol, shark; // Fish variables
+let clownfish, angelfish, moorishIdol, shark; // Fish and user variables
 let fishes = []; // Fish array variable
 let numFish = 10; // Number of clownfish, angelfish, moorish idol fish
 let timer = 30; // Countdown timer variable
 
 // VARIABLES FOR MINIGAME2
-let turtle; // Sea creature variables
+let turtle; // User variable
 let fishesCirculation = []; // Fish circulation array variable
 let numShark = 5; // Number of shark
+
+// VARIABLES FOR MINIGAME3
+let penguin; // User variable
+let orcas = []; // Orca array variable
+let numOrca = 25; // Number of orca
 
 // VARIABLES FOR IMAGES
 let bubbleImg;
@@ -34,7 +39,7 @@ let clownfishImg1, clownfishImg2, angelfishImg1, angelfishImg2, sharkImg1, shark
 // Variables for images of minigame2
 let turtleImg, sharkImg3, sharkImg4, deadTurtle, bg2;
 // Variables for images of minigame3
-//let bg3;
+let penguinImg, orcaImg1, orcaImg2, bg3;
 
 function preload() {
   // See README for more info on typeface
@@ -57,6 +62,10 @@ function preload() {
   sharkImg3 = loadImage('assets/images/shark3.png');
   sharkImg4 = loadImage('assets/images/shark4.png');
   deadTurtle = loadImage('assets/images/turtle-died-tinted.png');
+  //Minigame 3's sea creatures directions
+  penguinImg = loadImage('assets/images/penguin.png');
+  orcaImg1 = loadImage('assets/images/orca1.png');
+  orcaImg2 = loadImage('assets/images/orca2.png');
   // Background for minigames
   bg1 = loadImage('assets/images/seabed2.png');
   bg2 = loadImage('assets/images/seabed1.png')
@@ -73,13 +82,16 @@ function setup() {
     bubbles.push(bubble);
   }
 
-  // User/Cursor appearance for minigame1
-  let x1, y1; // Position variables for array classes
-  shark = new SharkUser(x1, y1, sharkImg1);
-  // User appearance for minigame2
+  // Position variables for array classes
+  let x1, y1;
   let x2 = width / 2;
   let y2 = height - 50;
-  turtle = new TurtleUser(x2, y2, turtleImg);
+  // User/Cursor appearance for minigame1
+  shark = new MouseUser(x1, y1, sharkImg1);
+  // User appearance for minigame2
+  turtle = new ArrowUser(x2, y2, turtleImg);
+  // User/Cursor appearance for minigame3
+  penguin = new PenguinUser(x1, y1, penguinImg);
 
   // MINIGAME 1'S SETUP
   let x, y; // Declare x and y position
@@ -129,6 +141,14 @@ function setup() {
       fishC.vx = fishC.speed;
     }
   }
+
+  //MINIGAME 3'S setup
+  // Set up the initial position of flocks of orcas
+  for (let i = 0; i < numOrca; i++) {
+    let x = random(width);
+    let y = random(height);
+    orcas[i] = new Orca(x, y);
+  }
 }
 
 function draw() {
@@ -154,6 +174,7 @@ function draw() {
   } else if (state === `gameover2`) {
     gameover2();
   } else if (state === `minigame3`) {
+    noCursor();
     minigame3();
   } else if (state === `complete3`) {
     complete3();
@@ -236,9 +257,8 @@ function keyPressed() {
   if (state === `gameover2` && keyIsDown(32)) {
     state = `minigame2`;
     removeElements();
-    noLoop();
+    resetCirculation();
     return;
-    reset();
   }
   // Moving from minigame2's congratulating screen to minigame3 by pressing ENTER
   if (state === `complete2` && keyIsDown(13)) {
