@@ -32,6 +32,14 @@ function minigame2() {
   }
 }
 
+function resetCirculation() {
+  turtle.alive = true;
+  let x = width / 2;
+  let y = height - 50;
+  turtle.x = x;
+  turtle.y = y;
+}
+
 // Set up winning title screen of minigame2
 function complete2() {
 

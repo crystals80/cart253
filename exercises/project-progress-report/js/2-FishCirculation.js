@@ -104,7 +104,14 @@ class SharkCirculation extends FishCirculation {
   display() {
     push();
     imageMode(CENTER);
-    image(this.image, this.x, this.y, this.size, this.size);
+    translate(this.x, this.y);
+    if (this.vx < 0) {
+      scale(-1, 1);
+      image(this.image, 0, 0, this.size, this.size);
+    } else {
+      image(this.image, 0, 0, this.size, this.size);
+    }
+
     pop();
   }
 }
