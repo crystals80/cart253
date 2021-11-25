@@ -1,5 +1,5 @@
 // Set up user class for minigame1
-class SharkUser {
+class MouseUser {
   // Set up shark by giving it a position, size and appearance
   constructor(x1, y1, image) {
     this.x = x1;
@@ -25,7 +25,7 @@ class SharkUser {
 }
 
 // Set up user class for minigame2
-class TurtleUser {
+class ArrowUser {
   // Set up turtle by giving it a position, size, speed, appearance and life
   constructor(x2, y2, image) {
     this.x = x2;
@@ -79,27 +79,10 @@ class TurtleUser {
 }
 
 // Set up user class for minigame3
-class PenguinUser {
-  // Set up shark by giving it a position, size and appearance
-  constructor(x3, y3, image) {
-    this.x = x3;
-    this.y = y3;
+class PenguinUser extends MouseUser {
+  // Set up penguin by giving it a new size according to the parent class's position and appearance setup
+  constructor(x1, y1, image) {
+    super(x1, y1, image)
     this.size = 50;
-    this.image = image;
-  }
-
-  move() {
-    // User movement
-    this.x = mouseX;
-    this.y = mouseY;
-  }
-
-  // Display user
-  display() {
-    push();
-    // Display the fishes on the canvas
-    imageMode(CENTER);
-    image(this.image, this.x, this.y, this.size, this.size);
-    pop();
   }
 }
