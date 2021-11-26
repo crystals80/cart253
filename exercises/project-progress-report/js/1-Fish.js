@@ -60,7 +60,7 @@ class Clownfish extends Fish {
   // Display the clownfish on the canvas
   display() {
     push();
-    // else fish faces the right moving to the right
+    // Translate clownfish image
     translate(this.x, this.y);
     // If fish moves left, fish will face the left
     if (this.vx < 0) {

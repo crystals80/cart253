@@ -25,6 +25,7 @@ let timer = 30; // Countdown timer variable
 // VARIABLES FOR MINIGAME2
 let turtle; // User variable
 let fishesCirculation = []; // Fish circulation array variable
+let numFishes = 10; // Number of clownfish, angelfish, moorish idol fish
 let numShark = 5; // Number of shark
 
 // VARIABLES FOR MINIGAME3
@@ -39,7 +40,7 @@ let clownfishImg, angelfishImg, sharkImg1, moorishIdolImg, bg1;
 // Variables for images of minigame2
 let turtleImg, sharkImg2, deadTurtle, bg2;
 // Variables for images of minigame3
-let penguinImg, orcaImg1, bg3;
+let penguinImg, orcaImg, bg3;
 
 function preload() {
   // See README for more info on typeface
@@ -106,7 +107,7 @@ function setup() {
 
   // MINIGAME 2'S SETUP
   // Create a circulation with clownfishes
-  for (let i = 0; i < numFish; i++) {
+  for (let i = 0; i < numFishes; i++) {
     let x = random(0, width);
     let y = random(0, height);
     let fishCl = new CfishCirculation(x, y, clownfishImg);
