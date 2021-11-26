@@ -64,7 +64,7 @@ function preload() {
   // Background for minigames
   bg1 = loadImage('assets/images/seabed2.png');
   bg2 = loadImage('assets/images/seabed1.png');
-  bg3 = loadImage('assets/images/antartica.PNG');
+  bg3 = loadImage('assets/images/antartica.png');
 }
 
 function setup() {
