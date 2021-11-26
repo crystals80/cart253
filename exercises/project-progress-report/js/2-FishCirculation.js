@@ -33,6 +33,7 @@ class FishCirculation {
 
   display() {
     // Fishes appearance will be determined in sub-classes
+    imageMode(CENTER);
   }
 }
 
@@ -48,8 +49,16 @@ class CfishCirculation extends FishCirculation {
   // Give appearance to clownfish
   display() {
     push();
-    imageMode(CENTER);
-    image(this.image, this.x, this.y, this.size, this.size);
+    // Translate clownfish image
+    translate(this.x, this.y);
+    // If fish moves left, fish will face the left
+    if (this.vx < 0) {
+      scale(-1, 1);
+      image(this.image, 0, 0, this.size, this.size);
+    } else {
+      // else fish faces the right moving to the right
+      image(this.image, 0, 0, this.size, this.size);
+    }
     pop();
   }
 }
@@ -66,8 +75,16 @@ class AfishCirculation extends FishCirculation {
   // Give appearance to angelfish
   display() {
     push();
-    imageMode(CENTER);
-    image(this.image, this.x, this.y, this.size, this.size);
+    // Translate angelfish image
+    translate(this.x, this.y);
+    // If fish moves left, fish will face the left
+    if (this.vx < 0) {
+      scale(-1, 1);
+      image(this.image, 0, 0, this.size, this.size);
+    } else {
+      // else fish faces the right moving to the right
+      image(this.image, 0, 0, this.size, this.size);
+    }
     pop();
   }
 }
@@ -84,8 +101,16 @@ class MIFishCirculation extends FishCirculation {
   // Give appearance to moorish idol fish
   display() {
     push();
-    imageMode(CENTER);
-    image(this.image, this.x, this.y, this.size, this.size);
+    // Translate moorish idol fish image
+    translate(this.x, this.y);
+    // If fish moves left, fish will face the left
+    if (this.vx < 0) {
+      scale(-1, 1);
+      image(this.image, 0, 0, this.size, this.size);
+    } else {
+      // else fish faces the right moving to the right
+      image(this.image, 0, 0, this.size, this.size);
+    }
     pop();
   }
 }
@@ -103,12 +128,14 @@ class SharkCirculation extends FishCirculation {
   // Give appearance to shark
   display() {
     push();
-    imageMode(CENTER);
+    // Translate shark image
     translate(this.x, this.y);
+    // If shark moves left, fish will face the left
     if (this.vx < 0) {
       scale(-1, 1);
       image(this.image, 0, 0, this.size, this.size);
     } else {
+      // else shark faces the right moving to the right
       image(this.image, 0, 0, this.size, this.size);
     }
 

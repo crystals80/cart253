@@ -45,6 +45,7 @@ class Fish {
 
   display() {
     // Fishes appearance will be determined in sub-classes
+    imageMode(CENTER);
   }
 }
 
@@ -56,11 +57,19 @@ class Clownfish extends Fish {
     this.image = image;
   }
 
+  // Display the clownfish on the canvas
   display() {
     push();
-    // Display the clownfish on the canvas
-    imageMode(CENTER);
-    image(this.image, this.x, this.y, this.size, this.size);
+    // else fish faces the right moving to the right
+    translate(this.x, this.y);
+    // If fish moves left, fish will face the left
+    if (this.vx < 0) {
+      scale(-1, 1);
+      image(this.image, 0, 0, this.size, this.size);
+    } else {
+      // else fish faces the right moving to the right
+      image(this.image, 0, 0, this.size, this.size);
+    }
     pop();
   }
 }
@@ -73,11 +82,19 @@ class Angelfish extends Fish {
     this.image = image;
   }
 
+  // Display the angelfish on the canvas
   display() {
     push();
-    // Display the angelfish on the canvas
-    imageMode(CENTER);
-    image(this.image, this.x, this.y, this.size, this.size);
+    // Translate angelfish image
+    translate(this.x, this.y);
+    // If fish moves left, fish will face the left
+    if (this.vx < 0) {
+      scale(-1, 1);
+      image(this.image, 0, 0, this.size, this.size);
+    } else {
+      // else fish faces the right moving to the right
+      image(this.image, 0, 0, this.size, this.size);
+    }
     pop();
   }
 }
@@ -90,11 +107,19 @@ class MoorishIdol extends Fish {
     this.image = image;
   }
 
+  // Display the moorish idol fish on the canvas
   display() {
     push();
-    // Display the moorish idol fish on the canvas
-    imageMode(CENTER);
-    image(this.image, this.x, this.y, this.size, this.size);
+    // Translate moorish idol fish image
+    translate(this.x, this.y);
+    // If fish moves left, fish will face the left
+    if (this.vx < 0) {
+      scale(-1, 1);
+      image(this.image, 0, 0, this.size, this.size);
+    } else {
+      // else fish faces the right moving to the right
+      image(this.image, 0, 0, this.size, this.size);
+    }
     pop();
   }
 }
