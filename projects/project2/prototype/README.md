@@ -1,6 +1,6 @@
 # Project 2: Anything™ Prototype - Underwater Mini Game
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+Link: https://crystals80.github.io/cart253/projects/project2/prototype/
 
 <b>Attributing Typeface</b>
 
