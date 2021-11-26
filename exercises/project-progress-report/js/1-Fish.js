@@ -15,7 +15,7 @@ class Fish {
   move() {
     // Set up directions
     let direction = random(0, 1);
-    if (direction < 0.05) {
+    if (direction < 0.009) {
       this.vx = random(-this.speed, this.speed);
       this.vy = random(-this.speed, this.speed);
     }

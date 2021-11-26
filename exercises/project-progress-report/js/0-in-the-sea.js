@@ -19,7 +19,7 @@ let fontRegular, fontItalic;
 // VARIABLES FOR MINIGAME1
 let clownfish, angelfish, moorishIdol, shark; // Fish and user variables
 let fishes = []; // Fish array variable
-let numFish = 10; // Number of clownfish, angelfish, moorish idol fish
+let numFish = 20; // Number of clownfish, angelfish, moorish idol fish
 let timer = 30; // Countdown timer variable
 
 // VARIABLES FOR MINIGAME2
