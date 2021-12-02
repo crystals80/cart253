@@ -39,4 +39,11 @@ Background images is from VectorStock. The one displayed on mini games 1 and 2 w
 
 GIF was taken from Emily So's blog and was modified on Photoshop to appear in a red tint.
 
-See link https://emilyso.com/2011/02/19/sheep-run-and-shark-blagablagablagararrrr/
+See link: https://emilyso.com/2011/02/19/sheep-run-and-shark-blagablagablagararrrr/
+
+
+<i>Orca Loop GIF of Mini Game 3's Game Over screen</i>
+
+GIF is Moran Goldstein's work and it was posted on Dribble. It was modified on Photoshop to have a transparent background.
+
+See link: https://dribbble.com/shots/2087267-Orca-Loop
