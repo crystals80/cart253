@@ -2,8 +2,8 @@ function minigame3() {
 
   // Display background
   push();
-  image(bg3, 0, 0, windowWidth, windowHeight);
   imageMode(CORNER);
+  image(bg3, 0, 0, windowWidth, windowHeight);
   pop();
 
   // Display user
