@@ -4,11 +4,13 @@ Link: https://crystals80.github.io/cart253/exercises/project-progress-report/
 
 <b>Attributing Code</b>
 
-Inspired by its smoothing visuals, this code was taken from p5.js Examples — Flocking 
+Inspired by its smoothing visuals, this code was taken from p5.js Examples — Flocking
 Link: https://p5js.org/examples/hello-p5-flocking.html
 
 It is a demonstration of Craig Reynolds' "Flocking" behavior.
 Rules of this demonstration includes 3 aspects: Cohesion, Separation, Alignment.) From natureofcode.com.
+
+This code was incorporated with the help of Sabine
 
 <b>Attributing Typeface</b>
 

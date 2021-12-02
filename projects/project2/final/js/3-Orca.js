@@ -1,5 +1,5 @@
 /**
-This code was taken from p5.js Examples — Flocking 
+This code was taken from p5.js Examples — Flocking
 Link: https://p5js.org/examples/hello-p5-flocking.html
 
 It is a demonstration of Craig Reynolds' "Flocking" behavior.
@@ -77,19 +77,19 @@ class Orca {
 
   // Wrap-around
   borders() {
-    if (this.position.x < -this.r) this.position.x = width + this.r;
-    if (this.position.y < -this.r) this.position.y = height + this.r;
-    if (this.position.x > width + this.r) this.position.x = -this.r;
-    if (this.position.y > height + this.r) this.position.y = -this.r;
+    if (this.position.x < -this.r) this.position.x = width - this.r;
+    if (this.position.y < -this.r) this.position.y = height - this.r;
+    if (this.position.x > width + this.r) this.position.x = +this.r;
+    if (this.position.y > height + this.r) this.position.y = +this.r;
   }
 
-  // Separation
-  // Method checks for nearby boids and steers away
+  // SEPARATION
+  // Method checks for nearby orcas and steers away
   separate(orcas) {
     let desiredseparation = 45;
     let steer = createVector(0, 0);
     let count = 0;
-    // For every boid in the system, check if it's too close
+    // For every orca in the system, check if it's too close
     for (let i = 0; i < orcas.length; i++) {
       let d = p5.Vector.dist(this.position, orcas[i].position);
       // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
@@ -118,8 +118,8 @@ class Orca {
     return steer;
   }
 
-  // Alignment
-  // For every nearby boid in the system, calculate the average velocity
+  // ALIGNMENT
+  // For every nearby orca in the system, calculate the average velocity
   align(orcas) {
     let neighbordist = 50;
     let sum = createVector(0, 0);
@@ -143,8 +143,8 @@ class Orca {
     }
   }
 
-  // Cohesion
-  // For the average location (i.e. center) of all nearby boids, calculate steering vector towards that location
+  // COHESION
+  // For the average location (i.e. center) of all nearby orcas, calculate steering vector towards that location
   cohesion(orcas) {
     let neighbordist = 50;
     let sum = createVector(0, 0); // Start with empty vector to accumulate all locations
