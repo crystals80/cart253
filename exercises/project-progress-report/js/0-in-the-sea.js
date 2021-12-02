@@ -31,7 +31,7 @@ let numShark = 5; // Number of shark
 // VARIABLES FOR MINIGAME3
 let penguin; // User variable
 let orcas = []; // Orca array variable
-let numOrca = 25; // Number of orca
+let numOrca = 50; // Number of orca
 
 // VARIABLES FOR IMAGES
 let bubbleImg;
@@ -141,9 +141,7 @@ function setup() {
   //MINIGAME 3'S setup
   // Set up the initial position of flocks of orcas
   for (let i = 0; i < numOrca; i++) {
-    let x = random(width);
-    let y = random(height);
-    orcas[i] = new Orca(x, y);
+    orcas[i] = new Orca(random(width), random(height), orcaImg);
   }
 }
 

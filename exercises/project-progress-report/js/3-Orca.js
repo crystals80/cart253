@@ -1,52 +1,160 @@
-// Set up orca class for minigame3
+// Boid class
+// Methods for Separation, Cohesion, Alignment added
 class Orca {
   constructor(x, y, image) {
-    this.x = x;
-    this.y = y;
-    this.size = 75;
-    this.vx = 0;
-    this.vy = 0;
-    this.speed = 2;
-    this.image = undefined;
+    this.acceleration = createVector(0, 0);
+    this.velocity = p5.Vector.random2D();
+    this.position = createVector(x, y);
+    this.r = 3.0;
+    this.maxspeed = 3; // Maximum speed
+    this.maxforce = 0.05; // Maximum steering force
+    this.image = image;
   }
 
-  // Allow fishs to move around
-  move() {
-    // Set up directions
-    let direction = random(0, 1);
-    if (direction < 0.05) {
-      this.vx = random(-this.speed, this.speed);
-      this.vy = random(-this.speed, this.speed);
-    }
-
-    // Move fish
-    this.x += this.vx;
-    this.y += this.vy;
-
-    // Constrain fish to the canvas
-    this.x = constrain(this.x, 25, width - 25);
-    this.y = constrain(this.y, 25, height - 25);
+  run(orcas) {
+    this.flock(orcas);
+    this.update();
+    this.borders();
+    this.render();
   }
 
-  // Keep fishes within the canvas
-  wrap() {
-    if (this.x > width) {
-      this.x -= width;
-    } else if (this.x < 0) {
-      this.x += width;
-    }
-    if (this.y > height) {
-      this.y -= height - 10;
-    } else if (this.y < 0) {
-      this.y += height - 10;
-    }
+  // Forces go into acceleration
+  applyForce(force) {
+    this.acceleration.add(force);
   }
 
+  // We accumulate a new acceleration each time based on three rules
+  flock(orcas) {
+    let sep = this.separate(orcas); // Separation
+    let ali = this.align(orcas); // Alignment
+    let coh = this.cohesion(orcas); // Cohesion
+    // Arbitrarily weight these forces
+    sep.mult(2.5);
+    ali.mult(1.0);
+    coh.mult(1.0);
+    // Add the force vectors to acceleration
+    this.applyForce(sep);
+    this.applyForce(ali);
+    this.applyForce(coh);
+  }
+
+  // Method to update location
+  update() {
+    // Update velocity
+    this.velocity.add(this.acceleration);
+    // Limit speed
+    this.velocity.limit(this.maxspeed);
+    this.position.add(this.velocity);
+    // Reset acceleration to 0 each cycle
+    this.acceleration.mult(0);
+  }
+
+  // A method that calculates and applies a steering force towards a target
+  // STEER = DESIRED MINUS VELOCITY
+  seek(target) {
+    let desired = p5.Vector.sub(target, this.position); // A vector pointing from the location to the target
+    // Normalize desired and scale to maximum speed
+    desired.normalize();
+    desired.mult(this.maxspeed);
+    // Steering = Desired minus Velocity
+    let steer = p5.Vector.sub(desired, this.velocity);
+    steer.limit(this.maxforce); // Limit to maximum steering force
+    return steer;
+  }
+
+  // Draw boid as a circle
   display() {
-    push();
-    // Display the clownfish on the canvas
-    imageMode(CENTER);
-    image(this.image, this.x, this.y, this.size, this.size);
-    pop();
+    fill(127, 127);
+    stroke(200);
+    image(this.image, this.position.x, this.position.y, 40, 40);
+  }
+
+  // Wraparound
+  borders() {
+    if (this.position.x < -this.r) this.position.x = width + this.r;
+    if (this.position.y < -this.r) this.position.y = height + this.r;
+    if (this.position.x > width + this.r) this.position.x = -this.r;
+    if (this.position.y > height + this.r) this.position.y = -this.r;
+  }
+
+  // Separation
+  // Method checks for nearby boids and steers away
+  separate(orcas) {
+    let desiredseparation = 30;
+    let steer = createVector(0, 0);
+    let count = 0;
+    // For every boid in the system, check if it's too close
+    for (let i = 0; i < orcas.length; i++) {
+      let d = p5.Vector.dist(this.position, orcas[i].position);
+      // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
+      if ((d > 0) && (d < desiredseparation)) {
+        // Calculate vector pointing away from neighbor
+        let diff = p5.Vector.sub(this.position, orcas[i].position);
+        diff.normalize();
+        diff.div(d); // Weight by distance
+        steer.add(diff);
+        count++; // Keep track of how many
+      }
+    }
+    // Average -- divide by how many
+    if (count > 0) {
+      steer.div(count);
+    }
+
+    // As long as the vector is greater than 0
+    if (steer.mag() > 0) {
+      // Implement Reynolds: Steering = Desired - Velocity
+      steer.normalize();
+      steer.mult(this.maxspeed);
+      steer.sub(this.velocity);
+      steer.limit(this.maxforce);
+    }
+    return steer;
+  }
+
+  // Alignment
+  // For every nearby boid in the system, calculate the average velocity
+  align(orcas) {
+    let neighbordist = 50;
+    let sum = createVector(0, 0);
+    let count = 0;
+    for (let i = 0; i < orcas.length; i++) {
+      let d = p5.Vector.dist(this.position, orcas[i].position);
+      if ((d > 0) && (d < neighbordist)) {
+        sum.add(orcas[i].velocity);
+        count++;
+      }
+    }
+    if (count > 0) {
+      sum.div(count);
+      sum.normalize();
+      sum.mult(this.maxspeed);
+      let steer = p5.Vector.sub(sum, this.velocity);
+      steer.limit(this.maxforce);
+      return steer;
+    } else {
+      return createVector(0, 0);
+    }
+  }
+
+  // Cohesion
+  // For the average location (i.e. center) of all nearby boids, calculate steering vector towards that location
+  cohesion(orcas) {
+    let neighbordist = 50;
+    let sum = createVector(0, 0); // Start with empty vector to accumulate all locations
+    let count = 0;
+    for (let i = 0; i < orcas.length; i++) {
+      let d = p5.Vector.dist(this.position, orcas[i].position);
+      if ((d > 0) && (d < neighbordist)) {
+        sum.add(orcas[i].position); // Add location
+        count++;
+      }
+    }
+    if (count > 0) {
+      sum.div(count);
+      return this.seek(sum); // Steer towards the location
+    } else {
+      return createVector(0, 0);
+    }
   }
 }

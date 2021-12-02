@@ -9,4 +9,9 @@ function minigame3() {
   // Display user
   penguin.move();
   penguin.display();
+
+  // Run all the orcas
+  for (let i = 0; i < orcas.length; i++) {
+    orcas[i].run(orcas);
+  }
 }
