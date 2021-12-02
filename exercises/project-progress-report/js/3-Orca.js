@@ -1,11 +1,11 @@
-// Boid class
-// Methods for Separation, Cohesion, Alignment added
+// Set up orca class for minigame3
 class Orca {
   constructor(x, y, image) {
+    this.size = 75;
     this.acceleration = createVector(0, 0);
     this.velocity = p5.Vector.random2D();
     this.position = createVector(x, y);
-    this.r = 3.0;
+    this.r = 3.0; // Radius
     this.maxspeed = 3; // Maximum speed
     this.maxforce = 0.05; // Maximum steering force
     this.image = image;
@@ -15,7 +15,7 @@ class Orca {
     this.flock(orcas);
     this.update();
     this.borders();
-    this.render();
+    this.display();
   }
 
   // Forces go into acceleration
@@ -23,7 +23,7 @@ class Orca {
     this.acceleration.add(force);
   }
 
-  // We accumulate a new acceleration each time based on three rules
+  // Accumulating a new acceleration each time based on three rules
   flock(orcas) {
     let sep = this.separate(orcas); // Separation
     let ali = this.align(orcas); // Alignment
@@ -62,14 +62,12 @@ class Orca {
     return steer;
   }
 
-  // Draw boid as a circle
+  // Display orca on the canvas
   display() {
-    fill(127, 127);
-    stroke(200);
-    image(this.image, this.position.x, this.position.y, 40, 40);
+    image(this.image, this.position.x, this.position.y, this.size, this.size);
   }
 
-  // Wraparound
+  // Wrap-around
   borders() {
     if (this.position.x < -this.r) this.position.x = width + this.r;
     if (this.position.y < -this.r) this.position.y = height + this.r;
@@ -80,7 +78,7 @@ class Orca {
   // Separation
   // Method checks for nearby boids and steers away
   separate(orcas) {
-    let desiredseparation = 30;
+    let desiredseparation = 45;
     let steer = createVector(0, 0);
     let count = 0;
     // For every boid in the system, check if it's too close
