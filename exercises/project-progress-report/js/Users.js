@@ -12,23 +12,25 @@ class MouseUser {
     // User movements
     this.x = mouseX;
     this.y = mouseY;
-
   }
 
   // Display user
   display() {
     let diffmousex = pmouseX - mouseX;
+    // Previous mouseX - mouseX = negative value if move to the left, and positive value if move to the right
+    console.log(pmouseX - mouseX);
+    // If cursor moves to the right and...
     if (diffmousex > 0) {
+      // Display the shark looking to the right on the canvas
       push();
-      // Display the fishes on the canvas
       imageMode(CENTER);
       translate(this.x, this.y)
       scale(-1, 1);
       image(this.image, 0, 0, this.size, this.size);
       pop();
     } else {
+      // If not, cursor moves to the left and display the shark looking to the left on the canvas
       push();
-      // Display the fishes on the canvas
       imageMode(CENTER);
       image(this.image, this.x, this.y, this.size, this.size);
       pop();
@@ -140,4 +142,40 @@ class PenguinUser extends MouseUser {
     super(x1, y1, image)
     this.size = 50;
   }
+
+  // display() {
+  //   let diffmousex = pmouseX - mouseX; // Redeclaring this variable for this display function in this sub-class
+  //   let diffmousey = pmouseY - mouseY; // Same as diffmousex but for y axis
+  //   if (diffmousey > 0 && diffmousex < 0) {
+  //     push();
+  //     // Display the penguin looking to the upper left on the canvas
+  //     imageMode(CENTER);
+  //     translate(this.x, this.y)
+  //     rotate(radians(300));
+  //     image(this.image, 0, 0, this.size, this.size);
+  //     pop();
+  //   } else if (diffmousey > 0 && diffmousex > 0) {
+  //     push();
+  //     // Display the penguin looking to the upper right on the canvas
+  //     imageMode(CENTER);
+  //     translate(this.x, this.y)
+  //     rotate(radians(300));
+  //     image(this.image, this.x, this.y, this.size, this.size);
+  //     pop();
+  //   } else if (diffmousey < 0 && diffmousex > 0) {
+  //     push();
+  //     // Display the penguin looking to the upper right on the canvas
+  //     imageMode(CENTER);
+  //     translate(this.x, this.y)
+  //     scale(-1, 1);
+  //     image(this.image, this.x, this.y, this.size, this.size);
+  //     pop();
+  //   } else {
+  //     push();
+  //     // Display the penguin looking to the upper right on the canvas
+  //     imageMode(CENTER);
+  //     image(this.image, this.x, this.y, this.size, this.size);
+  //     pop();
+  //   }
+  // }
 }
