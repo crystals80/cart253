@@ -141,6 +141,14 @@ class PenguinUser extends MouseUser {
   constructor(x1, y1, image) {
     super(x1, y1, image)
     this.size = 20;
+    this.alive = true;
+  }
+
+  // Check if penguin/User is hit by orcas
+  checkHit(orcas) {
+    if (this.x > orcas.size / 4 && this.x < orcas.size / 4 && this.y > orcas.size / 4 && this.y < orcas.size / 4) {
+      this.alive = false;
+    }
   }
 
   // display() {
