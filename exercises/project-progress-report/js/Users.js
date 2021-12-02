@@ -9,18 +9,30 @@ class MouseUser {
   }
 
   move() {
-    // User movement
+    // User movements
     this.x = mouseX;
     this.y = mouseY;
+
   }
 
   // Display user
   display() {
-    push();
-    // Display the fishes on the canvas
-    imageMode(CENTER);
-    image(this.image, this.x, this.y, this.size, this.size);
-    pop();
+    let diffmousex = pmouseX - mouseX;
+    if (diffmousex > 0) {
+      push();
+      // Display the fishes on the canvas
+      imageMode(CENTER);
+      translate(this.x, this.y)
+      scale(-1, 1);
+      image(this.image, 0, 0, this.size, this.size);
+      pop();
+    } else {
+      push();
+      // Display the fishes on the canvas
+      imageMode(CENTER);
+      image(this.image, this.x, this.y, this.size, this.size);
+      pop();
+    }
   }
 }
 
@@ -39,7 +51,7 @@ class ArrowUser {
   }
   // Check if turtle/User is hit by a fish
   checkHit(fishC) {
-    if (this.x > fishC.x - fishC.size / 3 && this.x < fishC.x + fishC.size / 3 && this.y > fishC.y - fishC.size / 3 && this.y < fishC.y + fishC.size / 3) {
+    if (this.x > fishC.x - fishC.size / 3.5 && this.x < fishC.x + fishC.size / 3.5 && this.y > fishC.y - fishC.size / 3.5 && this.y < fishC.y + fishC.size / 3.5) {
       this.alive = false;
     }
   }
@@ -48,16 +60,38 @@ class ArrowUser {
     // Moving from right to left
     if (keyIsDown(LEFT_ARROW)) {
       this.vx = -this.speed;
+      // push();
+      // imageMode(CENTER);
+      // translate(this.x, this.y);
+      // rotate(radians(90));
+      // image(turtleImg, 0, 0, this.size, this.size);
+      // pop();
     } else if (keyIsDown(RIGHT_ARROW)) {
       this.vx = this.speed;
+      // push();
+      // imageMode(CENTER);
+      // translate(this.x, this.y);
+      // rotate(radians(270));
+      // image(turtleImg, 0, 0, this.size, this.size);
+      // pop();
     } else {
       this.vx = 0;
     }
     // Moving up and down
     if (keyIsDown(UP_ARROW)) {
       this.vy = -this.speed;
+      // push();
+      // imageMode(CENTER);
+      // image(turtleImg, this.x, this.y, this.size, this.size);
+      // pop();
     } else if (keyIsDown(DOWN_ARROW)) {
       this.vy = this.speed;
+      // push();
+      // imageMode(CENTER);
+      // translate(this.x, this.y);
+      // rotate(radians(180));
+      // image(turtleImg, 0, 0, this.size, this.size);
+      // pop();
     } else {
       this.vy = 0;
     }
@@ -71,10 +105,96 @@ class ArrowUser {
 
   // Give an appearance to turtle
   display() {
-    push();
-    imageMode(CENTER);
-    image(turtleImg, this.x, this.y, this.size, this.size);
-    pop();
+    // // If turtle moves left (keyboard left arrow is pressed), it faces the left
+    // if (this.vx > 0) {
+    //   push();
+    //   imageMode(CENTER);
+    //   translate(this.x, this.y);
+    //   rotate(radians(90));
+    //   image(turtleImg, 0, 0, this.size, this.size);
+    //   pop();
+    // } else if (this.vx < 0) {
+    //   // If turtle moves right (keyboard right arrow is pressed), it faces the right
+    //   push();
+    //   imageMode(CENTER);
+    //   translate(this.x, this.y);
+    //   rotate(radians(270));
+    //   image(turtleImg, 0, 0, this.size, this.size);
+    //   pop();
+    // } else {
+    //   push();
+    //   imageMode(CENTER);
+    //   translate(this.x, this.y);
+    //   rotate(radians(0));
+    //   image(turtleImg, 0, 0, this.size, this.size);
+    //   pop();
+    // }
+    //
+    // // If turtle moves down (keyboard down arrow is pressed), it faces the down
+    // if (this.vy < 0) {
+    //   push();
+    //   imageMode(CENTER);
+    //   translate(this.x, this.y);
+    //   rotate(radians(180));
+    //   image(turtleImg, 0, 0, this.size, this.size);
+    //   pop();
+    // } else if (this.vy < 0) {
+    //   // If turtle moves up (keyboard up arrow is pressed), it faces the up
+    //   push();
+    //   imageMode(CENTER);
+    //   translate(this.x, this.y);
+    //   rotate(radians(0));
+    //   image(turtleImg, 0, 0, this.size, this.size);
+    //   pop();
+    // } else {
+    // push();
+    // imageMode(CENTER);
+    // translate(this.x, this.y);
+    // rotate(radians(0));
+    // image(turtleImg, 0, 0, this.size, this.size);
+    // pop();
+    // }
+
+    // If turtle moves left (keyboard left arrow is pressed), it faces the left
+    if (this.vx > 0 && this.vy === 0) {
+      push();
+      imageMode(CENTER);
+      translate(this.x, this.y);
+      rotate(radians(90));
+      image(turtleImg, 0, 0, this.size, this.size);
+      pop();
+    } else if (this.vx < 0 && this.vy === 0) {
+      // If turtle moves right (keyboard right arrow is pressed), it faces the right
+      push();
+      imageMode(CENTER);
+      translate(this.x, this.y);
+      rotate(radians(270));
+      image(turtleImg, 0, 0, this.size, this.size);
+      pop();
+    } else if (this.vy > 0 && this.vx === 0) {
+      // If turtle moves down (keyboard down arrow is pressed), it faces the down
+      push();
+      imageMode(CENTER);
+      translate(this.x, this.y);
+      rotate(radians(180));
+      image(turtleImg, 0, 0, this.size, this.size);
+      pop();
+    } else if (this.vy < 0 && this.vx === 0) {
+      // If turtle moves up (keyboard up arrow is pressed), it faces the up
+      push();
+      imageMode(CENTER);
+      translate(this.x, this.y);
+      rotate(radians(0));
+      image(turtleImg, 0, 0, this.size, this.size);
+      pop();
+    } else {
+      push();
+      imageMode(CENTER);
+      translate(this.x, this.y);
+      rotate(radians(0));
+      image(turtleImg, 0, 0, this.size, this.size);
+      pop();
+    }
   }
 }
 
