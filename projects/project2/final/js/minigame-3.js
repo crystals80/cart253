@@ -17,7 +17,7 @@ function minigame3() {
 
   // If penguin is hit by orcas then it is game over
   if (!penguin.alive) {
-    state = `gameover2`;
+    state = `gameover3`;
   }
 
   // If penguin reach the surface (top of canvas) then user have succeeded minigame2

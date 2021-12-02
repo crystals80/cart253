@@ -221,7 +221,7 @@ function title() {
   pop();
 }
 
-// function regulating state transitions
+// function regulating most of state transitions
 function keyPressed() {
   // Moving from title screen to minigame1 by pressing ENTER
   if (state === `title` && keyIsDown(13)) {
