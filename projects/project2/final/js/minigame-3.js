@@ -31,7 +31,7 @@ function minigame3() {
   }
 }
 
-// Set up winning title screen of minigame1
+// Set up winning title screen of minigame3
 function complete3() {
 
   // Set up gradient background
@@ -53,7 +53,7 @@ function complete3() {
     bubble.display();
   }
 
-  // Congratulating message + Instruction for minigame2
+  // Congratulating message + Instruction for what happens after minigame3
   push();
   textAlign(CENTER, CENTER);
   textFont(fontRegular);
@@ -74,8 +74,8 @@ function complete3() {
   pop();
 }
 
-// Set up game over title screen for minigame2
-function gameover1() {
+// Set up game over title screen for minigame3
+function gameover3() {
   // Set up gradient background
   push();
   let c1, c2, n;
@@ -97,7 +97,7 @@ function gameover1() {
   }
   pop();
 
-  // Add special effect showing that shark is struggling because it is starving
+  // Add special effect showing that orcas' tummy are happy
   let happyOrca = createImg('assets/images/orca-loop-cropped.gif');
   happyOrca.size(333, 200);
   happyOrca.position(10 + width / 3, -260 + height);
