@@ -60,38 +60,16 @@ class ArrowUser {
     // Moving from right to left
     if (keyIsDown(LEFT_ARROW)) {
       this.vx = -this.speed;
-      // push();
-      // imageMode(CENTER);
-      // translate(this.x, this.y);
-      // rotate(radians(90));
-      // image(turtleImg, 0, 0, this.size, this.size);
-      // pop();
     } else if (keyIsDown(RIGHT_ARROW)) {
       this.vx = this.speed;
-      // push();
-      // imageMode(CENTER);
-      // translate(this.x, this.y);
-      // rotate(radians(270));
-      // image(turtleImg, 0, 0, this.size, this.size);
-      // pop();
     } else {
       this.vx = 0;
     }
     // Moving up and down
     if (keyIsDown(UP_ARROW)) {
       this.vy = -this.speed;
-      // push();
-      // imageMode(CENTER);
-      // image(turtleImg, this.x, this.y, this.size, this.size);
-      // pop();
     } else if (keyIsDown(DOWN_ARROW)) {
       this.vy = this.speed;
-      // push();
-      // imageMode(CENTER);
-      // translate(this.x, this.y);
-      // rotate(radians(180));
-      // image(turtleImg, 0, 0, this.size, this.size);
-      // pop();
     } else {
       this.vy = 0;
     }
@@ -105,86 +83,43 @@ class ArrowUser {
 
   // Give an appearance to turtle
   display() {
-    // // If turtle moves left (keyboard left arrow is pressed), it faces the left
-    // if (this.vx > 0) {
-    //   push();
-    //   imageMode(CENTER);
-    //   translate(this.x, this.y);
-    //   rotate(radians(90));
-    //   image(turtleImg, 0, 0, this.size, this.size);
-    //   pop();
-    // } else if (this.vx < 0) {
-    //   // If turtle moves right (keyboard right arrow is pressed), it faces the right
-    //   push();
-    //   imageMode(CENTER);
-    //   translate(this.x, this.y);
-    //   rotate(radians(270));
-    //   image(turtleImg, 0, 0, this.size, this.size);
-    //   pop();
-    // } else {
-    //   push();
-    //   imageMode(CENTER);
-    //   translate(this.x, this.y);
-    //   rotate(radians(0));
-    //   image(turtleImg, 0, 0, this.size, this.size);
-    //   pop();
-    // }
-    //
-    // // If turtle moves down (keyboard down arrow is pressed), it faces the down
-    // if (this.vy < 0) {
-    //   push();
-    //   imageMode(CENTER);
-    //   translate(this.x, this.y);
-    //   rotate(radians(180));
-    //   image(turtleImg, 0, 0, this.size, this.size);
-    //   pop();
-    // } else if (this.vy < 0) {
-    //   // If turtle moves up (keyboard up arrow is pressed), it faces the up
-    //   push();
-    //   imageMode(CENTER);
-    //   translate(this.x, this.y);
-    //   rotate(radians(0));
-    //   image(turtleImg, 0, 0, this.size, this.size);
-    //   pop();
-    // } else {
-    // push();
-    // imageMode(CENTER);
-    // translate(this.x, this.y);
-    // rotate(radians(0));
-    // image(turtleImg, 0, 0, this.size, this.size);
-    // pop();
-    // }
-
     // If turtle moves left (keyboard left arrow is pressed), it faces the left
+    // if (turtle moves left and no movement on the y axis)
     if (this.vx > 0 && this.vy === 0) {
       push();
       imageMode(CENTER);
       translate(this.x, this.y);
-      rotate(radians(90));
+      rotate(radians(90)); // Rotate left in degrees
       image(turtleImg, 0, 0, this.size, this.size);
       pop();
-    } else if (this.vx < 0 && this.vy === 0) {
-      // If turtle moves right (keyboard right arrow is pressed), it faces the right
+    }
+    // If turtle moves right (keyboard right arrow is pressed), it faces the right
+    // if (turtle moves right and no movement on the y axis)
+    else if (this.vx < 0 && this.vy === 0) {
       push();
       imageMode(CENTER);
       translate(this.x, this.y);
-      rotate(radians(270));
+      rotate(radians(270)); // Rotate right in degrees
       image(turtleImg, 0, 0, this.size, this.size);
       pop();
-    } else if (this.vy > 0 && this.vx === 0) {
-      // If turtle moves down (keyboard down arrow is pressed), it faces the down
+    }
+    // If turtle moves down (keyboard down arrow is pressed), it faces the down
+    // if (turtle moves down and no movement on the x axis)
+    else if (this.vy > 0 && this.vx === 0) {
       push();
       imageMode(CENTER);
       translate(this.x, this.y);
-      rotate(radians(180));
+      rotate(radians(180)); // Rotate 2 times in degrees to face downward
       image(turtleImg, 0, 0, this.size, this.size);
       pop();
-    } else if (this.vy < 0 && this.vx === 0) {
-      // If turtle moves up (keyboard up arrow is pressed), it faces the up
+    }
+    // If turtle moves up (keyboard up arrow is pressed), it faces the up
+    // if (turtle moves up and no movement on the x axis)
+    else if (this.vy < 0 && this.vx === 0) {
       push();
       imageMode(CENTER);
       translate(this.x, this.y);
-      rotate(radians(0));
+      rotate(radians(0)); // No rotation needed, just have it there to prevent errors by having the image pretending to rotate
       image(turtleImg, 0, 0, this.size, this.size);
       pop();
     } else {
