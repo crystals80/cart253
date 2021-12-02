@@ -11,7 +11,7 @@ function minigame2() {
   turtle.move();
   turtle.display();
 
-  // Display fish circulation and if the fishes would hit the turtle
+  // Display fish circulation and check if the fishes would hit the turtle
   for (let i = 0; i < fishesCirculation.length; i++) {
     let fishC = fishesCirculation[i];
     fishC.move();

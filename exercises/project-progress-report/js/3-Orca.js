@@ -1,3 +1,11 @@
+/**
+This code was taken from p5.js Examples — Flocking 
+Link: https://p5js.org/examples/hello-p5-flocking.html
+
+It is a demonstration of Craig Reynolds' "Flocking" behavior.
+Rules of this demonstration includes 3 aspects: Cohesion, Separation, Alignment.) From natureofcode.com.
+**/
+
 // Set up orca class for minigame3
 class Orca {
   constructor(x, y, image) {
