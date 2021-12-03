@@ -32,6 +32,7 @@ function minigame2() {
   }
 }
 
+// Reset gameover2 to restart minigame2 by reactivating the turtle and placing at its initial position
 function resetCirculation() {
   turtle.alive = true;
   let x = width / 2;

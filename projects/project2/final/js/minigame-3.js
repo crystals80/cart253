@@ -23,10 +23,6 @@ function minigame3() {
     state = `gameover3`;
   }
 
-  function resetSimulation() {
-    penguin.alive = true;
-  }
-
   // Display countdown timer
   push();
   image(bubbleImg, width - 75, 53.5, 55, 55);
@@ -41,6 +37,11 @@ function minigame3() {
   if (timer == 0 && state === `minigame3`) {
     state = `complete3`;
   }
+}
+
+// Reset gameover3 to restart minigame3 by reactivating the penguin
+function resetSimulation() {
+  penguin.alive = true;
 }
 
 // Set up winning title screen of minigame3
@@ -111,9 +112,11 @@ function gameover3() {
   pop();
 
   // Add special effect showing that orcas' tummy are happy
+  push()
   let happyOrca = createImg('assets/images/orca-loop-cropped.gif');
   happyOrca.size(333, 200);
-  happyOrca.position(10 + width / 3, -260 + height);
+  happyOrca.position(65 + width / 3, -285 + height);
+  pop();
 
   // Game over message for minigame1
   push();
@@ -122,13 +125,15 @@ function gameover3() {
   noStroke();
   fill(0);
   textSize(50);
-  text(`Oh no! The orcas caught up to you!`, width / 2, height / 3);
+  text(`Oh no!`, width / 2, height / 4);
+  textSize(40);
+  text(`The orcas caught up to you!`, width / 2, 10 + height / 3);
   fill(50);
   textSize(10);
   text(`~ PRESS to SPACE to restart Trial 3 ~`, width / 2, height - 50);
   textFont(fontItalic);
   fill(0);
-  textSize(40);
+  textSize(32);
   text(`Watch out and swim faster!`, width / 2, height / 2);
   pop();
 }
