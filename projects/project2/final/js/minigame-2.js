@@ -101,7 +101,7 @@ function gameover2() {
   // Set up "dramatic" bubbly background
   for (let b = 0; b < bubbles.length; b++) {
     let bubble = bubbles[b];
-    tint(215, 0, 0);
+    tint(215, 0, 0); // lighter red
     bubble.move();
     bubble.display();
   }
