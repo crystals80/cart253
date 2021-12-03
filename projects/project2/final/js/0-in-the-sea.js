@@ -36,9 +36,9 @@ let numOrca = 65; // Number of orca
 // VARIABLES FOR IMAGES
 let bubbleImg;
 // Variables for images of minigame1
-let clownfishImg, angelfishImg, sharkImg1, moorishIdolImg, bg1;
+let clownfishImg1, angelfishImg1, moorishIdolImg1, sharkImg1, bg1;
 // Variables for images of minigame2
-let turtleImg, sharkImg2, deadTurtle, bg2;
+let turtleImg, clownfishImg2, angelfishImg2, moorishIdolImg2, sharkImg2, deadTurtle, bg2;
 // Variables for images of minigame3
 let penguinImg, orcaImg, bg3;
 
@@ -50,16 +50,19 @@ function preload() {
   // Title special effect
   bubbleImg = loadImage('assets/images/bubble.png')
   // Minigame 1's fish icons
-  clownfishImg = loadImage('assets/images/clown-fish1.png');
-  angelfishImg = loadImage('assets/images/yellow-fish1.png');
-  moorishIdolImg = loadImage('assets/images/moorish-idol-fish1.png');
+  clownfishImg1 = loadImage('assets/images/clown-fish1-orig.png');
+  angelfishImg1 = loadImage('assets/images/yellow-fish1-orig.png');
+  moorishIdolImg1 = loadImage('assets/images/moorish-idol-fish1-orig.png');
   sharkImg1 = loadImage('assets/images/shark1.png');
   //Minigame 2's sea creatures directions
   turtleImg = loadImage('assets/images/turtle.png');
+  clownfishImg2 = loadImage('assets/images/clown-fish1.png');
+  angelfishImg2 = loadImage('assets/images/yellow-fish1.png');
+  moorishIdolImg2 = loadImage('assets/images/moorish-idol-fish1.png');
   sharkImg2 = loadImage('assets/images/shark2.png');
   deadTurtle = loadImage('assets/images/turtle-died-tinted.png');
   //Minigame 3's sea creatures directions
-  penguinImg = loadImage('assets/images/penguin.png');
+  penguinImg = loadImage('assets/images/penguin-orig.png');
   orcaImg = loadImage('assets/images/orca1.png');
   // Background for minigames
   bg1 = loadImage('assets/images/seabed2.png');
@@ -95,13 +98,13 @@ function setup() {
   for (let i = 0; i < numFish; i++) {
     let x = random(0, width);
     let y = random(0, height);
-    let clownfish = new Clownfish(x, y, clownfishImg);
+    let clownfish = new Clownfish(x, y, clownfishImg1);
     fishes.push(clownfish);
     // Create angelfishes
-    let angelfish = new Angelfish(x, y, angelfishImg);
+    let angelfish = new Angelfish(x, y, angelfishImg1);
     fishes.push(angelfish);
     // Create moorish idol fishes
-    let moorishIdol = new MoorishIdol(x, y, moorishIdolImg);
+    let moorishIdol = new MoorishIdol(x, y, moorishIdolImg1);
     fishes.push(moorishIdol);
   }
 
@@ -110,13 +113,13 @@ function setup() {
   for (let i = 0; i < numFishes; i++) {
     let x = random(0, width);
     let y = random(0, height);
-    let fishCl = new CfishCirculation(x, y, clownfishImg);
+    let fishCl = new CfishCirculation(x, y, clownfishImg2);
     fishesCirculation.push(fishCl);
     // Create a circulation with angelfishes
-    let fishA = new AfishCirculation(x, y, angelfishImg);
+    let fishA = new AfishCirculation(x, y, angelfishImg2);
     fishesCirculation.push(fishA);
     // Create a circulation with mooorish idol fishes
-    let fishMI = new MIFishCirculation(x, y, moorishIdolImg);
+    let fishMI = new MIFishCirculation(x, y, moorishIdolImg2);
     fishesCirculation.push(fishMI);
   }
 
