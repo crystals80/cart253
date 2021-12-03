@@ -285,10 +285,11 @@ function keyPressed() {
   }
   // Testing final screen so adding "skipping all minigames" option to go to ending screen
   // Moving from title screen to ending screen by pressing character "a"
-  if (state === `title` && keyIsDown(65)) {
+  else if (state === `title` && keyIsDown(65)) {
     state = `ending`;
   }
 
+  console.log(keyIsDown(13), keyIsDown(32));
 
 
   // To leave game over screen and restart minigame1, user will press SPACE
