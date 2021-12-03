@@ -17,8 +17,7 @@ class MouseUser {
   // Display user
   display() {
     let diffmousex = pmouseX - mouseX;
-    // Previous mouseX - mouseX = negative value if move to the left, and positive value if move to the right
-    console.log(pmouseX - mouseX);
+    // console.log(pmouseX - mouseX); // Debug previous mouseX - mouseX = negative value if move to the left, and positive value if move to the right
     // If cursor moves to the right and...
     if (diffmousex > 0) {
       // Display the shark looking to the right on the canvas
@@ -53,7 +52,7 @@ class ArrowUser {
   }
   // Check if turtle/User is hit by a fish
   checkHit(fishC) {
-    if (this.x > fishC.x - fishC.size / 3.5 && this.x < fishC.x + fishC.size / 3.5 && this.y > fishC.y - fishC.size / 3.5 && this.y < fishC.y + fishC.size / 3.5) {
+    if (this.x > fishC.x - fishC.width / 2 && this.x < fishC.x + fishC.width / 2 && this.y > fishC.y - fishC.height / 2 && this.y < fishC.y + fishC.height / 2) {
       this.alive = false;
     }
   }
@@ -146,7 +145,7 @@ class PenguinUser extends MouseUser {
 
   // Check if penguin/User is hit by orcas
   checkHit(orcas) {
-    if (this.x > orcas.size / 4 && this.x < orcas.size / 4 && this.y > orcas.size / 4 && this.y < orcas.size / 4) {
+    if (this.x > orcas.position.x - orcas.size / 3.5 && this.x < orcas.position.x + orcas.size / 3.5 && this.y > orcas.position.y - orcas.size / 3.5 && this.y < orcas.position.y + orcas.size / 3.5) {
       this.alive = false;
     }
   }

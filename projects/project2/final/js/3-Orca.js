@@ -70,9 +70,21 @@ class Orca {
     return steer;
   }
 
-  // Display orca on the canvas
+  // Display orcas on the canvas
   display() {
-    image(this.image, this.position.x, this.position.y, this.size, this.size);
+    console.log(this.position.x, this.velocity);
+    imageMode(CENTER);
+    // If orcas move right, orcas will face the right
+    if (this.velocity.x < 0) {
+      push();
+      // Translate the orcas position (x axis)
+      translate(this.position.x, this.position.y);
+      scale(-1, 1);
+      image(this.image, 0, 0, this.size, this.size);
+      pop();
+    } else {
+      image(this.image, this.position.x, this.position.y, this.size, this.size);
+    }
   }
 
   // Wrap-around
