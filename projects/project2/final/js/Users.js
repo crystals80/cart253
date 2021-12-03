@@ -144,45 +144,9 @@ class PenguinUser extends MouseUser {
   }
 
   // Check if penguin/User is hit by orcas
-  checkHit(orcas) {
-    if (this.x > orcas.position.x - orcas.width / 2 && this.x < orcas.position.x + orcas.width / 2 && this.y > orcas.position.y - orcas.height / 2 && this.y < orcas.position.y + orcas.height / 2) {
-      this.alive = false;
-    }
-  }
-
-  // display() {
-  //   let diffmousex = pmouseX - mouseX; // Redeclaring this variable for this display function in this sub-class
-  //   let diffmousey = pmouseY - mouseY; // Same as diffmousex but for y axis
-  //   if (diffmousey > 0 && diffmousex < 0) {
-  //     push();
-  //     // Display the penguin looking to the upper left on the canvas
-  //     imageMode(CENTER);
-  //     translate(this.x, this.y)
-  //     rotate(radians(300));
-  //     image(this.image, 0, 0, this.size, this.size);
-  //     pop();
-  //   } else if (diffmousey > 0 && diffmousex > 0) {
-  //     push();
-  //     // Display the penguin looking to the upper right on the canvas
-  //     imageMode(CENTER);
-  //     translate(this.x, this.y)
-  //     rotate(radians(300));
-  //     image(this.image, this.x, this.y, this.size, this.size);
-  //     pop();
-  //   } else if (diffmousey < 0 && diffmousex > 0) {
-  //     push();
-  //     // Display the penguin looking to the upper right on the canvas
-  //     imageMode(CENTER);
-  //     translate(this.x, this.y)
-  //     scale(-1, 1);
-  //     image(this.image, this.x, this.y, this.size, this.size);
-  //     pop();
-  //   } else {
-  //     push();
-  //     // Display the penguin looking to the upper right on the canvas
-  //     imageMode(CENTER);
-  //     image(this.image, this.x, this.y, this.size, this.size);
-  //     pop();
+  // checkCollision(orcas) {
+  //   if (this.x > orcas.position.x - orcas.width && this.x < orcas.position.x + orcas.width && this.y > orcas.position.y - orcas.height && this.y < orcas.position.y + orcas.height) {
+  //     this.alive = false;
   //   }
   // }
 }

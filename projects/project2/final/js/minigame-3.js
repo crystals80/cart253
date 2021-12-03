@@ -13,6 +13,9 @@ function minigame3() {
   // Run all the orcas
   for (let i = 0; i < orcas.length; i++) {
     orcas[i].run(orcas);
+
+    // Check if penguin get hit by orcas
+    // penguin.checkCollision(orcas);
   }
 
   // If penguin is hit by orcas then it is game over
@@ -21,10 +24,20 @@ function minigame3() {
   }
 
   // If penguin reach the surface (top of canvas) then user have succeeded minigame2
-  if (penguin.y < 0) {
+  if (penguin.size < 0) {
     state = `complete3`;
   }
 
+  // Display countdown timer
+  push();
+  image(bubbleImg, width - 100, 25, 55, 55);
+  noStroke();
+  textFont(fontRegular);
+  textSize(24);
+  text(timer, width - 84, 58);
+  if (frameCount % 60 == 0 && timer > 0) {
+    timer--;
+  }
   // If timer reaches 0 and penguin still hasn't gotten hit by orcas then user wins the game and proceed to move to the last title screen
   if (timer == 0 && state === `minigame3`) {
     state = `complete3`;
