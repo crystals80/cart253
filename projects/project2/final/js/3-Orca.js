@@ -12,7 +12,7 @@ class Orca {
     this.acceleration = createVector(0, 0);
     this.velocity = p5.Vector.random2D();
     this.position = createVector(x, y);
-    this.r = 3.0; // Radius
+    this.r = 3.0;
     this.maxspeed = 3; // Maximum speed
     this.maxforce = 0.05; // Maximum steering force
     this.image = image;

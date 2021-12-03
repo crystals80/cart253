@@ -1,7 +1,7 @@
 // Set up parent fish circulation class for minigame2
 class FishCirculation {
   // Set up fishes by giving it a position, speed and undefined speed and appearance
-  constructor(xpos, ypos, image) { // STOP! THIS IS WHERE PIPPIN STARTED RUINGING EVERYTHING!
+  constructor(xpos, ypos, image) {
     this.x = xpos;
     this.y = ypos;
     this.size = 30;
