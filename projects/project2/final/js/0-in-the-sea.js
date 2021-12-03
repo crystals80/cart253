@@ -31,7 +31,7 @@ let numShark = 5; // Number of shark
 // VARIABLES FOR MINIGAME3
 let penguin; // User variable
 let orcas = []; // Orca array variable
-let numOrca = 100; // Number of orca
+let numOrca = 75; // Number of orca
 
 // VARIABLES FOR IMAGES
 let bubbleImg;
