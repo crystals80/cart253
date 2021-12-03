@@ -300,7 +300,7 @@ function keyPressed() {
   }
   // Moving from minigame1's congratulating screen to minigame2 by pressing ENTER
   if (state === `complete1` && keyIsDown(13)) {
-    state === `minigame2`;
+    state = `minigame2`;
   }
   // To leave game over screen and restart minigame2, user will press SPACE
   if (state === `gameover2` && keyIsDown(32)) {
@@ -311,7 +311,7 @@ function keyPressed() {
   }
   // Moving from minigame2's congratulating screen to minigame3 by pressing ENTER
   if (state === `complete2` && keyIsDown(13)) {
-    state === `minigame3`;
+    state = `minigame3`;
   }
   // To leave game over screen and restart minigame3, user will press SPACE
   if (state === `gameover3` && keyIsDown(32)) {
