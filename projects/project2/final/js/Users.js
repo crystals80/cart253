@@ -139,7 +139,7 @@ class PenguinUser extends MouseUser {
   // Set up penguin by giving it a new size according to the parent class's position and appearance setup
   constructor(x1, y1, image) {
     super(x1, y1, image)
-    this.size = 20;
+    this.size = 35;
     this.alive = true;
   }
 
