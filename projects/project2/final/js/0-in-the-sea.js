@@ -178,9 +178,9 @@ function draw() {
     complete3();
   } else if (state === `gameover3`) {
     gameover3();
+  } else if (state === `ending`) {
+    ending();
   }
-  //else if (state === `ending`) {
-  // ending();}
 }
 
 function title() {
@@ -225,6 +225,48 @@ function title() {
   pop();
 }
 
+function ending() {
+  // Set up gradient background
+  let c1, c2, n;
+  c1 = color(0, 23, 61); // very dark blue
+  c2 = color(0);
+
+  for (let c = 0; c < height; c++) {
+    n = map(c, 0, height, 0, 1);
+    let newColor = lerpColor(c1, c2, n);
+    stroke(newColor);
+    line(0, c, width, c);
+  }
+
+  // For every bubble object in the bubbles array, call the display and move functions
+  for (let b = 0; b < bubbles.length; b++) {
+    let bubble = bubbles[b];
+    tint(0, 38, 102);
+    bubble.move();
+    bubble.display();
+  }
+
+  // Introduction message + Instruction for minigame1
+  push();
+  textAlign(CENTER, CENTER);
+  textFont(fontRegular);
+  noStroke();
+  fill(255);
+  textSize(60);
+  text(`What were you thinking?!`, width / 2, height / 4);
+  textSize(32);
+  text(`Go back to the surface and get to it!`, width / 2, 90 + height / 2);
+  textSize(16);
+  text(`Then come back when you are fully prepared! We'll be waiting for you!`, width / 2, -5 + 3 * height / 4);
+  textSize(10);
+  text(`~ PRESS to SPACE to return to the surface ~`, width / 2, height - 50);
+  textFont(fontItalic);
+  textSize(40);
+  text(`You came unprepared and almost got asphyxiated!
+    No oxygen tank, no training and no experience!`, width / 2, -25 + height / 2);
+  pop();
+}
+
 // function regulating most of state transitions
 function keyPressed() {
   // Moving from title screen to minigame1 by pressing ENTER
@@ -241,6 +283,14 @@ function keyPressed() {
   else if (state === `title` && keyIsDown(16)) {
     state = `minigame3`;
   }
+  // Testing final screen so adding "skipping all minigames" option to go to ending screen
+  // Moving from title screen to ending screen by pressing character "a"
+  if (state === `title` && keyIsDown(65)) {
+    state = `ending`;
+  }
+
+
+
   // To leave game over screen and restart minigame1, user will press SPACE
   if (state === `gameover1` && keyIsDown(32)) {
     state = `minigame1`;
