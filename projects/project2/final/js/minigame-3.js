@@ -29,12 +29,12 @@ function minigame3() {
   noStroke();
   textFont(fontRegular);
   textSize(24);
-  text(timer, width - 84, 58);
-  if (frameCount % 60 == 0 && timer > 0) {
-    timer--;
+  text(longTimer, width - 84, 58);
+  if (frameCount % 60 == 0 && longTimer > 0) {
+    longTimer--;
   }
   // If timer reaches 0 and penguin still hasn't gotten hit by orcas then user wins the game and proceed to move to the last title screen
-  if (timer == 0 && state === `minigame3`) {
+  if (longTimer == 0 && state === `minigame3`) {
     state = `complete3`;
   }
 }
@@ -42,7 +42,7 @@ function minigame3() {
 // Reset gameover3 to restart minigame3 by reactivating the penguin
 function resetSimulation() {
   penguin.alive = true;
-  timer = 30;
+  longTimer = 45;
 }
 
 // Set up winning title screen of minigame3

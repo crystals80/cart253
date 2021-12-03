@@ -32,6 +32,7 @@ let numShark = 5; // Number of shark
 let penguin; // User variable
 let orcas = []; // Orca array variable
 let numOrca = 75; // Number of orca
+let longTimer = 45 // Countdown timer variable
 
 // VARIABLES FOR IMAGES
 let bubbleImg;
