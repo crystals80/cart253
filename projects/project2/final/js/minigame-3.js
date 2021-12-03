@@ -137,4 +137,10 @@ function gameover3() {
   textSize(32);
   text(`Watch out and swim faster!`, width / 2, height / 2);
   pop();
+
+  push();
+  tint(166, 0, 0);
+  scuba.move();
+  scuba.display();
+  pop();
 }

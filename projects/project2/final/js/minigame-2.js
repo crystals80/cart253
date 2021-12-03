@@ -133,4 +133,10 @@ function gameover2() {
   textSize(30);
   text(`...Be careful next time and beware of these vicious fishes!`, width / 2, 10 + height / 2);
   pop();
+
+  push();
+  tint(166, 0, 0);
+  scuba.move();
+  scuba.display();
+  pop();
 }

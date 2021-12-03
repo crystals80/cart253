@@ -150,3 +150,11 @@ class PenguinUser extends MouseUser {
     }
   }
 }
+
+// Set up user class for ending screen
+class ScubaUser extends MouseUser {
+  // Set up scuba diver by giving it an appearance as its other properties were already defined in the parent class
+  constructor(x, y, image) {
+    super(x, y, image);
+  }
+}

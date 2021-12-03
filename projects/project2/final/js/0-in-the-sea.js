@@ -34,6 +34,9 @@ let orcas = []; // Orca array variable
 let numOrca = 75; // Number of orca
 let longTimer = 45 // Countdown timer variable
 
+// VARIABLES FOR ENDING SCREEN
+let scuba; // User variable
+
 // VARIABLES FOR IMAGES
 let bubbleImg;
 // Variables for images of minigame1
@@ -42,6 +45,8 @@ let clownfishImg1, angelfishImg1, moorishIdolImg1, sharkImg1, bg1;
 let turtleImg, clownfishImg2, angelfishImg2, moorishIdolImg2, sharkImg2, deadTurtle, bg2;
 // Variables for images of minigame3
 let penguinImg, orcaImg, bg3;
+// Variables for images of ending screen
+let scubaImg;
 
 function preload() {
   // See README for more info on typeface
@@ -69,6 +74,8 @@ function preload() {
   bg1 = loadImage('assets/images/seabed2.png');
   bg2 = loadImage('assets/images/seabed1.png');
   bg3 = loadImage('assets/images/antarctica-cropped.png');
+  // Cursor
+  scubaImg = loadImage('assets/images/scubadiver.png');
 }
 
 function setup() {
@@ -92,6 +99,8 @@ function setup() {
   turtle = new ArrowUser(x2, y2, turtleImg);
   // User/Cursor appearance for minigame3
   penguin = new PenguinUser(x1, y1, penguinImg);
+  // User/Cursor appearance for ending
+  scuba = new ScubaUser(x1, y1, scubaImg);
 
   // MINIGAME 1'S SETUP
   let x, y; // Declare x and y position
@@ -175,10 +184,12 @@ function draw() {
     noCursor();
     minigame3();
   } else if (state === `complete3`) {
+    cursor();
     complete3();
   } else if (state === `gameover3`) {
     gameover3();
   } else if (state === `ending`) {
+    noCursor();
     ending();
   }
 }
@@ -254,16 +265,24 @@ function ending() {
   fill(255);
   textSize(60);
   text(`What were you thinking?!`, width / 2, height / 4);
-  textSize(32);
+  textSize(24);
   text(`Go back to the surface and get to it!`, width / 2, 90 + height / 2);
   textSize(16);
-  text(`Then come back when you are fully prepared! We'll be waiting for you!`, width / 2, -5 + 3 * height / 4);
+  text(`Then come back when you are fully prepared!
+    We'll be waiting for you!`, width / 2, 15 + 3 * height / 4);
   textSize(10);
   text(`~ PRESS to SPACE to return to the surface ~`, width / 2, height - 50);
   textFont(fontItalic);
   textSize(40);
-  text(`You came unprepared and almost got asphyxiated!
-    No oxygen tank, no training and no experience!`, width / 2, -25 + height / 2);
+  text(`You came unprepared and almost got asphyxiated!`, width / 2, -40 + height / 2);
+  textSize(32);
+  text(`No oxygen tank, no training and no experience!`, width / 2, 10 + height / 2)
+  pop();
+
+  push();
+  tint(0, 52, 166);
+  scuba.move();
+  scuba.display();
   pop();
 }
 
@@ -273,24 +292,23 @@ function keyPressed() {
   if (state === `title` && keyIsDown(13)) {
     state = `minigame1`;
   }
+
+  //SKIPPING THE ORDER TO GO TO THE MINIGAME OF CHOICE
+  // I decided to leave these codes in the script to show how I test the mini games
   // Testing minigame2 so adding "skipping minigame1" option to go to minigame 2
-  // Will delete after done testing
   else if (state === `title` && keyIsDown(32)) {
     state = `minigame2`;
   }
   // Testing minigame3 so adding "skipping minigame1 and minigame2" option to go to minigame 3
-  // Will delete after done testing
   else if (state === `title` && keyIsDown(16)) {
     state = `minigame3`;
   }
-  // Testing final screen so adding "skipping all minigames" option to go to ending screen
-  // Moving from title screen to ending screen by pressing character "a"
+  // Testing final screen so adding "skipping all minigames" option to go to ending screen by moving from title screen to ending screen by pressing character "a"
   else if (state === `title` && keyIsDown(65)) {
     state = `ending`;
   }
 
-  console.log(keyIsDown(13), keyIsDown(32));
-
+  //console.log(keyIsDown(13), keyIsDown(32));
 
   // To leave game over screen and restart minigame1, user will press SPACE
   if (state === `gameover1` && keyIsDown(32)) {
@@ -319,5 +337,9 @@ function keyPressed() {
     removeElements();
     resetSimulation();
     return;
+  }
+  // Moving from minigame3's congratulating screen to the ending screen by pressing ENTER
+  if (state === `complete3` && keyIsDown(13)) {
+    state = `ending`;
   }
 }

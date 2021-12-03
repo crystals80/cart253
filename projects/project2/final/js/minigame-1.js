@@ -124,6 +124,12 @@ function gameover1() {
   textSize(40);
   text(`...Don't starve yourself!`, width / 2, height / 2);
   pop();
+
+  push();
+  tint(166, 0, 0);
+  scuba.move();
+  scuba.display();
+  pop();
 }
 
 // Check if shark(user) can eat fishes
