@@ -42,6 +42,7 @@ function minigame3() {
 // Reset gameover3 to restart minigame3 by reactivating the penguin
 function resetSimulation() {
   penguin.alive = true;
+  timer = 30;
 }
 
 // Set up winning title screen of minigame3
