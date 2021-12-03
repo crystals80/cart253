@@ -15,7 +15,7 @@ function minigame3() {
     orcas[i].run(orcas);
 
     // Check if penguin get hit by orcas
-    // penguin.checkCollision(orcas);
+    penguin.checkCollision(orcas[i]);
   }
 
   // If penguin is hit by orcas then it is game over
@@ -23,14 +23,13 @@ function minigame3() {
     state = `gameover3`;
   }
 
-  // If penguin reach the surface (top of canvas) then user have succeeded minigame2
-  if (penguin.size < 0) {
-    state = `complete3`;
+  function resetSimulation() {
+    penguin.alive = true;
   }
 
   // Display countdown timer
   push();
-  image(bubbleImg, width - 100, 25, 55, 55);
+  image(bubbleImg, width - 75, 53.5, 55, 55);
   noStroke();
   textFont(fontRegular);
   textSize(24);
@@ -75,7 +74,7 @@ function complete3() {
   textSize(60);
   text(`Congratulation!`, width / 2, height / 4);
   textSize(32);
-  text(`You can now explore new territories and encounter its challenging trials`, width / 2, 30 + height / 2);
+  text(`You can now explore new territories and encounter its challenging trials`, width / 2, 80 + height / 2);
   textSize(16);
   text(`Are you ready to explore the deeper levels of the ocean?`, width / 2, -5 + 3 * height / 4);
   text(`What are you waiting for?`, width / 2, 25 + 3 * height / 4);
@@ -83,7 +82,8 @@ function complete3() {
   text(`~ PRESS to ENTER to enter the ocean abyss ~`, width / 2, height - 50);
   textFont(fontItalic);
   textSize(40);
-  text(`You have succeeded all trials and gain unlimited access to surf through the ocean!`, width / 2, -25 + height / 2);
+  text(`You have succeeded all trials and`, width / 2, -50 + height / 2);
+  text(`gain unlimited access to surf through the ocean!`, width / 2, height / 2);
   pop();
 }
 

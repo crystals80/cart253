@@ -265,5 +265,7 @@ function keyPressed() {
   if (state === `gameover3` && keyIsDown(32)) {
     state = `minigame3`;
     removeElements();
+    resetSimulation();
+    return;
   }
 }
