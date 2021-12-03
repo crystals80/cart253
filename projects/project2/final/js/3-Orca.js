@@ -9,7 +9,6 @@ Rules of this demonstration includes 3 aspects: Cohesion, Separation, Alignment.
 // Set up orca class for minigame3
 class Orca {
   constructor(x, y, image) {
-    this.size = 75;
     this.acceleration = createVector(0, 0);
     this.velocity = p5.Vector.random2D();
     this.position = createVector(x, y);
@@ -17,6 +16,8 @@ class Orca {
     this.maxspeed = 3; // Maximum speed
     this.maxforce = 0.05; // Maximum steering force
     this.image = image;
+    this.width = this.image.width;
+    this.height = this.image.height;
   }
 
   run(orcas) {
@@ -72,7 +73,7 @@ class Orca {
 
   // Display orcas on the canvas
   display() {
-    console.log(this.position.x, this.velocity);
+    //console.log(this.position.x, this.velocity); // Debug to know if orcas x position and velocity are positive or negative value
     imageMode(CENTER);
     // If orcas move right, orcas will face the right
     if (this.velocity.x < 0) {
@@ -80,10 +81,10 @@ class Orca {
       // Translate the orcas position (x axis)
       translate(this.position.x, this.position.y);
       scale(-1, 1);
-      image(this.image, 0, 0, this.size, this.size);
+      image(this.image, 0, 0, this.width, this.height);
       pop();
     } else {
-      image(this.image, this.position.x, this.position.y, this.size, this.size);
+      image(this.image, this.position.x, this.position.y, this.width, this.height);
     }
   }
 

@@ -145,7 +145,7 @@ class PenguinUser extends MouseUser {
 
   // Check if penguin/User is hit by orcas
   checkHit(orcas) {
-    if (this.x > orcas.position.x - orcas.size / 3.5 && this.x < orcas.position.x + orcas.size / 3.5 && this.y > orcas.position.y - orcas.size / 3.5 && this.y < orcas.position.y + orcas.size / 3.5) {
+    if (this.x > orcas.position.x - orcas.width / 2 && this.x < orcas.position.x + orcas.width / 2 && this.y > orcas.position.y - orcas.height / 2 && this.y < orcas.position.y + orcas.height / 2) {
       this.alive = false;
     }
   }
