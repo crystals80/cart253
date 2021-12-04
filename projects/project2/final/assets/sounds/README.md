@@ -15,7 +15,7 @@ All sound files from Youtube Audio Library has either YouTube Audio Library Lice
 
 <b> Audios under Youtube Audio Library License</b>
 <br>
-Timpani Beat by <i>Nana Kwabena</i>; Across the Savannah and Seaside Piazza by <i>Aaron Kenny</i>;
+Timpani Beat by <i>Nana Kwabena</i>; Across the Savannah, Fiesta de la Vida, In the Temple Garden and Seaside Piazza by <i>Aaron Kenny</i>;
 
 <b> Audios under Creative Commons License</b>
 <br>
