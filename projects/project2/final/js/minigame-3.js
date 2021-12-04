@@ -6,6 +6,8 @@ function minigame3() {
   image(bg3, 0, 0, windowWidth, windowHeight);
   pop();
 
+  playAudio4(); // Play audio setup for minigame3
+
   // Display user
   penguin.move();
   penguin.display();
@@ -47,6 +49,7 @@ function resetSimulation() {
 
 // Set up winning title screen of minigame3
 function complete3() {
+  playAudio7(); // Play happy background music for complete3
 
   // Set up gradient background
   let c1, c2, n;
@@ -91,6 +94,8 @@ function complete3() {
 
 // Set up game over title screen for minigame3
 function gameover3() {
+  playAudio10(); // Play underwater ambiance audio set up for gameover3
+
   // Set up gradient background
   push();
   let c1, c2, n;

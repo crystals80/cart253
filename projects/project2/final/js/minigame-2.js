@@ -6,6 +6,8 @@ function minigame2() {
   imageMode(CORNER);
   pop();
 
+  playAudio3(); // Play audio setup for minigame2
+
   // Display user
   turtle.handleInput();
   turtle.move();
@@ -43,6 +45,7 @@ function resetCirculation() {
 
 // Set up winning title screen of minigame2
 function complete2() {
+  playAudio6(); // Play happy background music for complete2
 
   // Set up gradient background
   let c1, c2, n;
@@ -86,6 +89,8 @@ function complete2() {
 
 // Set up game over title screen for minigame2
 function gameover2() {
+  playAudio9(); // Play underwater ambiance audio set up for gameover2
+
   // Set up gradient background
   push();
   let c1, c2, n;

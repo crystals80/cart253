@@ -50,12 +50,12 @@ let scubaImg;
 
 // VARIABLES FOR AUDIO
 // Variables playing the audio
-let bubbly, crunch; // Variables for SFX
-let ohNo1; // Variables for gameover screens background sound
+let bubbly, crunch, waves; // Variables for SFX
+let yay1, yay2, yay3, ohNo1, ohNo2, ohNo3, end; // Variables for complete, gameover and ending screens background sound
 let bgAudio1, bgAudio2, bgAudio3, bgAudio4; // Variables for background music
 // Array variables storing many audio to play at random
-let bubblySFX = [];
-let crunchSFX = [];
+let bubblySFX = []; // Array variable storing bubble rising SFX
+let crunchSFX = []; // Array variable storing crunching SFX
 
 function preload() {
   // TYPEFACES (see assets README for more info on typeface)
@@ -91,13 +91,28 @@ function preload() {
   // Audios for title screen and complete screens
   bubblySFX[0] = loadSound('assets/sounds/zapsplat-bubble_rising1.mp3');
   bubblySFX[1] = loadSound('assets/sounds/zapsplat-bubble_rising2.mp3');
-  bgAudio1 = loadSound('assets/sounds/YAL-Seaside_Piazza_Aaron_Kenny.mp3'); // Title/complete screens background audio
+  bgAudio1 = loadSound('assets/sounds/YAL_Seaside_Piazza_Aaron_Kenny.mp3'); // Title screen background audio
   // Audios for minigame1
   crunchSFX[0] = loadSound('assets/sounds/zapsplat-bite1.mp3');
   crunchSFX[1] = loadSound('assets/sounds/zapsplat-bite2.mp3');
   crunchSFX[2] = loadSound('assets/sounds/zapsplat-bite3.mp3');
   bgAudio2 = loadSound('assets/sounds/YAL_Doh_De_Oh_Kevin_MacLeod.mp3'); // Mini game background audio
+  yay1 = loadSound('assets/sounds/YAL_Fiesta_de_la_Vida_Aaron_Kenny.mp3'); // complete1 background audio
   ohNo1 = loadSound('assets/sounds/zapsplat-underwater-ambiance3.mp3'); // gameover1 background audio
+
+  // Audio for minigame2
+  bgAudio3 = loadSound('assets/sounds/YAL_Across_the_Savannah_Aaron_Kenny.mp3'); // Mini game background audio
+  yay2 = loadSound('assets/sounds/YAL_In_the_Temple_Garden_Aaron_Kenny.mp3'); // complete2 background audio
+  ohNo2 = loadSound('assets/sounds/zapsplat-underwater-ambiance4.mp3'); // gameover1 background audio
+
+  // Audio for minigame3
+  bgAudio4 = loadSound('assets/sounds/YAL_Hot_Swing_Kevin_MacLeod.mp3'); // Mini game background audio
+  waves = loadSound('assets/sounds/zapsplat-felix_blume_ocean_waves.mp3'); // Mini game SFX
+  yay3 = loadSound('assets/sounds/YAL_Timpani_Beat_Nana_Kwabena.mp3'); // complete2 background audio
+  ohNo3 = loadSound('assets/sounds/zapsplat-underwater-ambiance1.mp3'); // gameover1 background audio
+
+  // Audio for ending screen
+  end = loadSound('assets/sounds/zapsplat-underwater-ambiance2.mp3'); // ending background audio
 }
 
 function setup() {
@@ -186,39 +201,56 @@ function draw() {
   // Set game states for title screen, mini games and end screen
   if (state === `title`) {
     title();
+    stopEnd();
   } else if (state === `minigame1`) {
     noCursor();
     minigame1();
-    bubbly.stop() // Pause bubblySFX
-    bgAudio1.pause() // Pause background audio of title screen
+    stopBubbly(); // Stop bubblySFX
+    bgAudio1.stop(); // Stop background audio of title screen
+    ohNo1.pause(); // Pause underwater audio of gameover1 screen
   } else if (state === `complete1`) {
     cursor();
     complete1();
-    crunch.pause() // Pause crunchSFX
-    bgAudio2.pause() // Pause background audio of title screen
+    crunch.stop(); // Stop crunchSFX
+    bgAudio2.stop(); // Stop background audio of minigame1 screen
   } else if (state === `gameover1`) {
     gameover1();
-    crunch.pause() // Pause crunchSFX
-    bgAudio2.pause() // Pause background audio of title screen
+    crunch.stop(); // Stop crunchSFX
+    bgAudio2.stop(); // Stop background audio of minigame1 screen
   } else if (state === `minigame2`) {
     noCursor();
     minigame2();
+    stopBubbly(); // Stop bubblySFX
+    bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
+    yay1.stop(); // Stop background audio of complete1 screen
+    ohNo2.pause(); // Pause underwater audio of gameover2 screen
   } else if (state === `complete2`) {
     cursor();
     complete2();
+    stopBgAudio3(); // Stop background audio of minigame2 screen
   } else if (state === `gameover2`) {
     gameover2();
+    stopBgAudio3(); // Stop background audio of minigame2 screen
   } else if (state === `minigame3`) {
     noCursor();
     minigame3();
+    stopBubbly(); // Stop bubblySFX
+    bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
+    yay2.stop(); // Stop background audio of complete2 screen
+    ohNo3.pause(); // Pause underwater audio of gameover3 screen
   } else if (state === `complete3`) {
     cursor();
     complete3();
+    stopBgAudio4(); // Stop background audio of minigame3 screen
   } else if (state === `gameover3`) {
     gameover3();
+    stopBgAudio4(); // Stop background audio of minigame3 screen
   } else if (state === `ending`) {
     noCursor();
     ending();
+    stopBubbly(); // Stop bubblySFX
+    bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
+    yay3.stop(); // Stop background audio of complete3 screen
   }
 }
 
@@ -268,7 +300,7 @@ function title() {
 }
 
 function ending() {
-
+  playAudio11(); // Play underwater audio for ending screen
 
   // Set up gradient background
   let c1, c2, n;

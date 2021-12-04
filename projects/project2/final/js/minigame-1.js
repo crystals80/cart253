@@ -39,6 +39,7 @@ function minigame1() {
 
 // Set up winning title screen of minigame1
 function complete1() {
+  playAudio5(); // Play happy background music for complete1
 
   // Set up gradient background
   let c1, c2, n;
@@ -82,8 +83,7 @@ function complete1() {
 
 // Set up game over title screen for minigame2
 function gameover1() {
-  // Play underwater ambiance audio set up for gameover1
-  playAudio3();
+  playAudio8(); // Play underwater ambiance audio set up for gameover1
 
   // Set up gradient background
   push();
