@@ -19,8 +19,10 @@ Timpani Beat by <i>Nana Kwabena</i>; Across the Savannah, Fiesta de la Vida, In 
 
 <b> Audios under Creative Commons License</b>
 <br>
-Doh De Oh by <i>Kevin MacLeod</i> is licensed under a Creative Commons Attribution 4.0 license. https://creativecommons.org/licenses/by/4.0/
+Doh De Oh and Hot Swing by <i>Kevin MacLeod</i> is licensed under a Creative Commons Attribution 4.0 license. https://creativecommons.org/licenses/by/4.0/
 <br>
-Source: http://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100255
+Source for Doh De Oh: http://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100255
+<br>
+Source for Hot Swing: http://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100202
 <br>
 Artist: http://incompetech.com/
