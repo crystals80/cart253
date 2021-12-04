@@ -50,8 +50,9 @@ let scubaImg;
 
 // VARIABLES FOR AUDIO
 // Variables playing the audio
-let bubbly, crunch;
-let bgAudio1, bgAudio2, bgAudio3, bgAudio4; // Background music
+let bubbly, crunch; // Variables for SFX
+let ohNo1; // Variables for gameover screens background sound
+let bgAudio1, bgAudio2, bgAudio3, bgAudio4; // Variables for background music
 // Array variables storing many audio to play at random
 let bubblySFX = [];
 let crunchSFX = [];
@@ -87,10 +88,10 @@ function preload() {
   scubaImg = loadImage('assets/images/scubadiver.png');
 
   // AUDIO (see assets README for more info on sounds)
-  // Audios for title screen
+  // Audios for title screen and complete screens
   bubblySFX[0] = loadSound('assets/sounds/zapsplat-bubble_rising1.mp3');
   bubblySFX[1] = loadSound('assets/sounds/zapsplat-bubble_rising2.mp3');
-  bgAudio1 = loadSound('assets/sounds/YAL-Seaside_Piazza_Aaron_Kenny.mp3'); // Title screen background audio
+  bgAudio1 = loadSound('assets/sounds/YAL-Seaside_Piazza_Aaron_Kenny.mp3'); // Title/complete screens background audio
   // Audios for minigame1
   crunchSFX[0] = loadSound('assets/sounds/zapsplat-bite1.mp3');
   crunchSFX[1] = loadSound('assets/sounds/zapsplat-bite2.mp3');
@@ -188,16 +189,16 @@ function draw() {
   } else if (state === `minigame1`) {
     noCursor();
     minigame1();
-    bubbly.pause() // Pause bubblySFX
+    bubbly.stop() // Pause bubblySFX
     bgAudio1.pause() // Pause background audio of title screen
   } else if (state === `complete1`) {
     cursor();
     complete1();
-    crunch.pause() // Pause bubblySFX
+    crunch.pause() // Pause crunchSFX
     bgAudio2.pause() // Pause background audio of title screen
   } else if (state === `gameover1`) {
     gameover1();
-    crunch.pause() // Pause bubblySFX
+    crunch.pause() // Pause crunchSFX
     bgAudio2.pause() // Pause background audio of title screen
   } else if (state === `minigame2`) {
     noCursor();
@@ -267,6 +268,8 @@ function title() {
 }
 
 function ending() {
+
+
   // Set up gradient background
   let c1, c2, n;
   c1 = color(0, 23, 61); // very dark blue

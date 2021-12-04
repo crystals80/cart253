@@ -82,6 +82,9 @@ function complete1() {
 
 // Set up game over title screen for minigame2
 function gameover1() {
+  // Play underwater ambiance audio set up for gameover1
+  playAudio3();
+
   // Set up gradient background
   push();
   let c1, c2, n;
