@@ -48,6 +48,12 @@ let penguinImg, orcaImg, bg3;
 // Variables for images of ending screen
 let scubaImg;
 
+// VARIABLES FOR AUDIO
+// Variables playing the audio
+let bubbly;
+// Array variables storing many audio to play at random
+let bubblySFX = [];
+
 function preload() {
   // See README for more info on typeface
   fontRegular = loadFont('assets/fonts/PlayfairDisplay-VariableFont_wght.ttf')
@@ -76,6 +82,9 @@ function preload() {
   bg3 = loadImage('assets/images/antarctica-cropped.png');
   // Cursor
   scubaImg = loadImage('assets/images/scubadiver.png');
+  // Audio for the simulation
+  bubblySFX[0] = loadSound('assets/sounds/zapsplat-bubble_rising1.mp3');
+  bubblySFX[1] = loadSound('assets/sounds/zapsplat-bubble_rising2.mp3');
 }
 
 function setup() {
@@ -195,6 +204,9 @@ function draw() {
 }
 
 function title() {
+  // Play bubbly sound effects at random
+  bubbly = random(bubblySFX);
+  playSFX();
 
   // Set up gradient background
   let c1, c2, n;
@@ -284,6 +296,13 @@ function ending() {
   scuba.move();
   scuba.display();
   pop();
+}
+
+function playSFX() {
+  // If bubblySFX isn't playing then play and loop it over and over
+  if (!bubbly.isPlaying()) {
+    bubbly.loop();
+  }
 }
 
 // function regulating most of state transitions
