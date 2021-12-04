@@ -50,10 +50,11 @@ let scubaImg;
 
 // VARIABLES FOR AUDIO
 // Variables playing the audio
-let bubbly;
-let bgAudio1; // Background music
+let bubbly, crunch;
+let bgAudio1, bgAudio2, bgAudio3, bgAudio4; // Background music
 // Array variables storing many audio to play at random
 let bubblySFX = [];
+let crunchSFX = [];
 
 function preload() {
   // TYPEFACES (see assets README for more info on typeface)
@@ -89,7 +90,13 @@ function preload() {
   // Audios for title screen
   bubblySFX[0] = loadSound('assets/sounds/zapsplat-bubble_rising1.mp3');
   bubblySFX[1] = loadSound('assets/sounds/zapsplat-bubble_rising2.mp3');
-  bgAudio1 = loadSound('assets/sounds/YAL-Seaside_Piazza_Aaron_Kenny.mp3');
+  bgAudio1 = loadSound('assets/sounds/YAL-Seaside_Piazza_Aaron_Kenny.mp3'); // Title screen background audio
+  // Audios for minigame1
+  crunchSFX[0] = loadSound('assets/sounds/zapsplat-bite1.mp3');
+  crunchSFX[1] = loadSound('assets/sounds/zapsplat-bite2.mp3');
+  crunchSFX[2] = loadSound('assets/sounds/zapsplat-bite3.mp3');
+  bgAudio2 = loadSound('assets/sounds/YAL_Doh_De_Oh_Kevin_MacLeod.mp3'); // Mini game background audio
+  ohNo1 = loadSound('assets/sounds/zapsplat-underwater-ambiance3.mp3'); // gameover1 background audio
 }
 
 function setup() {
@@ -181,11 +188,17 @@ function draw() {
   } else if (state === `minigame1`) {
     noCursor();
     minigame1();
+    bubbly.pause() // Pause bubblySFX
+    bgAudio1.pause() // Pause background audio of title screen
   } else if (state === `complete1`) {
     cursor();
     complete1();
+    crunch.pause() // Pause bubblySFX
+    bgAudio2.pause() // Pause background audio of title screen
   } else if (state === `gameover1`) {
     gameover1();
+    crunch.pause() // Pause bubblySFX
+    bgAudio2.pause() // Pause background audio of title screen
   } else if (state === `minigame2`) {
     noCursor();
     minigame2();
@@ -211,7 +224,7 @@ function draw() {
 function title() {
   // Play bubbly sound effects at random
   bubbly = random(bubblySFX);
-  playAudio();
+  playAudio1(); // Play audio setup for title screen
 
   // Set up gradient background
   let c1, c2, n;

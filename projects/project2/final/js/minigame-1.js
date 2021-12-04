@@ -6,6 +6,8 @@ function minigame1() {
   imageMode(CORNER);
   pop();
 
+  playAudio2(); // Play audio setup for minigame1
+
   // Display user
   shark.move();
   shark.display();
@@ -141,10 +143,13 @@ function mousePressed(fish) {
     let d1 = dist(shark.x, shark.y, fish.x, fish.y);
     // If a fish is clicked within the shark, it will be removed/eaten
     if (d1 < fish.size / 2 + shark.size / 2) {
+      // Make fishes disappear
       fishes.splice(i, 1);
       // This forces the for-loop to stop immediately
       break;
     }
+    // Play shark eating fishes sound effects at random
+    crunch = random(crunchSFX);
   }
   // When shark(user) eats all fishes, user wins and transition to a congratulating screen and therefore to minigame2
   if (state === `minigame1` && fishes.length == 0) {
