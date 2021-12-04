@@ -37,9 +37,7 @@ function playAudio3() {
 // Play audio for minigame3
 function playAudio4() {
   // Same parameters as playAudio1() but different audio for SFX (waves replacing bubbly)
-  if (!bgAudio4.isPlaying() && !waves.isPlaying()) {
-    waves.setVolume(0.3);
-    waves.loop();
+  if (!bgAudio4.isPlaying()) {
     bgAudio4.setVolume(0.32);
     bgAudio4.loop();
   }
@@ -96,7 +94,9 @@ function playAudio9() {
 // Play audio for gameover3 screen
 function playAudio10() {
   // Same if statement as playAudio8 but for ohNo3
-  if (!ohNo3.isPlaying()) {
+  if (!ohNo3.isPlaying() && !waves.isPlaying()) {
+    waves.setVolume(0.05);
+    waves.loop();
     ohNo3.setVolume(0.3);
     ohNo3.loop();
   }

@@ -238,6 +238,7 @@ function draw() {
     bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
     yay2.stop(); // Stop background audio of complete2 screen
     ohNo3.pause(); // Pause underwater audio of gameover3 screen
+    waves.pause(); // Pause waves SFX of gameover3 screen
   } else if (state === `complete3`) {
     cursor();
     complete3();
