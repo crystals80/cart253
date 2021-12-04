@@ -407,4 +407,9 @@ function keyPressed() {
   if (state === `complete3` && keyIsDown(13)) {
     state = `ending`;
   }
+  // Returning to the main page from the ending screen by pressing SPACE
+  if (state === `ending` && keyIsDown(32)) {
+    state = `title`;
+    noTint();
+  }
 }
