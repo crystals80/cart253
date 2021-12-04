@@ -51,14 +51,16 @@ let scubaImg;
 // VARIABLES FOR AUDIO
 // Variables playing the audio
 let bubbly;
+let bgAudio1; // Background music
 // Array variables storing many audio to play at random
 let bubblySFX = [];
 
 function preload() {
-  // See README for more info on typeface
+  // TYPEFACES (see assets README for more info on typeface)
   fontRegular = loadFont('assets/fonts/PlayfairDisplay-VariableFont_wght.ttf')
   fontItalic = loadFont('assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf')
-  // See README for more info on images
+
+  // IMAGES (see assets README for more info on images)
   // Title special effect
   bubbleImg = loadImage('assets/images/bubble.png')
   // Minigame 1's fish icons
@@ -82,9 +84,12 @@ function preload() {
   bg3 = loadImage('assets/images/antarctica-cropped.png');
   // Cursor
   scubaImg = loadImage('assets/images/scubadiver.png');
-  // Audio for the simulation
+
+  // AUDIO (see assets README for more info on sounds)
+  // Audios for title screen
   bubblySFX[0] = loadSound('assets/sounds/zapsplat-bubble_rising1.mp3');
   bubblySFX[1] = loadSound('assets/sounds/zapsplat-bubble_rising2.mp3');
+  bgAudio1 = loadSound('assets/sounds/YAL-Seaside_Piazza_Aaron_Kenny.mp3');
 }
 
 function setup() {
@@ -206,7 +211,7 @@ function draw() {
 function title() {
   // Play bubbly sound effects at random
   bubbly = random(bubblySFX);
-  playSFX();
+  playAudio();
 
   // Set up gradient background
   let c1, c2, n;
@@ -298,10 +303,14 @@ function ending() {
   pop();
 }
 
-function playSFX() {
-  // If bubblySFX isn't playing then play and loop it over and over
-  if (!bubbly.isPlaying()) {
+// Set up function that plays audio on the chosen states/mini games/screens
+function playAudio() {
+  // If bubblySFX isn't playing then play and loop it over and over, and play bgAudio1 on the same time
+  if (!bubbly.isPlaying() && !bgAudio1.isPlaying()) {
+    bubbly.setVolume(0.3);
     bubbly.loop();
+    bgAudio1.setVolume(0.32);
+    bgAudio1.loop();
   }
 }
 

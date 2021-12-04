@@ -39,3 +39,6 @@ See link: https://emilyso.com/2011/02/19/sheep-run-and-shark-blagablagablagararr
 GIF is <i>Moran Goldstein</i>'s work and it was posted on Dribble. It was modified on Photoshop to have a transparent background.
 <br>
 See link: https://dribbble.com/shots/2087267-Orca-Loop
+
+
+<b>More about sound attribution in "sounds" file</b>
