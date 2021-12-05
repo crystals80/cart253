@@ -1,4 +1,4 @@
-# Project 2: Anything™ - Underwater Mini Game
+# Project 2: Anything™ - Underwater Mini Game: A Delightful and Wondrous Underwater Odyssey
 
 Link: https://crystals80.github.io/cart253/exercises/project-progress-report/
 <br>
