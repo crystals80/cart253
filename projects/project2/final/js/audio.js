@@ -19,8 +19,11 @@ function playAudio1() {
 // Play SFX and audio for minigame1
 function playAudio2() {
   // If crunchSFX isn't playing then play and loop it over and over, and play/loop bgAudio1 on the same time
-  if (!crunch.isPlaying() && mouseIsPressed == true) {
-    crunch.play(); // Play crunchSFX only once -> when it is clicked
+  if (mouseIsPressed == true) {
+    // Play crunchSFX only once -> when it is clicked
+    if (!crunch.isPlaying()) {
+      crunch.play();
+    }
   }
   if (!bgAudio2.isPlaying()) {
     bgAudio2.setVolume(0.32); // Lower background music from 1 to 0.32 in order to hear the SFX
