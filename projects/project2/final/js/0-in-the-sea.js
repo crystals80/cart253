@@ -221,9 +221,9 @@ function draw() {
     noCursor();
     minigame2();
     stopBubbly(); // Stop bubblySFX
-    bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
     yay1.stop(); // Stop background audio of complete1 screen
     ohNo2.pause(); // Pause underwater audio of gameover2 screen
+    // bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
   } else if (state === `complete2`) {
     cursor();
     complete2();
@@ -235,10 +235,10 @@ function draw() {
     noCursor();
     minigame3();
     stopBubbly(); // Stop bubblySFX
-    bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
     yay2.stop(); // Stop background audio of complete2 screen
     ohNo3.pause(); // Pause underwater audio of gameover3 screen
     waves.pause(); // Pause waves SFX of gameover3 screen
+    // bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
   } else if (state === `complete3`) {
     cursor();
     complete3();
@@ -250,8 +250,8 @@ function draw() {
     noCursor();
     ending();
     stopBubbly(); // Stop bubblySFX
-    bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
     yay3.stop(); // Stop background audio of complete3 screen
+    // bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
   }
 }
 
@@ -362,17 +362,17 @@ function keyPressed() {
   //SKIPPING THE ORDER TO GO TO THE MINIGAME OF CHOICE
   // I decided to leave these codes in the script to show how I test the mini games
   // Testing minigame2 so adding "skipping minigame1" option to go to minigame 2
-  else if (state === `title` && keyIsDown(32)) {
-    state = `minigame2`;
-  }
+  // else if (state === `title` && keyIsDown(32)) {
+  //   state = `minigame2`;
+  // }
   // Testing minigame3 so adding "skipping minigame1 and minigame2" option to go to minigame 3
-  else if (state === `title` && keyIsDown(16)) {
-    state = `minigame3`;
-  }
+  // else if (state === `title` && keyIsDown(16)) {
+  //   state = `minigame3`;
+  // }
   // Testing final screen so adding "skipping all minigames" option to go to ending screen by moving from title screen to ending screen by pressing character "a"
-  else if (state === `title` && keyIsDown(65)) {
-    state = `ending`;
-  }
+  // else if (state === `title` && keyIsDown(65)) {
+  //   state = `ending`;
+  // }
 
   //console.log(keyIsDown(13), keyIsDown(32));
 
