@@ -1,3 +1,12 @@
+/********************************
+User Classes That Include Cursor and Arrow Control
+Lam Ky Anh Do
+
+This js file contains the parent User class and its child class for cursor control (MouseUser and PenguinUser). As for the ArrowUser, there is only one class for it. These classes show its constructor, how the cursor or arrows movement are supposed to be under user commands and how they are displayed with image.
+
+For ArrowUser and PenguinUser, both have a bit more parameters than MouseUser, as both have a function to check if they are hit by other OOP classes. Another about ArrowUser is that it requires a handleInput function, while the MouseUser and its child do not need as their handleInput function is the user using their mouse
+********************************/
+
 // Set up user class for minigame1
 class MouseUser {
   // Set up shark by giving it a position, size and appearance

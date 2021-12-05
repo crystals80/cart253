@@ -1,10 +1,21 @@
-/**
-This code was taken from p5.js Examples — Flocking
+/********************************
+Orca Class for minigame3
+Lam Ky Anh Do
+
+This js file contains the Orca class only. It shows its constructor, how it runs using Craig Reynolds' Flocking code and how it is displayed. The code within this js file was modified to fit the project's concept, and with no intention of copyright infringement (<b>CC</b>).
+
+
+<b>This code was taken from p5.js Examples — Flocking
 Link: https://p5js.org/examples/hello-p5-flocking.html
 
 It is a demonstration of Craig Reynolds' "Flocking" behavior.
-Rules of this demonstration includes 3 aspects: Cohesion, Separation, Alignment.) From natureofcode.com.
-**/
+Rules of this demonstration includes 3 aspects: Cohesion, Separation, Alignment.
+
+From natureofcode.com.</b>
+
+********************************/
+
+//
 
 // Set up orca class for minigame3
 class Orca {

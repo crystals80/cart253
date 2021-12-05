@@ -1,7 +1,18 @@
-/**
+/********************************
 Progress Report of Project 2: Anything™ Proposal - Underwater Mini Game
 Lam Ky Anh Do
-**/
+
+This is the main script for the project. This js file links all other js files together to make the project work. This js file includes:
+
+1- USE STRICT
+2- VARIABLES being DECLARED
+3- PRELOAD FUNCTION (for typefaces, images and sounds)
+4- SETUP FUNCTION to create a canvas to draw on and for array variables and parent classes with their children classes
+5- DRAW FUNCTION where all states are being drawn and bracketed in if statements
+6- TITLE FUNCTION for the title screen (the first page user will see upon clicking on the project's link)
+7- ENDING FUNCTION for the closing screen (the last page user will be able to interact with before returning to the title screen)
+8- KEYPRESSED FUNCTION where state changes are triggered by a specfic key on the user's keyboard
+********************************/
 
 "use strict";
 

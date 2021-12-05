@@ -1,3 +1,10 @@
+/********************************
+FishCirculation Class for minigame2
+Lam Ky Anh Do
+
+This js file contains the parent FishCirculation class along with its specific children Fish classes (CfishCirculation, AfishCirculation,  MIFishCirculation and SharkCirculation classes). It shows its constructor, how it moves, how it is kept within the canvas and how it is displayed
+********************************/
+
 // Set up parent fish circulation class for minigame2
 class FishCirculation {
   // Set up fishes by giving it a position, speed and undefined speed and appearance
@@ -33,6 +40,7 @@ class FishCirculation {
     }
   }
 
+  // Display the clownfish, angelfis, moorish idol fish and shark on the canvas
   display() {
     push();
     imageMode(CENTER);
@@ -57,7 +65,6 @@ class CfishCirculation extends FishCirculation {
     super(x, y, image);
     this.speed = 6;
   }
-
 }
 
 // Set up 2nd subclass for fish circulation
@@ -67,9 +74,6 @@ class AfishCirculation extends FishCirculation {
     super(x, y, image);
     this.speed = 2;
   }
-
-  // Give appearance to angelfish
-
 }
 
 // Set up 3rd subclass for fish circulation
@@ -79,8 +83,6 @@ class MIFishCirculation extends FishCirculation {
     super(x, y, image);
     this.speed = 4;
   }
-
-
 }
 
 // Set up 4th subclass for fish circulation
@@ -91,6 +93,4 @@ class SharkCirculation extends FishCirculation {
     this.size = 175;
     this.speed = 1;
   }
-
-
 }

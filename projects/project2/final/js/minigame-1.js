@@ -1,3 +1,11 @@
+/********************************
+Mini Game 1 and Its Complete and Gameover Screens
+Lam Ky Anh Do
+
+This js file is all about mini game 1 and includes the draw function for minigame1, the functions for the game's complete and gameover screens and the mousePressed function that ensures the success of the game by checking with if statements whether the shark eats the fishes or not (whether the cursor makes the fish objects disappear or not)
+********************************/
+
+// Draw minigame1
 function minigame1() {
 
   // Display background

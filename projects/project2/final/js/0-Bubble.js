@@ -1,3 +1,10 @@
+/********************************
+Bubble Class
+Lam Ky Anh Do
+
+This js file contains the Bubble class only. It shows its constructor, how it moves and how it is displayed
+********************************/
+
 class Bubble {
   // When a new bubble is made,it gets a random diameter x, y and speed
   constructor(image) {
@@ -6,11 +13,6 @@ class Bubble {
     this.y = windowHeight + this.d;
     this.speed = random(1, 4);
     this.image = image;
-  }
-
-  // Display bubble effect on title screen 
-  display() {
-    image(this.image, this.x, this.y, this.d, this.d);
   }
 
   // Move each bubble object
@@ -24,5 +26,10 @@ class Bubble {
       this.x = random(0, windowWidth);
       this.speed = random(1, 4);
     }
+  }
+
+  // Display bubble effect on title screen
+  display() {
+    image(this.image, this.x, this.y, this.d, this.d);
   }
 }

@@ -1,7 +1,17 @@
-// Made a separate js file for audio so that it is easier to find audio and its code
+/********************************
+Audio Functions
+Lam Ky Anh Do
+
+This js file contains all functions concerning audio and sound files coded in the preload function on the main script. This js file was created in order to separate the audio setup from the main to provide an easier access and for an easier flow when it comes to read the code
+
+Each function that is named <i>playAudio()</i> is a function to play a desired audio and/or sound effects on the desired state.
+
+Each function that is named <i>stop____()</i> is a function to stop a desired audio from looping in order to prevent it playing over another audio on another state, where it is not supposed to be played.
+********************************/
 
 // Set up functions that plays audio on the chosen states/mini games/screens
 // SFX = abbreviation for sound effect (just for the comments)
+
 
 // Play SFX audio for title screen
 function playAudio1() {

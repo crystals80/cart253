@@ -1,3 +1,11 @@
+/********************************
+Mini Game 2 and Its Complete and Gameover Screens
+Lam Ky Anh Do
+
+This js file is all about mini game 2 and includes the draw function for minigame2, the functions for the game's complete and gameover screen
+********************************/
+
+// Draw minigame2
 function minigame2() {
 
   // Display background
