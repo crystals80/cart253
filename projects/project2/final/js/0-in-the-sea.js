@@ -23,6 +23,7 @@ let state = `title`;
 let bubble;
 let bubbles = []; // Bubble array variable
 let numBubble = 20; // Number of bubble
+let button; // Variable for button (that will activate audio files)
 
 // FONT VARIABLES
 let fontRegular, fontItalic;
@@ -129,6 +130,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
+
   // Create new bubbles and store them in an array
   // Bubble floating up
   bubble = new Bubble(bubbleImg);
@@ -136,6 +138,14 @@ function setup() {
     let bubble = new Bubble(bubbleImg)
     bubbles.push(bubble);
   }
+
+  // Create button that makes web browser play audio files of title screen because Google Chrome and Microsoft Edge don't play the title screen's audio files once entered the online/github link
+  button = createButton('Of course!');
+  button.center(); // Center the text within the button
+  button.position(-35 + width / 2, -25 + 2 * height / 3); // Place the button in the middle bottom of canvas
+  let noColour = color(255, 255, 255, 0); // Set transparent colour
+  button.style('background-color', noColour); // Apply transparent colour to button initial grey background
+  button.mousePressed(mouseReleased); // Get audio files to play (see mouseReleased() function)
 
   // Position variables for array classes
   let x1, y1;
@@ -361,6 +371,16 @@ function ending() {
   scuba.move();
   scuba.display();
   pop();
+}
+
+// This function is to ensure that the title screen has its audio play and loop
+// User must click to start audio files of title screen so when user released their finger from mouse button then audios should resume playing (only for Google Chrome and Microsoft Edge)
+function mouseReleased() {
+  // If entering the title screen and the state is suspended... (which Chrome and Edge initiate a website, link and such in an suspended state requiring user to interact to trigger simulation)
+  if (getAudioContext().state === "suspended") {
+    // ...then audio files should resume
+    getAudioContext().resume();
+  }
 }
 
 // function regulating most of state transitions
