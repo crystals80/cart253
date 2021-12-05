@@ -10,7 +10,7 @@ zapsplat-bite1.mp3, zapsplat-bite2.mp3, zapsplat-bite3.mp3, zapsplat-bubble_risi
 <br>
 zapsplat-felix_blume_ocean_waves.mp3 by <i>Felix Blume</i>
 
-<br><br><br>
+<br>
 
 All sound files from Youtube Audio Library has either YouTube Audio Library License, where one is free to use one of the audio tracks in any videos, including videos that are monetized and no attribution is required, or CC License.
 <br><br>
