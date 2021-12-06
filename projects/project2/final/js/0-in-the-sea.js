@@ -130,7 +130,6 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-
   // Create new bubbles and store them in an array
   // Bubble floating up
   bubble = new Bubble(bubbleImg);
@@ -142,7 +141,6 @@ function setup() {
   // Create button that makes web browser play audio files of title screen because Google Chrome and Microsoft Edge don't play the title screen's audio files once entered the online/github link
   button = createButton('Of course!');
   button.center(); // Center the text within the button
-  button.position(-35 + width / 2, -25 + 2 * height / 3); // Place the button in the middle bottom of canvas
   let noColour = color(255, 255, 255, 0); // Set transparent colour
   button.style('background-color', noColour); // Apply transparent colour to button initial grey background
   button.mousePressed(mouseReleased); // Get audio files to play (see mouseReleased() function)
@@ -222,10 +220,12 @@ function draw() {
   // Set game states for title screen, mini games and end screen
   if (state === `title`) {
     title();
+    button.position(-35 + width / 2, -25 + 2 * height / 3); // Show the button in the middle bottom of canvas
     stopEnd();
   } else if (state === `minigame1`) {
     noCursor();
     minigame1();
+    button.position(-500, -500); // Hide button from canvas
     stopBubbly(); // Stop bubblySFX
     bgAudio1.stop(); // Stop background audio of title screen
     ohNo1.pause(); // Pause underwater audio of gameover1 screen
@@ -273,6 +273,11 @@ function draw() {
     stopBubbly(); // Stop bubblySFX
     yay3.stop(); // Stop background audio of complete3 screen
     // bgAudio1.stop(); // Stop background audio of title screen FOR TESTING
+  }
+
+  // In case the button keeps showing up in the middle of the screen, this if statement ensure that the button is hidden if the state is any other state than the title screen
+  if (!state === `title`) {
+    button.position(-500, -500); // Hide button from canvas
   }
 }
 
