@@ -7,6 +7,9 @@ This js file contains all functions concerning audio and sound files coded in th
 Each function that is named <i>playAudio()</i> is a function to play a desired audio and/or sound effects on the desired state.
 
 Each function that is named <i>stop____()</i> is a function to stop a desired audio from looping in order to prevent it playing over another audio on another state, where it is not supposed to be played.
+
+I feel like I can somehow make this code more neat and easy to read but I don't know how since I haven't had time to experience with sound and audio in p5 and Javascript. At least, it is straightforward.
+
 ********************************/
 
 // Set up functions that plays audio on the chosen states/mini games/screens
