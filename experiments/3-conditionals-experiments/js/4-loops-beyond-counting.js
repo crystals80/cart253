@@ -4,7 +4,7 @@ Lam Ky Anh Do
 
 */
 
-let circle = {
+let circle1 = {
   x: undefined,
   y: undefined,
   size: 100,

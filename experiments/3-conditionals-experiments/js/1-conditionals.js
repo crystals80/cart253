@@ -45,7 +45,7 @@ function draw() {
   }
   /*else {
     fill(0, 255, 0);
-  }
+  }*/
   else if (mouseX < 2 * width / 3) {
     fill(0, 255, 0);
   } else {
@@ -59,3 +59,4 @@ function draw() {
   // if (circle.x < width / 2 || circle.x > 2 * width / 3) {
   //   fill(255)
   // }
+}

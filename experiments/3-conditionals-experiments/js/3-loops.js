@@ -30,7 +30,7 @@ function draw() {
   // ellipse(catepillar.x + 160, catepillar.y, catepillar.segmentSize);
 
   //To avoid repeating same lengthy code (above)
-  ellipse(x, catepillar.y, catepillar.segmentSize);
+  /*ellipse(x, catepillar.y, catepillar.segmentSize);
   x = x + 40
   ellipse(x, catepillar.y, catepillar.segmentSize);
   x = x + 40
